@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.thanosfisherman.wifiutils:wifiutils-1.3.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wifiutils-1.3.5.aar/15605646b2f30149024816b0ae5d5d0b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wifiutils-1.3.5.aar/15605646b2f30149024816b0ae5d5d0b/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thanosfisherman.wifiutils/wifiutils/1.3.5/ba7e452f00aa5cfe3e149d62246278b87681a095/wifiutils-1.3.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

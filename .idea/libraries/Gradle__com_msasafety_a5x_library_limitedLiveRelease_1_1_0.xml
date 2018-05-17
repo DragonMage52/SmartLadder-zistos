@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.msasafety.a5x:library-limitedLiveRelease-1.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-limitedLiveRelease-1.1.0.aar/14fd8866e3cbc861d9c23daeaa7fb4db/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-limitedLiveRelease-1.1.0.aar/14fd8866e3cbc861d9c23daeaa7fb4db/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
