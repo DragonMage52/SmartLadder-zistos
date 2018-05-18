@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.android.things:androidthings:0.4-devpreview@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.things/androidthings/0.4-devpreview/f4e91a98992c63bae4b6d96c6a0226bc67a7076a/androidthings-0.4-devpreview.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.things/androidthings/0.4-devpreview/bed0f7be8734457d72804288d462c3b637fd94c9/androidthings-0.4-devpreview-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

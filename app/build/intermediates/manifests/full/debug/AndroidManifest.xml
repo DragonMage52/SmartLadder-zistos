@@ -47,6 +47,10 @@
             android:name="com.msasafety.a5x.library.activities.PairingActivity"
             android:label="@string/title_activity_pairing" >
         </activity>
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="25.4.0" />
     </application>
 
 </manifest>

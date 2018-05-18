@@ -4,13 +4,32 @@
             "outputFile": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.2.1.aar\\199dc82ac674e6a2926ea0837bf3c803\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\7662edc74602b0dd455613f194d1b8e4\\res\\values-land\\values-land.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,117,189,259,323,394",
-                        "endColumns": "61,71,69,63,70,67",
-                        "endOffsets": "112,184,254,318,389,457"
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.4.0.aar\\351f42a69e3ade291b8d7f5178314da6\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "232"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "328",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "505"
                     }
                 }
             ]
