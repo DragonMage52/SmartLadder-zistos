@@ -223,7 +223,6 @@ public class MainActivity extends AppCompatActivity {
             }
             mSmartBattery = mManager.openI2cDevice("I2C1", 0x0B);
 
-
         }
         catch(IOException e) {
             Log.d("TEST", "Unable to access GPIO", e);
@@ -335,10 +334,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        Long tsLong = System.currentTimeMillis()/1000;
+        String ts = tsLong.toString();
+
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mTextDebug.append(message + '\n');
+                mTextDebug.append(ts + ":" + message + '\n');
                 scrollToBottom();
             }
         });
@@ -411,6 +413,7 @@ public class MainActivity extends AppCompatActivity {
             IntentFilter mFilterFinished = new IntentFilter(mBluetoothAdapter.ACTION_DISCOVERY_FINISHED);
             registerReceiver(mFinished, mFilterFinished);
 
+            debugPrint("Starting Bluetooth Discovery");
             mBluetoothAdapter.startDiscovery();
     }
 
@@ -458,9 +461,10 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
 
-                            startService(mDevice);
-                            registerBroadcastReceiver();
+                            //startService(mDevice);
+                            //registerBroadcastReceiver();
                             mStates.mBootState = 2;
+                            mStates.stopBoot(0);
                         }
                     }
                     else if (discoveryOption == 2) {
@@ -487,6 +491,7 @@ public class MainActivity extends AppCompatActivity {
             debugPrint("Discovery Finished");
             //Restart discovery is no device found, else connect to the device.
             if(mDevice == null) {
+                debugPrint("Restarting Bluetooth Discovery");
                 mBluetoothAdapter.startDiscovery();
             }
 
@@ -528,6 +533,11 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void saveWifiSettings(String name, String ssid, String password) {
+
+        mName = name;
+        mNetworkSSID = ssid;
+        mNetworkPass = password;
+
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         prefsEditor.putString("Name", name);
@@ -888,6 +898,11 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         if(mUDPSocket != null) {
                             byte[] message = mStates.getBytes();
+                            try {
+                                debugPrint("Sending via Wifi " + new String(message, "UTF-8"));
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
                             DatagramPacket packet = new DatagramPacket(message, message.length);
                             packet.setAddress(mAppService.getHost());
                             packet.setPort(mAppService.getPort());
@@ -1020,6 +1035,7 @@ class ConnectThread extends Thread {
                 @Override
                 public void run() {
                     Activity.saveWifiSettings(separated[0], separated[1], separated[2]);
+                    Activity.mStates.stopBoot(0);
                 }
             });
 
