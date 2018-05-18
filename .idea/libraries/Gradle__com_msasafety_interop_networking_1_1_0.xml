@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.msasafety.interop:networking-1.1.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/networking-1.1.0.aar/9c5514aa1d658b79ba2c1ff71dc77cfc/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/networking-1.1.0.aar/9c5514aa1d658b79ba2c1ff71dc77cfc/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/networking-1.1.0.aar/dc24087b94143bfc9550cd74faa52b41/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/networking-1.1.0.aar/dc24087b94143bfc9550cd74faa52b41/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

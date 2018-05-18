@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.felHR85:UsbSerial-4.3">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/UsbSerial-4.3.aar/7efadbd315fb81f651e191b32e6799cc/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/UsbSerial-4.3.aar/7efadbd315fb81f651e191b32e6799cc/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/UsbSerial-4.3.aar/c829b78ff26ef5d39efbaae03ed41ae3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/UsbSerial-4.3.aar/c829b78ff26ef5d39efbaae03ed41ae3/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

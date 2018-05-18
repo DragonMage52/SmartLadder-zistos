@@ -26,7 +26,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    //compile 'com.android.support:appcompat-v7:25.3.1'
 
     compile 'com.msasafety.a5x:library-limitedLiveRelease:1.1.0'
 
@@ -57,7 +57,7 @@ dependencies {
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
-    implementation 'com.android.support:design:25.+'
+    //implementation 'com.android.support:design:25.+'
 }
 
 repositories {
