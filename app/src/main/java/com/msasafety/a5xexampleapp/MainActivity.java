@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
     static final String mLadderPin = "BCM22";
     static final String mHornPin = "BCM12";
 
-    String mNetworkSSID = ""; //= "9FD5C0";
-    String mNetworkPass = ""; //= "21444654";
+    String mNetworkSSID = "";
+    String mNetworkPass = "";
     String mName = "";
 
     NsdManager mNsdManager;
@@ -649,17 +649,10 @@ public class MainActivity extends AppCompatActivity {
                 A5xInstrumentStatus lastStatus = mStatus.getLastStatus();
                 //If alarm or high Temperature
                 mStates.temp = lastStatus.getTemperature() * 9 / 5 + 32;
-                mStates.meterBatteryLevel = lastStatus.getBatteryPercentRemaning();
+                mStates.setMeterBatteryLevel(lastStatus.getBatteryPercentRemaning());
 
                 if (mStates.temp >= 120) {
                     mStates.setMeterState(true);
-                }
-                //If low battery life
-                if (mStates.meterBatteryLevel < 25) {
-                    mStates.setMeterBatteryState(true);
-                }
-                else {
-                    mStates.setMeterBatteryState(false);
                 }
 
                 for (int i = 0; i < mStatus.getLastStatus().getNumberInstalledSensors(); i++) {
@@ -713,15 +706,15 @@ public class MainActivity extends AppCompatActivity {
         public boolean onGpioEdge(Gpio gpio) {
             try {
                 if(gpio.getValue()) {
-                    if(mStates.booting) {
+                    if(mStates.booting && !mStates.mInterrupted) {
                         mStates.stopBoot(1);
                         bluetoothDiscovery(1);
                     }
-                    else {
+                    else if(!mStates.mInterrupted) {
                         mStates.reset();
                     }
                 }
-                else {
+                else if(!mStates.mInterrupted) {
                     if(mStates.booting) {
                         mStates.stopBoot(2);
                         bluetoothDiscovery(2);
@@ -958,16 +951,11 @@ public class MainActivity extends AppCompatActivity {
                             mFullChargeCapacity = capacity;
                         }
                         else if (capacity != 0) {
-                            mStates.meterBatteryLevel = (int)  (100.0 * ((1.0 * capacity) / (mFullChargeCapacity)));
-                        }
-                        Log.d("TEST", "battery level: " + mStates.meterBatteryLevel);
-                        debugPrint("battery level: " + mStates.meterBatteryLevel);
-                        if(mStates.meterBatteryLevel < 25) {
-                            mStates.setBatteryState(true);
-                        }
-                        else {
-                            mStates.setBatteryState(false);
-                        }
+                            //mStates.mBatteryLevel = (int)  (100.0 * ((1.0 * capacity) / (mFullChargeCapacity)));
+                            mStates.setBatteryLevel((int)  (100.0 * ((1.0 * capacity) / (mFullChargeCapacity))));
+                                                    }
+                        Log.d("TEST", "battery level: " + mStates.mBatteryLevel);
+                        debugPrint("battery level: " + mStates.mBatteryLevel);
                     }
                 });
             }

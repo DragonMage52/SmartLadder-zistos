@@ -18,6 +18,7 @@ public class StateVariable {
     double weight = 0;
     int temp = 0;
     int meterBatteryLevel = 0;
+    int mBatteryLevel = 0;
     double oxygenLevel = 0;
     double carbondioxideLevel = 0;
     double hydrogensulfideLevel = 0;
@@ -29,6 +30,10 @@ public class StateVariable {
 
     Timer mEarlyTimer;
     TimerTask mEarlyTask;
+
+    Timer mBatteryBlinkTimer;
+    TimerTask mBatteryBlinkTask;
+
     int mBootState = 0;
 
     boolean mAlarmState = false;
@@ -42,6 +47,9 @@ public class StateVariable {
     boolean mEarlyState = false;
     boolean mMeterBatteryState = false;
     boolean mEarlyDoneState = false;
+    boolean mIdleState = false;
+    boolean mMeterBatteryDangerState = false;
+    boolean mBatteryDangerState = false;
 
     Gpio mGood;
     Gpio mWarning;
@@ -53,6 +61,7 @@ public class StateVariable {
     Handler mBootHandler = new Handler();
     Handler mEarlyHandler = new Handler();
     Handler mUpdateStateHandler = new Handler();
+    Handler mBatteryBlinkHandler = new Handler();
 
     MainActivity mThat;
 
@@ -88,8 +97,9 @@ public class StateVariable {
 
 
     public void updateState() {
-        mAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) | mAlarmState | (!mEarlyDoneState && mManState);
-        mWarningState = mBatteryState || (mLadderState && mEarlyState) || !mBluetoothState | mMeterBatteryState;
+        mAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
+        mWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
+        mIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
 
         if(!booting) {
             mUpdateStateHandler.post(mUpdateStateRunnable);
@@ -153,53 +163,109 @@ public class StateVariable {
         }
     }
 
+    public void setMeterBatteryLevel(int level) {
+        meterBatteryLevel = level;
+        if(meterBatteryLevel < 10) {
+            mMeterBatteryDangerState = true;
+            setMeterBatteryState(false);
+        }
+        else if (meterBatteryLevel < 25) {
+            setMeterBatteryState(true);
+            mMeterBatteryDangerState = false;
+        }
+        else {
+            setMeterBatteryState(false);
+            mMeterBatteryDangerState = false;
+        }
+        updateBatteryBlink();
+    }
+
+    public void setBatteryLevel(int level) {
+        mBatteryLevel = level;
+        if(mBatteryLevel < 10) {
+            mBatteryDangerState = true;
+            setBatteryState(false);
+        }
+        else if (mBatteryLevel < 25) {
+            setBatteryState(true);
+            mBatteryDangerState = false;
+        }
+        else {
+            setBatteryState(false);
+            mBatteryDangerState = false;
+        }
+        updateBatteryBlink();
+    }
+
+    public void updateBatteryBlink() {
+        if(mBatteryBlinkTimer == null) {
+            if(mBatteryDangerState || mMeterBatteryDangerState) {
+                startBatteryBlink();
+            }
+        }
+        else {
+            if(!mBatteryDangerState && !mMeterBatteryDangerState) {
+                stopBatteryBlink();
+            }
+        }
+    }
 
     private Runnable mUpdateStateRunnable = new Runnable() {
         @Override
         public void run() {
 
-            try {
-                if(mAlarmState) {
-                    mHorn.setValue(true);
+            if(mIdleState) {
+                try {
                     mGood.setValue(false);
-                    mAlarm.setValue(true);
                     mWarning.setValue(true);
-                }
-                else if(mWarningState) {
-                    mHorn.setValue(false);
-                    mGood.setValue(false);
                     mAlarm.setValue(false);
-                    mWarning.setValue(false);
-                }
-                else {
-                    mHorn.setValue(false);
-                    mGood.setValue(true);
-                    mAlarm.setValue(false);
-                    mWarning.setValue(true);
-                }
-
-                if(mBluetoothState) {
                     mBluetooth.setValue(true);
+                    mHorn.setValue(false);
                 }
-                else {
-                    mBluetooth.setValue(false);
+                catch (IOException e) {
+                    Log.e("TEST", "Error on PeripheralIO API", e);
                 }
+            }
+            else {
+                try {
+                    if (mAlarmState) {
+                        mHorn.setValue(true);
+                        mGood.setValue(false);
+                        mAlarm.setValue(true);
+                        mWarning.setValue(true);
+                    } else if (mWarningState) {
+                        mHorn.setValue(false);
+                        mGood.setValue(false);
+                        mAlarm.setValue(false);
+                        mWarning.setValue(false);
+                    } else {
+                        mHorn.setValue(false);
+                        mGood.setValue(true);
+                        mAlarm.setValue(false);
+                        mWarning.setValue(true);
+                    }
 
-                if(mBatteryState) {
-                    mBattery.setValue(true);
+                    if (mBluetoothState) {
+                        mBluetooth.setValue(true);
+                    } else {
+                        mBluetooth.setValue(false);
+                    }
+
+                    if (mBatteryState || mMeterBatteryState) {
+                        mBattery.setValue(true);
+                    } else {
+                        mBattery.setValue(false);
+                    }
+                } catch (IOException e) {
+                    Log.e("TEST", "Error on PeripheralIO API", e);
                 }
-                else {
-                    mBattery.setValue(false);
-                }
-            } catch (IOException e) {
-                Log.e("TEST", "Error on PeripheralIO API", e);
             }
         }
     };
 
     public byte[] getBytes() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-        String message = id + "," + mWarningState + "," + mAlarmState + "," + mLadderState + "," + mManState + "," + temp + "," +  meterBatteryLevel + "," +oxygenLevel + "," + hydrogensulfideLevel + "," + carbondioxideLevel + "," + combExLevel + "," + dateFormat.format(Calendar.getInstance().getTime());
+        String message = id + "," + mWarningState + "," + mAlarmState + "," + mLadderState + "," + mManState + "," + temp + "," +  meterBatteryLevel + "," + mBatteryLevel + "," + oxygenLevel + "," + hydrogensulfideLevel + "," + carbondioxideLevel + "," + combExLevel + "," + dateFormat.format(Calendar.getInstance().getTime());
         return message.getBytes();
     }
 
@@ -220,6 +286,7 @@ public class StateVariable {
         switch (interrupt) {
             case 0:
                 booting = false;
+                mInterrupted = false;
                 if (mBootTimer != null) {
                     mBootTimer.cancel();
                     mBootTimer = null;
@@ -322,17 +389,17 @@ public class StateVariable {
                                         break;
 
                                     case 3:
-                                        mHorn.setValue(true);
+                                        mBattery.setValue(true);
                                         mBootState = 4;
                                         break;
 
                                     case 4:
-                                        mHorn.setValue(false);
+                                        mBattery.setValue(false);
                                         mBootState = 3;
                                         break;
 
                                     case 5:
-                                        mHorn.setValue(true);
+                                        mBattery.setValue(true);
                                         if (mBootTimer != null) {
                                             mBootTimer.cancel();
                                             mBootTimer = null;
@@ -387,4 +454,41 @@ public class StateVariable {
         };
     }
 
+
+    public void startBatteryBlink() {
+        //set a new Timer
+        mBatteryBlinkTimer = new Timer();
+
+        //initialize the TimerTask's job
+        initializeBatteryBlinkTask();
+
+        //schedule the timer, after the first 100ms the TimerTask will run every 10000ms
+        mBatteryBlinkTimer.schedule(mBatteryBlinkTask, 500, 500);
+    }
+
+    public void stopBatteryBlink() {
+        if (mBatteryBlinkTimer != null) {
+            mBatteryBlinkTimer.cancel();
+            mBatteryBlinkTimer = null;
+        }
+        updateState();
+    }
+
+    public void initializeBatteryBlinkTask() {
+
+        mBatteryBlinkTask = new TimerTask() {
+            public void run() {
+
+                mBatteryBlinkHandler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            mBattery.setValue(!mBattery.getValue());
+                        } catch (IOException e) {
+                            Log.d("TEST", "Failed battery LED GPIO");
+                        }
+                    }
+                });
+            }
+        };
+    }
 }
