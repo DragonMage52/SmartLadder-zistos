@@ -97,8 +97,8 @@ public class StateVariable {
 
 
     public void updateState() {
-        mAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
-        mWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
+        mAlarmState = mMeterState || (!mBluetoothState && (mManState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
+        mWarningState = (mLadderState && mEarlyState) || !mBluetoothState || (!mBluetoothState && mLadderState);
         mIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
 
         if(!booting) {
