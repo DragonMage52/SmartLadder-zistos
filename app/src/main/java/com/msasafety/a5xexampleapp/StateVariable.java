@@ -1,9 +1,11 @@
 package com.msasafety.a5xexampleapp;
 
 import android.os.Handler;
+import android.util.ArrayMap;
 import android.util.Log;
 
 import com.google.android.things.pio.Gpio;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -15,7 +17,6 @@ import java.util.TimerTask;
 public class StateVariable {
 
     String id;
-    double weight = 0;
     int temp = 0;
     int meterBatteryLevel = 0;
     int mBatteryLevel = 0;
@@ -50,6 +51,12 @@ public class StateVariable {
     boolean mIdleState = false;
     boolean mMeterBatteryDangerState = false;
     boolean mBatteryDangerState = false;
+
+    boolean mAlarmOperator = false;
+    boolean mAlarmMeterOff = false;
+    boolean mAlarmMeterBattery = false;
+    boolean mAlarmBattery = false;
+
 
     Gpio mGood;
     Gpio mWarning;
@@ -89,8 +96,7 @@ public class StateVariable {
             mBattery.close();
             mBluetooth.close();
             mHorn.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.d("TEST", "Failed to close GPIO ports");
         }
     }
@@ -99,9 +105,13 @@ public class StateVariable {
     public void updateState() {
         mAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
         mWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
-        mIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
+        mIdleState = !mLadderState && !mManState && !mAlarmState;
+        mAlarmOperator = (!mEarlyDoneState && mManState) || mAlarmOperator;
+        mAlarmMeterOff = !mBluetoothState && (mLadderState || mManState) || mAlarmMeterOff;
+        mAlarmMeterBattery = mMeterBatteryDangerState || mAlarmMeterBattery;
+        mAlarmBattery = mBatteryDangerState || mAlarmBattery;
 
-        if(!booting) {
+        if (!booting) {
             mUpdateStateHandler.post(mUpdateStateRunnable);
         }
     }
@@ -109,12 +119,16 @@ public class StateVariable {
     public void reset() {
         mMeterState = false;
         mAlarmState = false;
+        mAlarmOperator = false;
+        mAlarmMeterOff = false;
+        mAlarmMeterBattery = false;
+        mAlarmBattery = false;
         updateState();
     }
 
     public void setMeterState(boolean state) {
-        if(mMeterState != state) {
-            if(!mEarlyState) {
+        if (mMeterState != state) {
+            if (!mEarlyState) {
                 mMeterState = state;
                 updateState();
             }
@@ -122,33 +136,32 @@ public class StateVariable {
     }
 
     public void setBatteryState(boolean state) {
-        if(mBatteryState != state) {
+        if (mBatteryState != state) {
             mBatteryState = state;
             updateState();
         }
     }
 
     public void setBluetoothState(boolean state) {
-        if(mBluetoothState != state) {
+        if (mBluetoothState != state) {
             mBluetoothState = state;
             updateState();
         }
     }
 
     public void setManState(boolean state) {
-        if(mManState != state) {
+        if (mManState != state) {
             mManState = state;
             updateState();
         }
     }
 
     public void setLadderState(boolean state) {
-        if(mLadderState != state) {
+        if (mLadderState != state) {
             mLadderState = state;
-            if(state) {
+            if (state) {
                 startEarlyEntry();
-            }
-            else {
+            } else {
                 stopEarlyEntry();
                 mEarlyDoneState = false;
             }
@@ -157,7 +170,7 @@ public class StateVariable {
     }
 
     public void setMeterBatteryState(boolean state) {
-        if(mMeterBatteryState != state) {
+        if (mMeterBatteryState != state) {
             mMeterBatteryState = state;
             updateState();
         }
@@ -165,15 +178,13 @@ public class StateVariable {
 
     public void setMeterBatteryLevel(int level) {
         meterBatteryLevel = level;
-        if(meterBatteryLevel < 10) {
+        if (meterBatteryLevel < 10) {
             mMeterBatteryDangerState = true;
             setMeterBatteryState(false);
-        }
-        else if (meterBatteryLevel < 25) {
+        } else if (meterBatteryLevel < 25) {
             setMeterBatteryState(true);
             mMeterBatteryDangerState = false;
-        }
-        else {
+        } else {
             setMeterBatteryState(false);
             mMeterBatteryDangerState = false;
         }
@@ -182,15 +193,13 @@ public class StateVariable {
 
     public void setBatteryLevel(int level) {
         mBatteryLevel = level;
-        if(mBatteryLevel < 10) {
+        if (mBatteryLevel < 10) {
             mBatteryDangerState = true;
             setBatteryState(false);
-        }
-        else if (mBatteryLevel < 25) {
+        } else if (mBatteryLevel < 25) {
             setBatteryState(true);
             mBatteryDangerState = false;
-        }
-        else {
+        } else {
             setBatteryState(false);
             mBatteryDangerState = false;
         }
@@ -198,13 +207,12 @@ public class StateVariable {
     }
 
     public void updateBatteryBlink() {
-        if(mBatteryBlinkTimer == null) {
-            if(mBatteryDangerState || mMeterBatteryDangerState) {
+        if (mBatteryBlinkTimer == null) {
+            if (mBatteryDangerState || mMeterBatteryDangerState) {
                 startBatteryBlink();
             }
-        }
-        else {
-            if(!mBatteryDangerState && !mMeterBatteryDangerState) {
+        } else {
+            if (!mBatteryDangerState && !mMeterBatteryDangerState) {
                 stopBatteryBlink();
             }
         }
@@ -214,19 +222,17 @@ public class StateVariable {
         @Override
         public void run() {
 
-            if(mIdleState) {
+            if (mIdleState) {
                 try {
                     mGood.setValue(false);
                     mWarning.setValue(true);
                     mAlarm.setValue(false);
                     mBluetooth.setValue(true);
                     mHorn.setValue(false);
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     Log.e("TEST", "Error on PeripheralIO API", e);
                 }
-            }
-            else {
+            } else {
                 try {
                     if (mAlarmState) {
                         mHorn.setValue(true);
@@ -265,8 +271,40 @@ public class StateVariable {
 
     public byte[] getBytes() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-        String message = id + "," + mWarningState + "," + mAlarmState + "," + mLadderState + "," + mManState + "," + temp + "," +  meterBatteryLevel + "," + mBatteryLevel + "," + oxygenLevel + "," + hydrogensulfideLevel + "," + carbondioxideLevel + "," + combExLevel + "," + dateFormat.format(Calendar.getInstance().getTime());
-        return message.getBytes();
+
+        ArrayMap<String, String> arrayMap = new ArrayMap<>();
+        arrayMap.put("id", id);
+        arrayMap.put("temp", temp + "");
+        arrayMap.put("meterBatteryLevel", meterBatteryLevel + "");
+        arrayMap.put("batteryLevel", mBatteryLevel + "");
+        arrayMap.put("oxygenLevel", oxygenLevel + "");
+        arrayMap.put("carbondioxideLevel", carbondioxideLevel + "");
+        arrayMap.put("hydrogensulfideLevel", hydrogensulfideLevel + "");
+        arrayMap.put("combExLevel", combExLevel + "");
+        arrayMap.put("alarmState", mAlarmState + "");
+        arrayMap.put("warningState", mWarningState + "");
+        arrayMap.put("manState", mManState + "");
+        arrayMap.put("ladderState", mLadderState + "");
+        arrayMap.put("batteryState", mBatteryState + "");
+        arrayMap.put("bluetoothState", mBluetoothState + "");
+        arrayMap.put("meterState", mMeterState + "");
+        arrayMap.put("earlyState", mEarlyState + "");
+        arrayMap.put("meterbatteryState", mMeterBatteryState + "");
+        arrayMap.put("earlydoneState", mEarlyDoneState + "");
+        arrayMap.put("idleState", mIdleState + "");
+        arrayMap.put("meterbatterydangerState", mMeterBatteryDangerState + "");
+        arrayMap.put("batterydangerState", mBatteryDangerState + "");
+        arrayMap.put("date", dateFormat.format(Calendar.getInstance().getTime()));
+        arrayMap.put("alarmOperator", mAlarmOperator + "");
+        arrayMap.put("alarmmeterOff", mAlarmMeterOff + "");
+        arrayMap.put("alarmmeterBattery", mAlarmMeterBattery + "");
+        arrayMap.put("alarmBattery", mAlarmBattery + "");
+
+        Gson gson = new Gson();
+        String json = gson.toJson(arrayMap);
+
+        //String message = id + "," + mWarningState + "," + mAlarmState + "," + mLadderState + "," + mManState + "," + temp + "," +  meterBatteryLevel + "," + mBatteryLevel + "," + oxygenLevel + "," + hydrogensulfideLevel + "," + carbondioxideLevel + "," + combExLevel + "," + dateFormat.format(Calendar.getInstance().getTime());
+        return json.getBytes();
     }
 
     public void boot() {
@@ -366,8 +404,7 @@ public class StateVariable {
                                 Log.d("TEST", "Failed GPIO at boot");
                             }
                             mBootState++;
-                        }
-                        else {
+                        } else {
                             try {
                                 switch (mBootState) {
                                     case 0:
@@ -427,7 +464,7 @@ public class StateVariable {
         initializeEarlyTask();
 
         //schedule the timer, after the first 100ms the TimerTask will run every 10000ms
-        mEarlyTimer.schedule(mEarlyTask, 5000, 30000);
+        mEarlyTimer.schedule(mEarlyTask, 30000, 30000);
     }
 
     public void stopEarlyEntry() {
@@ -446,8 +483,10 @@ public class StateVariable {
 
                 mEarlyHandler.post(new Runnable() {
                     public void run() {
-                        mEarlyDoneState = true;
-                        stopEarlyEntry();
+                        if(mBluetoothState) {
+                            mEarlyDoneState = true;
+                            stopEarlyEntry();
+                        }
                     }
                 });
             }
