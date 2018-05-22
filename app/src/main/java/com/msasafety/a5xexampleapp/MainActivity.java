@@ -273,9 +273,8 @@ public class MainActivity extends AppCompatActivity {
         String json = mPrefs.getString("Bluetooth Device", "");
         mDevice = gson.fromJson(json, BtDevice.class);
 
-        debugPrint("Connecting to Bluetooth Device Name: " + mDevice.getName());
-
         if (mDevice != null) {
+            debugPrint("Connecting to Bluetooth Device Name: " + mDevice.getName());
             startService(mDevice);
             registerBroadcastReceiver();
         }

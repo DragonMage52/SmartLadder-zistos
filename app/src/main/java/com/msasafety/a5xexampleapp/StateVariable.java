@@ -57,7 +57,6 @@ public class StateVariable {
     boolean mAlarmMeterBattery = false;
     boolean mAlarmBattery = false;
 
-
     Gpio mGood;
     Gpio mWarning;
     Gpio mAlarm;
@@ -105,7 +104,7 @@ public class StateVariable {
     public void updateState() {
         mAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
         mWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
-        mIdleState = !mLadderState && !mManState && !mAlarmState;
+        mIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
         mAlarmOperator = (!mEarlyDoneState && mManState) || mAlarmOperator;
         mAlarmMeterOff = !mBluetoothState && (mLadderState || mManState) || mAlarmMeterOff;
         mAlarmMeterBattery = mMeterBatteryDangerState || mAlarmMeterBattery;
