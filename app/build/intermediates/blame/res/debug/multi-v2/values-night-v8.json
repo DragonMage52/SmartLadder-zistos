@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\spenc\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\7662edc74602b0dd455613f194d1b8e4\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\spenc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\91304d36ee2933cc8e8e65ff5c01b625\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
