@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.jflavio1:WifiConnector-v1.7">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/WifiConnector-v1.7.aar/aaa048b3690d6e47432e31664f60d5ac/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/WifiConnector-v1.7.aar/aaa048b3690d6e47432e31664f60d5ac/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/WifiConnector-v1.7.aar/d965526a51c13356ef0f0c61796aae2d/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/WifiConnector-v1.7.aar/d965526a51c13356ef0f0c61796aae2d/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
