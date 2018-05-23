@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         mScrollDebug = (ScrollView) findViewById(R.id.SCROLLER_ID);
 
         Gson gson = new Gson();
-        mName = mPrefs.getString("Name", "");
+        mStates.id = mPrefs.getString("Name", "");
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
@@ -460,9 +460,9 @@ public class MainActivity extends AppCompatActivity {
                             mStates.stopBoot(0);
                         }
                     } else if (discoveryOption == 2) {
-                        if (deviceName.indexOf("SmartLadderApp") != -1) {
-                            Log.d("TEST", "Found SmartLadderApp");
-                            debugPrint("Found SmartLadderApp");
+                        if (deviceName.indexOf("ZistosSafeAirLadderApp") != -1) {
+                            Log.d("TEST", "Found ZistosSafeAirLadderApp");
+                            debugPrint("Found ZistosSafeAirLadderApp");
                             mBluetoothAdapter.cancelDiscovery();
                             mDevice = new BtDevice(device.getAddress(), device.getName());
 
@@ -526,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveWifiSettings(String name, String ssid, String password) {
 
-        mName = name;
+        mStates.id = name;
         mNetworkSSID = ssid;
         mNetworkPass = password;
 
