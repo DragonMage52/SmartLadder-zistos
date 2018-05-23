@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
     String mNetworkSSID = "";
     String mNetworkPass = "";
     String mName = "";
-
     NsdManager mNsdManager;
+
     boolean mResolving = false;
     DatagramSocket mUDPSocket;
     NsdServiceInfo mAppService;

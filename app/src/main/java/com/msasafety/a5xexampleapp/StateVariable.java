@@ -203,6 +203,7 @@ public class StateVariable {
             mBatteryDangerState = false;
         }
         updateBatteryBlink();
+        updateState();
     }
 
     public void updateBatteryBlink() {
