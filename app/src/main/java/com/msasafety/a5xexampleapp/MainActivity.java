@@ -1,5 +1,6 @@
 package com.msasafety.a5xexampleapp;
 
+import android.app.AlarmManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -29,6 +30,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         mScrollDebug = (ScrollView) findViewById(R.id.SCROLLER_ID);
 
         Gson gson = new Gson();
-        mStates.id = mPrefs.getString("Name", "");
+        mName = mPrefs.getString("Name", "");
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
@@ -994,17 +996,20 @@ class ConnectThread extends Thread {
         try {
             byte[] inBuffer = new byte[250];
             InputStream in = mmSocket.getInputStream();
-            in.read(inBuffer);
-            String message = new String(inBuffer, "UTF-8");
+            int count = in.read(inBuffer);
+            String message = new String(inBuffer, 0, count);
             Log.d("TEST", "Read: " + message);
             Activity.debugPrint("Read: " + message);
 
-            String[] separated = message.split(",");
+            Gson gson = new Gson();
+            ArrayMap<String, String> arrayMap = gson.fromJson(message, ArrayMap.class);
+
+            //String[] separated = message.split(",");
 
             Activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Activity.saveWifiSettings(separated[0], separated[1], separated[2]);
+                    Activity.saveWifiSettings(arrayMap.get("name"), arrayMap.get("ssid"), arrayMap.get("password"));
                     Activity.mStates.stopBoot(0);
                 }
             });

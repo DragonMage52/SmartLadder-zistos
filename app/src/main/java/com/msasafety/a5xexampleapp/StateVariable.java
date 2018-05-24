@@ -270,7 +270,7 @@ public class StateVariable {
     };
 
     public byte[] getBytes() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
 
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
         arrayMap.put("id", id);
@@ -294,7 +294,7 @@ public class StateVariable {
         arrayMap.put("idleState", mIdleState + "");
         arrayMap.put("meterbatterydangerState", mMeterBatteryDangerState + "");
         arrayMap.put("batterydangerState", mBatteryDangerState + "");
-        arrayMap.put("date", dateFormat.format(Calendar.getInstance().getTime()));
+        //arrayMap.put("date", dateFormat.format(Calendar.getInstance().getTime()));
         arrayMap.put("alarmOperator", mAlarmOperator + "");
         arrayMap.put("alarmmeterOff", mAlarmMeterOff + "");
         arrayMap.put("alarmmeterBattery", mAlarmMeterBattery + "");
