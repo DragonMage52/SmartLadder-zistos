@@ -35,8 +35,6 @@ import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.felhr.usbserial.UsbSerialDevice;
-import com.felhr.usbserial.UsbSerialInterface;
 import com.google.android.things.pio.Gpio;
 import com.google.android.things.pio.GpioCallback;
 import com.google.android.things.pio.I2cDevice;
@@ -885,13 +883,16 @@ public class MainActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             DatagramPacket packet = new DatagramPacket(message, message.length);
-                            packet.setAddress(mAppService.getHost());
-                            packet.setPort(mAppService.getPort());
-                            try {
-                                mUDPSocket.send(packet);
-                            } catch (IOException e) {
-
+                            if(mAppService != null) {
+                                packet.setAddress(mAppService.getHost());
+                                packet.setPort(mAppService.getPort());
                             }
+                            else {
+                                stoptimertask();
+                            }
+
+                            SendThread sendThread = new SendThread(mUDPSocket, packet);
+                            sendThread.start();
                         } else {
                             stoptimertask();
                         }
@@ -948,6 +949,24 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+class SendThread extends Thread {
+
+    private DatagramSocket mUDPSocket;
+    private DatagramPacket mPacket;
+
+    public SendThread(DatagramSocket udpSocket, DatagramPacket packet) {
+        mUDPSocket = udpSocket;
+        mPacket = packet;
+    }
+
+    public void run() {
+        try {
+            mUDPSocket.send(mPacket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 class ConnectThread extends Thread {
     private final BluetoothSocket mmSocket;
