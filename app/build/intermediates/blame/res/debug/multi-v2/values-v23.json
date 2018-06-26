@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\7662edc74602b0dd455613f194d1b8e4\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -15,7 +15,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-23.2.1.aar\\d8fe1bb60a1cc1af23a49450e6f19062\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-23.2.1.aar\\f7d34047d552c9ebcd87d820f4a9f545\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -4,17 +4,7 @@
             "outputFile": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\7662edc74602b0dd455613f194d1b8e4\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.4.0.aar\\351f42a69e3ade291b8d7f5178314da6\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.4.0.aar\\41005b85af704693f8ebff5efa206620\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "9",
                         "endColumns": "12",
                         "endOffsets": "505"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
                     }
                 }
             ]
