@@ -140,6 +140,16 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextDebug;
     ScrollView mScrollDebug;
 
+    Timer mLadderTimer;
+    TimerTask mLadderTask;
+
+    Handler mLadderHandler = new Handler();
+
+    Timer mManTimer;
+    TimerTask mManTask;
+
+    Handler mManHandler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -256,6 +266,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             mTextDebug.append(e.getMessage() + "\n");
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     public void booted() {
@@ -644,9 +659,9 @@ public class MainActivity extends AppCompatActivity {
                 mStates.temp = lastStatus.getTemperature() * 9 / 5 + 32;
                 mStates.setMeterBatteryLevel(lastStatus.getBatteryPercentRemaning());
 
-                if (mStates.temp >= 120) {
+                /*if (mStates.temp >= 120) {
                     mStates.setMeterState(true);
-                }
+                }*/
 
                 for (int i = 0; i < mStatus.getLastStatus().getNumberInstalledSensors(); i++) {
                     A5xSensorStatus sensorStatus = mStatus.getLastStatus().getSensor(i);
@@ -724,8 +739,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onGpioEdge(Gpio gpio) {
             try {
                 if (gpio.getValue()) {
-                    mStates.setManState(true);
+                    startManTimer();
+                    Log.d("TEST", "Starting Man Timer");
+                    //mStates.setManState(true);
                 } else {
+                    if(mManTimer != null) {
+                        stopManTimer();
+                    }
                     mStates.setManState(false);
                 }
             } catch (IOException e) {
@@ -742,9 +762,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onGpioEdge(Gpio gpio) {
             try {
                 if (gpio.getValue()) {
+                    if(mLadderTimer != null) {
+                        stopLadderTimer();
+                    }
                     mStates.setLadderState(true);
                 } else {
-                    mStates.setLadderState(false);
+                    startLadderTimer();
+                    //mStates.setLadderState(false);
                 }
             } catch (IOException e) {
                 Log.d("TEST", "Failed to read ladder switch");
@@ -847,6 +871,96 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    public void initializeManTimerTask() {
+        mManTask = new TimerTask() {
+            @Override
+            public void run() {
+                mManHandler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            if (mMan.getValue()) {
+                                mStates.setManState(true);
+                            } else {
+                                mStates.setManState(false);
+                            }
+                        } catch (IOException e) {
+                            Log.d("TEST", "Failed to read man switch");
+                            debugPrint("Failed to read man switch");
+                        }
+                        stopManTimer();
+                    }
+                });
+            }
+        };
+    }
+
+    public void startManTimer() {
+        //set a new Timer
+        if(mManTimer != null) {
+            stopManTimer();
+        }
+        mManTimer = new Timer();
+
+        //initialize the TimerTask's job
+        initializeManTimerTask();
+
+        //schedule the timer, after the first 100ms the TimerTask will run every 10000ms
+        mManTimer.schedule(mManTask, 1000, 1000);
+    }
+
+    public void stopManTimer() {
+        //stop the timer, if it's not already null
+        if (mManTimer != null) {
+            mManTimer.cancel();
+            mManTimer = null;
+        }
+    }
+
+    public void initializeLadderTimerTask() {
+        mLadderTask = new TimerTask() {
+            @Override
+            public void run() {
+                mLadderHandler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            if (mLadder.getValue()) {
+                                mStates.setLadderState(true);
+                            } else {
+                                mStates.setLadderState(false);
+                            }
+                        } catch (IOException e) {
+                            Log.d("TEST", "Failed to read ladder switch");
+                            debugPrint("Failed to read ladder switch");
+                        }
+                        stopLadderTimer();
+                    }
+                });
+            }
+        };
+    }
+
+    public void startLadderTimer() {
+        //set a new Timer
+        if(mLadderTimer != null) {
+            stopLadderTimer();
+        }
+        mLadderTimer = new Timer();
+
+        //initialize the TimerTask's job
+        initializeLadderTimerTask();
+
+        //schedule the timer, after the first 100ms the TimerTask will run every 10000ms
+        mLadderTimer.schedule(mLadderTask, 2000, 1000);
+    }
+
+    public void stopLadderTimer() {
+        //stop the timer, if it's not already null
+        if (mLadderTimer != null) {
+            mLadderTimer.cancel();
+            mLadderTimer = null;
+        }
+    }
 
     public void startTimer() {
         //set a new Timer

@@ -333,25 +333,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-23.2.1.aar\\f7d34047d552c9ebcd87d820f4a9f545\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,7,8,9,10,17,19,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,116,178,240,989,1048,1105,1159,1573,1637,1763",
-                        "endLines": "2,3,4,5,7,8,9,16,18,21,24",
-                        "endColumns": "60,61,61,63,58,56,53,12,12,12,12",
-                        "endOffsets": "111,173,235,299,1043,1100,1154,1568,1632,1758,1886"
-                    },
-                    "to": {
-                        "startLines": "155,156,157,158,622,623,624,818,1834,1836,1839",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "7851,7912,7974,8036,55109,55168,55225,68768,133469,133533,133659",
-                        "endLines": "155,156,157,158,622,623,624,824,1835,1838,1841",
-                        "endColumns": "60,61,61,63,58,56,53,12,12,12,12",
-                        "endOffsets": "7907,7969,8031,8095,55163,55220,55274,69177,133528,133654,133782"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\recyclerview-v7-25.4.0.aar\\c5f5ef51cf62f96a12aa21a55b7e2644\\res\\values\\values.xml",
                     "from": {
                         "startLines": "3,4,5,6",
@@ -472,6 +453,25 @@
                         "startOffsets": "63369,63422,64548,64618,64671,64749,65000,65069,65145,65208,66256,66344,66422",
                         "endColumns": "52,43,69,52,77,77,68,75,62,62,87,77,60",
                         "endOffsets": "63417,63461,64613,64666,64744,64822,65064,65140,65203,65266,66339,66417,66478"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-25.4.0.aar\\4b741402b7bd879752fea8ff25169bd7\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,7,8,9,10,17,19,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,116,178,240,989,1048,1105,1159,1573,1637,1763",
+                        "endLines": "2,3,4,5,7,8,9,16,18,21,24",
+                        "endColumns": "60,61,61,63,58,56,53,12,12,12,12",
+                        "endOffsets": "111,173,235,299,1043,1100,1154,1568,1632,1758,1886"
+                    },
+                    "to": {
+                        "startLines": "155,156,157,158,622,623,624,818,1834,1836,1839",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "7851,7912,7974,8036,55109,55168,55225,68768,133469,133533,133659",
+                        "endLines": "155,156,157,158,622,623,624,824,1835,1838,1841",
+                        "endColumns": "60,61,61,63,58,56,53,12,12,12,12",
+                        "endOffsets": "7907,7969,8031,8095,55163,55220,55274,69177,133528,133654,133782"
                     }
                 },
                 {
@@ -1374,18 +1374,7 @@
             "outputFile": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\values-v23_values-v23.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\values-v23\\values-v23.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,19,32,33,34,35,36",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2426,2533",
-                        "endLines": "2,3,4,5,18,31,32,33,34,35,36",
-                        "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
-                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-23.2.1.aar\\f7d34047d552c9ebcd87d820f4a9f545\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-25.4.0.aar\\4b741402b7bd879752fea8ff25169bd7\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -1401,6 +1390,17 @@
                         "endLines": "39",
                         "endColumns": "12",
                         "endOffsets": "2791"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,19,32,33,34,35,36",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2426,2533",
+                        "endLines": "2,3,4,5,18,31,32,33,34,35,36",
+                        "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
+                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
                     }
                 }
             ]
