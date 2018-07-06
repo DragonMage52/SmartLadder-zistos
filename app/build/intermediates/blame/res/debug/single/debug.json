@@ -209,7 +209,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_bt_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xhdpi-v4\\bt_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xhdpi-v4\\bt_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_textfield_search_material.xml.flat",
@@ -268,8 +268,12 @@
         "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
+        "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_a4x_icon.png.flat",
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-hdpi-v4\\a4x_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_refresh.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-hdpi-v4\\ic_refresh.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-hdpi-v4\\ic_refresh.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
@@ -286,6 +290,10 @@
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_popup_menu_item_layout.xml.flat",
         "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_a4x_icon.png.flat",
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xxhdpi-v4\\a4x_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_checkbox.xml.flat",
@@ -341,7 +349,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_bt_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xxhdpi-v4\\bt_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xxhdpi-v4\\bt_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -349,7 +357,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_action_clear.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xxhdpi-v4\\ic_action_clear.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xxhdpi-v4\\ic_action_clear.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -468,6 +476,10 @@
         "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.4.0.aar\\41005b85af704693f8ebff5efa206620\\res\\drawable-xxhdpi-v4\\design_ic_visibility.png"
     },
     {
+        "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_a4x_icon.png.flat",
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xhdpi-v4\\a4x_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
     },
@@ -481,15 +493,15 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_bottom.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable\\button_bottom.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable\\button_bottom.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_refresh.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xhdpi-v4\\ic_refresh.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xhdpi-v4\\ic_refresh.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bt_button.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable\\bt_button.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable\\bt_button.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
@@ -509,7 +521,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_pairing_action_refresh_layout.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\layout\\pairing_action_refresh_layout.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\layout\\pairing_action_refresh_layout.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -577,7 +589,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ic_action_clear.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-mdpi-v4\\ic_action_clear.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-mdpi-v4\\ic_action_clear.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -597,7 +609,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_bt_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-hdpi-v4\\bt_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-hdpi-v4\\bt_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -689,7 +701,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pairing_background.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable\\pairing_background.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable\\pairing_background.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -737,7 +749,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ic_refresh.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-mdpi-v4\\ic_refresh.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-mdpi-v4\\ic_refresh.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_go_search_api_material.xml.flat",
@@ -753,7 +765,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\anim_pairing_refresh_item_spin.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\anim\\pairing_refresh_item_spin.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\anim\\pairing_refresh_item_spin.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_seekbar_track_material.xml.flat",
@@ -797,7 +809,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_action_clear.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xhdpi-v4\\ic_action_clear.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xhdpi-v4\\ic_action_clear.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -921,7 +933,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_action_clear.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-hdpi-v4\\ic_action_clear.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-hdpi-v4\\ic_action_clear.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -981,7 +993,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_a5x_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xxhdpi-v4\\a5x_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xxhdpi-v4\\a5x_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
@@ -1037,7 +1049,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_pairing.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\menu\\menu_pairing.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\menu\\menu_pairing.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1062,6 +1074,10 @@
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
         "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_a4x_icon.png.flat",
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-mdpi-v4\\a4x_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_design_bottom_navigation_item_background.xml.flat",
@@ -1181,7 +1197,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_bt_device_card.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\layout\\bt_device_card.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\layout\\bt_device_card.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_light.xml.flat",
@@ -1241,7 +1257,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_pairing.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\layout\\fragment_pairing.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\layout\\fragment_pairing.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_longpressed_holo.9.png.flat",
@@ -1369,7 +1385,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_a5x_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xhdpi-v4\\a5x_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xhdpi-v4\\a5x_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -1397,7 +1413,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_a5x_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-hdpi-v4\\a5x_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-hdpi-v4\\a5x_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple_overlay_action_mode.xml.flat",
@@ -1433,11 +1449,11 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_bt_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-mdpi-v4\\bt_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-mdpi-v4\\bt_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_refresh.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-xxhdpi-v4\\ic_refresh.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-xxhdpi-v4\\ic_refresh.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11_notification_media_cancel_action.xml.flat",
@@ -1573,7 +1589,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pairing.xml.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\layout\\activity_pairing.xml"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\layout\\activity_pairing.xml"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
@@ -1689,7 +1705,7 @@
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_a5x_icon.png.flat",
-        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.1.0.aar\\b3cb2b3d6b40532eef87629dee755cfb\\res\\drawable-mdpi-v4\\a5x_icon.png"
+        "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\library-limitedLiveRelease-1.2.1.aar\\78b1266dba0d9541248d43e22e70698a\\res\\drawable-mdpi-v4\\a5x_icon.png"
     },
     {
         "merged": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_btn_checkable.xml.flat",

@@ -38,7 +38,7 @@ import android.widget.TextView;
 import com.google.android.things.pio.Gpio;
 import com.google.android.things.pio.GpioCallback;
 import com.google.android.things.pio.I2cDevice;
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 import com.google.gson.Gson;
 import com.jflavio1.wificonnector.WifiConnector;
 import com.msasafety.a5x.library.A5xBroadcasts;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     StateVariable mStates;
 
-    PeripheralManagerService mManager;
+    PeripheralManager mManager;
 
     Gpio mReset;
     Gpio mMan;
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Check if GPIO ports are available
         try {
-            mManager = new PeripheralManagerService();
+            mManager = PeripheralManager.getInstance();
             List<String> portList = mManager.getGpioList();
             if (portList.isEmpty()) {
                 Log.d("TEST", "No GPIO port available on this device");
