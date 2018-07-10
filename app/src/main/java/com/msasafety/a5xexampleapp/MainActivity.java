@@ -60,6 +60,9 @@ import com.rafakob.nsdhelper.NsdService;
 import com.rafakob.nsdhelper.NsdType;
 import com.thanosfisherman.wifiutils.WifiUtils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -71,6 +74,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -113,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
     NsdManager mNsdManager;
 
     boolean mResolving = false;
-    DatagramSocket mUDPSocket;
     NsdServiceInfo mAppService;
 
     Timer mTimer;
@@ -149,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
     TimerTask mManTask;
 
     Handler mManHandler = new Handler();
+
+    ListenThread mListenThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -299,45 +305,6 @@ public class MainActivity extends AppCompatActivity {
 
         startBatteryTimer();
 
-        /*byte address =  (0x0B << 1) | 1;
-        byte [] buffer = {1, address};
-        byte [] function = {0x10};
-        byte [] start = {1};
-        byte [] read = new byte[2];
-
-        try {
-            mSmartBattery.write(buffer, buffer.length);
-            mSmartBattery.write(function, function.length);
-            buffer[1] = (0x0B << 1);
-            mSmartBattery.write(buffer, buffer.length);
-            mSmartBattery.read(read, read.length);
-
-            short returned = (short) ((read[1] << 8) | (read[0] & 0xFF));
-            Log.d("TEST", "returned = " + returned);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            try {
-                mSmartBattery.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }*/
-
-        //Remove previous saved Bluetooth devices.
-        /*Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-        if (pairedDevices.size() > 0) {
-            for (BluetoothDevice device : pairedDevices) {
-                try {
-                    Method m = device.getClass()
-                            .getMethod("removeBond", (Class[]) null);
-                    m.invoke(device, (Object[]) null);
-                } catch (Exception e) {
-                    Log.e("TEST", e.getMessage());
-                }
-            }
-        }*/
-
     }
 
     public void debugPrint(String message) {
@@ -345,13 +312,28 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Long tsLong = System.currentTimeMillis() / 1000;
-        String ts = tsLong.toString();
+        //Long tsLong = System.currentTimeMillis() / 1000;
+        //String ts = tsLong.toString();
+
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+        String date = dateFormat.format(Calendar.getInstance().getTime());
+
+
+        String log = date + ": " + message + '\n';
+
+        try {
+            FileOutputStream outputStream = openFileOutput("events.log", Context.MODE_APPEND);
+            outputStream.write(log.getBytes());
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mTextDebug.append(ts + ":" + message + '\n');
+                mTextDebug.append(log);
                 scrollToBottom();
             }
         });
@@ -743,7 +725,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("TEST", "Starting Man Timer");
                     //mStates.setManState(true);
                 } else {
-                    if(mManTimer != null) {
+                    if (mManTimer != null) {
                         stopManTimer();
                     }
                     mStates.setManState(false);
@@ -762,7 +744,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onGpioEdge(Gpio gpio) {
             try {
                 if (gpio.getValue()) {
-                    if(mLadderTimer != null) {
+                    if (mLadderTimer != null) {
                         stopLadderTimer();
                     }
                     mStates.setLadderState(true);
@@ -813,10 +795,9 @@ public class MainActivity extends AppCompatActivity {
             mAppService = null;
             mResolving = false;
             mNsdManager.stopServiceDiscovery(mDiscoveryListener);
-            if (mUDPSocket != null) {
-                if (!mUDPSocket.isClosed()) {
-                    mUDPSocket.close();
-                }
+
+            if (mListenThread != null) {
+                mListenThread.cancel();
             }
         }
 
@@ -860,14 +841,10 @@ public class MainActivity extends AppCompatActivity {
             mResolving = false;
             mAppService = serviceInfo;
 
-            try {
-                mUDPSocket = new DatagramSocket(serviceInfo.getPort());
-                startTimer();
+            startTimer();
 
-            } catch (IOException e) {
-                Log.d("TEST", "Socket Exception");
-                debugPrint("Socket Exception");
-            }
+            mListenThread = new ListenThread();
+            mListenThread.start();
 
         }
     };
@@ -897,7 +874,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startManTimer() {
         //set a new Timer
-        if(mManTimer != null) {
+        if (mManTimer != null) {
             stopManTimer();
         }
         mManTimer = new Timer();
@@ -942,7 +919,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startLadderTimer() {
         //set a new Timer
-        if(mLadderTimer != null) {
+        if (mLadderTimer != null) {
             stopLadderTimer();
         }
         mLadderTimer = new Timer();
@@ -989,24 +966,24 @@ public class MainActivity extends AppCompatActivity {
 
                 mTimerHandler.post(new Runnable() {
                     public void run() {
-                        if (mUDPSocket != null) {
-                            byte[] message = mStates.getBytes();
-                            try {
-                                debugPrint("Sending via Wifi " + new String(message, "UTF-8"));
-                            } catch (UnsupportedEncodingException e) {
-                                e.printStackTrace();
-                            }
-                            DatagramPacket packet = new DatagramPacket(message, message.length);
-                            if(mAppService != null) {
+
+                        byte[] message = mStates.getBytes();
+                        try {
+                            debugPrint("Sending via Wifi " + new String(message, "UTF-8"));
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        DatagramPacket packet = new DatagramPacket(message, message.length);
+                        if (mAppService != null ) {
+                            if(mAppService.getHost() != null && mAppService.getPort() != 0){
                                 packet.setAddress(mAppService.getHost());
                                 packet.setPort(mAppService.getPort());
+                                SendThread sendThread = new SendThread(packet);
+                                sendThread.start();
                             }
                             else {
                                 stoptimertask();
                             }
-
-                            SendThread sendThread = new SendThread(mUDPSocket, packet);
-                            sendThread.start();
                         } else {
                             stoptimertask();
                         }
@@ -1061,26 +1038,79 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
-}
 
-class SendThread extends Thread {
+    class SendThread extends Thread {
 
-    private DatagramSocket mUDPSocket;
-    private DatagramPacket mPacket;
+        private DatagramPacket mPacket;
 
-    public SendThread(DatagramSocket udpSocket, DatagramPacket packet) {
-        mUDPSocket = udpSocket;
-        mPacket = packet;
+        public SendThread(DatagramPacket packet) {
+            mPacket = packet;
+        }
+
+        public void run() {
+            try {
+                DatagramSocket udpSocket = new DatagramSocket();
+                udpSocket.send(mPacket);
+                udpSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void run() {
-        try {
-            mUDPSocket.send(mPacket);
-        } catch (IOException e) {
-            e.printStackTrace();
+    class ListenThread extends Thread {
+
+        private boolean run = false;
+
+        public ListenThread() {
+
+        }
+
+        public void run() {
+            run = true;
+            while (run) {
+                try {
+                    DatagramSocket udpInSocket = new DatagramSocket();
+                    mStates.mPort = udpInSocket.getLocalPort();
+                    byte[] message = new byte[1000];
+                    DatagramPacket packetIn = new DatagramPacket(message, message.length);
+                    udpInSocket.receive(packetIn);
+                    String text = new String(message, 0, packetIn.getLength());
+                    Log.d("TEST", "UDP Received:" + text);
+
+                    if (text.equals("Log")) {
+                        FileInputStream inputStream = openFileInput("events.log");
+                        byte[] log = new byte[5000];
+                        inputStream.read(log);
+                        inputStream.close();
+
+                        ArrayMap<String, String> arrayMap = new ArrayMap<>();
+                        arrayMap.put("command", "log");
+                        String strLog = new String(log, 0, log.length);
+                        arrayMap.put("log", strLog);
+                        Gson gson = new Gson();
+                        String json = gson.toJson(arrayMap);
+
+                        DatagramPacket packetOut = new DatagramPacket(json.getBytes(), json.getBytes().length);
+                        if (mAppService != null) {
+                            packetOut.setAddress(mAppService.getHost());
+                            packetOut.setPort(mAppService.getPort());
+                        }
+                        SendThread sendThread = new SendThread(packetOut);
+                        sendThread.start();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        public void cancel() {
+            run = false;
         }
     }
 }
+
 
 class ConnectThread extends Thread {
     private final BluetoothSocket mmSocket;

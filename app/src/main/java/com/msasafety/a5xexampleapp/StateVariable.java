@@ -24,6 +24,7 @@ public class StateVariable {
     double carbondioxideLevel = 0;
     double hydrogensulfideLevel = 0;
     double combExLevel = 0;
+    int mPort = 0;
 
     public boolean booting = true;
     Timer mBootTimer;
@@ -299,6 +300,8 @@ public class StateVariable {
         arrayMap.put("alarmmeterOff", mAlarmMeterOff + "");
         arrayMap.put("alarmmeterBattery", mAlarmMeterBattery + "");
         arrayMap.put("alarmBattery", mAlarmBattery + "");
+        arrayMap.put("port", mPort + "");
+        arrayMap.put("command", "update");
 
         Gson gson = new Gson();
         String json = gson.toJson(arrayMap);
