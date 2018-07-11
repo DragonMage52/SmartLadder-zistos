@@ -315,6 +315,8 @@ public class MainActivity extends AppCompatActivity {
         //Long tsLong = System.currentTimeMillis() / 1000;
         //String ts = tsLong.toString();
 
+        Log.d("debug print", message);
+
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
         String date = dateFormat.format(Calendar.getInstance().getTime());
@@ -403,6 +405,12 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter mFilterFinished = new IntentFilter(mBluetoothAdapter.ACTION_DISCOVERY_FINISHED);
         registerReceiver(mFinished, mFilterFinished);
 
+        if(option == 1) {
+            debugPrint("Starting Bluetooth Discovery for Meter Pairing");
+        }
+        else if(option == 2) {
+            debugPrint("Starting Bluetooth Discovery for Phone Pairing");
+        }
         debugPrint("Starting Bluetooth Discovery");
         mBluetoothAdapter.startDiscovery();
     }
@@ -411,6 +419,7 @@ public class MainActivity extends AppCompatActivity {
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            debugPrint("Getting Bluetooth Device Intent");
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 // Discovery has found a device. Get the BluetoothDevice
                 // object and its info from the Intent.
@@ -454,6 +463,7 @@ public class MainActivity extends AppCompatActivity {
                             //startService(mDevice);
                             //registerBroadcastReceiver();
                             mStates.mBootState = 2;
+                            debugPrint("Continuing to Normal Boot");
                             mStates.stopBoot(0);
                         }
                     } else if (discoveryOption == 2) {
@@ -696,6 +706,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 if (gpio.getValue()) {
                     if (mStates.booting && !mStates.mInterrupted) {
+                        debugPrint("Booting into Meter Pairing");
                         mStates.stopBoot(1);
                         bluetoothDiscovery(1);
                     } else if (!mStates.mInterrupted) {
@@ -703,6 +714,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else if (!mStates.mInterrupted) {
                     if (mStates.booting) {
+                        debugPrint("Booting into Phone Pairing");
                         mStates.stopBoot(2);
                         bluetoothDiscovery(2);
                     }
