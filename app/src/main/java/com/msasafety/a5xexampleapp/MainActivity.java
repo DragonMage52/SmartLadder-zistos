@@ -174,15 +174,14 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
-        debugPrint("Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
+        Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         //Check if GPIO ports are available
         try {
             mManager = PeripheralManager.getInstance();
             List<String> portList = mManager.getGpioList();
             if (portList.isEmpty()) {
-                Log.d("TEST", "No GPIO port available on this device");
-                debugPrint("No GPIO port available on this device");
+                Log.e("onCreate", "No GPIO port available on this device");
             }
 
             Gpio Good;
@@ -230,18 +229,15 @@ public class MainActivity extends AppCompatActivity {
 
             List<String> deviceList = mManager.getI2cBusList();
             if (deviceList.isEmpty()) {
-                Log.i("TEST", "No I2C bus available on this device.");
-                debugPrint("No I2C bus available on this device.");
+                Log.e("onCreate", "No I2C bus available on this device.");
 
             } else {
-                Log.i("TEST", "List of available devices: " + deviceList);
-                debugPrint("List of available devices: " + deviceList);
+                Log.v("onCreate", "List of available devices: " + deviceList);
             }
             mSmartBattery = mManager.openI2cDevice("I2C1", 0x0B);
 
         } catch (IOException e) {
-            Log.d("TEST", "Unable to access GPIO", e);
-            debugPrint("Unable to access GPIO");
+            Log.e("onCreate", "Unable to access GPIO", e);
         }
 
 
@@ -261,16 +257,13 @@ public class MainActivity extends AppCompatActivity {
             mLadder.close();
             mMan.close();
         } catch (IOException e) {
-            Log.d("TEST", "Failed to close GPIO ports");
-            debugPrint("Failed to close GPIO ports");
-
+            Log.e("onDestroy", "Failed to close GPIO ports");
         }
 
         try {
             mSmartBattery.close();
         } catch (IOException e) {
-            e.printStackTrace();
-            mTextDebug.append(e.getMessage() + "\n");
+            Log.e("onDestroy", "Failed to close I2C port");
         }
     }
 
@@ -286,8 +279,9 @@ public class MainActivity extends AppCompatActivity {
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (!mBluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            Log.e("onPause", "Bluetooth Disabled");
         }
 
         Gson gson = new Gson();
@@ -312,10 +306,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        //Long tsLong = System.currentTimeMillis() / 1000;
-        //String ts = tsLong.toString();
-
-        Log.d("debug print", message);
+        Log.d("debugPrint", message);
 
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
@@ -325,11 +316,11 @@ public class MainActivity extends AppCompatActivity {
         String log = date + ": " + message + '\n';
 
         try {
-            FileOutputStream outputStream = openFileOutput("events.log", Context.MODE_APPEND);
+            FileOutputStream outputStream = openFileOutput(log, Context.MODE_APPEND);
             outputStream.write(log.getBytes());
             outputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("debugPrint", "Failed to write to Log file");
         }
 
         runOnUiThread(new Runnable() {
@@ -369,23 +360,18 @@ public class MainActivity extends AppCompatActivity {
             mSmartBattery.read(read, read.length);
 
             returned = (short) ((read[1] << 8) | (read[0] & 0xFF));
-            Log.d("TEST", "returned = " + returned);
-            debugPrint("I2C read: " + returned);
 
         } catch (IOException e) {
-            Log.d("TEST", "Failed i2c read/write");
-            debugPrint("Failed i2c read/write");
+            Log.e("i2c_read", "Failed battery i2c read/write");
             try {
                 mSmartBattery.close();
             } catch (IOException e1) {
-                Log.d("TEST", "Failed i2c close after read/write fail");
-                debugPrint("Failed i2c close after read/write fail");
+                Log.e("i2c_read", "Failed battery i2c close after read/write fail");
             }
             try {
                 mSmartBattery = mManager.openI2cDevice("I2C1", 0x0B);
             } catch (IOException e1) {
-                Log.d("TEST", "Failed i2c reopen");
-                debugPrint("Failed i2c reopen");
+                Log.e("i2c_read", "Failed battery i2c reopen");
 
             }
         }
@@ -396,8 +382,9 @@ public class MainActivity extends AppCompatActivity {
         discoveryOption = option;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (!mBluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            ///startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            Log.e("onPause", "Bluetooth Disabled");
         }
 
         IntentFilter mFilterFound = new IntentFilter(BluetoothDevice.ACTION_FOUND);
@@ -411,7 +398,6 @@ public class MainActivity extends AppCompatActivity {
         else if(option == 2) {
             debugPrint("Starting Bluetooth Discovery for Phone Pairing");
         }
-        debugPrint("Starting Bluetooth Discovery");
         mBluetoothAdapter.startDiscovery();
     }
 
@@ -419,7 +405,6 @@ public class MainActivity extends AppCompatActivity {
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            debugPrint("Getting Bluetooth Device Intent");
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 // Discovery has found a device. Get the BluetoothDevice
                 // object and its info from the Intent.
@@ -427,14 +412,13 @@ public class MainActivity extends AppCompatActivity {
 
                 String deviceName = device.getName();
 
-                Log.d("TEST", "Found: " + deviceName);
-                debugPrint("Bluetooth Found: " + deviceName);
+                Log.v("mReceiver", "Found: " + deviceName);
 
                 if (deviceName != null) {
                     if (discoveryOption == 1) {
                         if (deviceName.indexOf("A4X-") != -1) {
                             Log.d("TEST", "Found A4X");
-                            debugPrint("Found A4X");
+                            debugPrint("Found " + deviceName);
                             mBluetoothAdapter.cancelDiscovery();
                             //Connect to device.
                             mDevice = new BtDevice(device.getAddress(), device.getName());
@@ -455,7 +439,7 @@ public class MainActivity extends AppCompatActivity {
                                             m.invoke(device, (Object[]) null);
                                         }
                                     } catch (Exception e) {
-                                        Log.e("TEST", e.getMessage());
+                                        Log.e("mReceiver", "Failed to forget bonded Bluetooth devices");
                                     }
                                 }
                             }
@@ -463,12 +447,10 @@ public class MainActivity extends AppCompatActivity {
                             //startService(mDevice);
                             //registerBroadcastReceiver();
                             mStates.mBootState = 2;
-                            debugPrint("Continuing to Normal Boot");
                             mStates.stopBoot(0);
                         }
                     } else if (discoveryOption == 2) {
                         if (deviceName.indexOf("ZistosSafeAirLadderApp") != -1) {
-                            Log.d("TEST", "Found ZistosSafeAirLadderApp");
                             debugPrint("Found ZistosSafeAirLadderApp");
                             mBluetoothAdapter.cancelDiscovery();
                             mDevice = new BtDevice(device.getAddress(), device.getName());
@@ -486,11 +468,10 @@ public class MainActivity extends AppCompatActivity {
     private final BroadcastReceiver mFinished = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("TEST", "Discovery Finished");
-            debugPrint("Discovery Finished");
+            Log.v("mFinished", "Discovery Finished");
             //Restart discovery is no device found, else connect to the device.
             if (mDevice == null) {
-                debugPrint("Restarting Bluetooth Discovery");
+                Log.v("mFinished", "Restarting Bluetooth Discovery");
                 mBluetoothAdapter.startDiscovery();
             }
 
@@ -512,20 +493,19 @@ public class MainActivity extends AppCompatActivity {
                 case A5xBroadcasts.A5X_SENSOR_EVENT:
                     A5xSensorEvent event = intent.getParcelableExtra(A5xBroadcasts.A5X_SENSOR_EVENT);
                     if (event != null)
-                        Log.d("TEST", "Sensor Event Type: " + event.getType());
+                        Log.v("mA4XReceiver", "Sensor Event Type: " + event.getType());
                     break;
                 case A5xBroadcasts.A5X_INST_EVENT:
                     A5xInstrumentEvent instrumentEvent = intent.getParcelableExtra(A5xBroadcasts.A5X_INST_EVENT);
                     if (instrumentEvent != null)
-                        Log.d("TEST", "Instrument Event Type: " + instrumentEvent.getType());
+                        Log.v("mA4XReceiver", "Instrument Event Type: " + instrumentEvent.getType());
                     break;
                 case A5xService.A5X_SERVICE_DEVICE_REMOVED:
                     device = intent.getParcelableExtra(A5xBroadcasts.EXTRA_A5X_DEVICE);
                     if (device.equals(mDevice)) {
                         mDevice = null;
-
+                        mStates.setBluetoothState(false);
                     }
-                    mStates.setBluetoothState(false);
                     break;
             }
         }
@@ -549,30 +529,29 @@ public class MainActivity extends AppCompatActivity {
     //Wifi Enable callback method.
     public void WifiEnableCheck(boolean isSuccess) {
         if (isSuccess) {
-            Log.d("TEST", "Wifi Enable Success");
-            debugPrint("Wifi Enable Success");
+            Log.v("WifiEnableCheck", "Wifi Enable Success");
             if (mNetworkPass != "" && mNetworkSSID != "") {
                 //WifiUtils.withContext(getApplicationContext()).scanWifi(this::WifiGetScanResults).start();
                 //Hard connect to home wifi if enable successful.
+                debugPrint("Connecting to " + mNetworkSSID);
                 WifiUtils.withContext(getApplicationContext())
                         .connectWith(mNetworkSSID, mNetworkPass)
                         .onConnectionResult(this::WifiConnectCheck)
                         .start();
             }
         } else {
-            Log.d("TEST", "Wifi Enable Failed");
-            debugPrint("Wifi Enable Failed");
+            Log.v("WifiEnableCheck", "Wifi Enable Failed");
         }
     }
 
     //Wifi Connected callback method.
     public void WifiConnectCheck(boolean isSuccess) {
         if (isSuccess) {
-            Log.d("TEST", "Wifi Connect Success");
-            debugPrint("Wifi Connect Success");
+            Log.v("WifiConnectCheck", "Wifi Connect Success");
+            debugPrint("Connected to " + mNetworkSSID);
             mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
         } else {
-            Log.d("TEST", "Wifi Connect Failed");
+            Log.v("WifiConnectCheck", "Wifi Connect Failed");
             debugPrint("Wifi Connect Failed");
             WifiUtils.withContext(getApplicationContext())
                     .connectWith(mNetworkSSID, mNetworkPass)
@@ -706,7 +685,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 if (gpio.getValue()) {
                     if (mStates.booting && !mStates.mInterrupted) {
-                        debugPrint("Booting into Meter Pairing");
                         mStates.stopBoot(1);
                         bluetoothDiscovery(1);
                     } else if (!mStates.mInterrupted) {
@@ -714,13 +692,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else if (!mStates.mInterrupted) {
                     if (mStates.booting) {
-                        debugPrint("Booting into Phone Pairing");
                         mStates.stopBoot(2);
                         bluetoothDiscovery(2);
                     }
                 }
             } catch (IOException e) {
-                Log.d("TEST", "Failed to read reset switch");
+                Log.d("mResetGpioCallback", "Failed to read reset switch");
                 debugPrint("Failed to read reset switch");
             }
 
@@ -734,7 +711,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 if (gpio.getValue()) {
                     startManTimer();
-                    Log.d("TEST", "Starting Man Timer");
+                    Log.e("mManGpioCallback", "Starting Man Timer");
                     //mStates.setManState(true);
                 } else {
                     if (mManTimer != null) {
@@ -743,8 +720,7 @@ public class MainActivity extends AppCompatActivity {
                     mStates.setManState(false);
                 }
             } catch (IOException e) {
-                Log.d("TEST", "Failed to read man switch");
-                debugPrint("Failed to read man switch");
+                Log.e("mManGpioCallback", "Failed to read man switch");
             }
 
             return true;
@@ -765,8 +741,7 @@ public class MainActivity extends AppCompatActivity {
                     //mStates.setLadderState(false);
                 }
             } catch (IOException e) {
-                Log.d("TEST", "Failed to read ladder switch");
-                debugPrint("Failed to read ladder switch");
+                Log.e("mLadderGpioCallback", "Failed to read ladder switch");
             }
             return true;
         }
@@ -777,7 +752,7 @@ public class MainActivity extends AppCompatActivity {
         // Called as soon as service discovery begins.
         @Override
         public void onDiscoveryStarted(String regType) {
-            Log.d("TEST", "Service discovery started");
+            Log.d("mDiscoveryListener", "Service discovery started");
             debugPrint("Service discovery started");
         }
 
@@ -785,14 +760,12 @@ public class MainActivity extends AppCompatActivity {
         public void onServiceFound(NsdServiceInfo service) {
             // A service was found! Do something with it.
             Log.d("TEST", "Service discovery success" + service);
-            debugPrint("Service discovery success" + service);
             if (!mResolving) {
                 mResolving = true;
                 try {
                     mNsdManager.resolveService(service, mResolveListener);
                 } catch (IllegalArgumentException e) {
                     Log.d("TEST", "listener already in use");
-                    debugPrint("listener already in use");
                 }
             }
         }
@@ -802,7 +775,6 @@ public class MainActivity extends AppCompatActivity {
             // When the network service is no longer available.
             // Internal bookkeeping code goes here.
             Log.e("TEST", "service lost" + service);
-            debugPrint("service lost" + service);
             stoptimertask();
             mAppService = null;
             mResolving = false;
@@ -816,7 +788,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onDiscoveryStopped(String serviceType) {
             Log.i("TEST", "Discovery stopped: " + serviceType);
-            debugPrint("Discovery stopped: " + serviceType);
             if (mAppService == null) {
                 mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
             }
@@ -825,14 +796,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onStartDiscoveryFailed(String serviceType, int errorCode) {
             Log.e("TEST", "Discovery failed: Error code:" + errorCode);
-            debugPrint("Discovery failed: Error code:" + errorCode);
             //mNsdManager.stopServiceDiscovery(this);
         }
 
         @Override
         public void onStopDiscoveryFailed(String serviceType, int errorCode) {
             Log.e("TEST", "Discovery failed: Error code:" + errorCode);
-            debugPrint("Discovery failed: Error code:" + errorCode);
             //mNsdManager.stopServiceDiscovery(this);
         }
     };
@@ -843,13 +812,11 @@ public class MainActivity extends AppCompatActivity {
         public void onResolveFailed(NsdServiceInfo serviceInfo, int errorCode) {
             // Called when the resolve fails. Use the error code to debug.
             Log.e("TEST", "Resolve failed" + errorCode);
-            debugPrint("Resolve failed" + errorCode);
         }
 
         @Override
         public void onServiceResolved(NsdServiceInfo serviceInfo) {
-            Log.e("TEST", "Resolve Succeeded. " + serviceInfo);
-            debugPrint("Resolve Succeeded. " + serviceInfo);
+            Log.d("onServiceResolved", "Resolve Succeeded. " + serviceInfo);
             mResolving = false;
             mAppService = serviceInfo;
 
@@ -874,8 +841,7 @@ public class MainActivity extends AppCompatActivity {
                                 mStates.setManState(false);
                             }
                         } catch (IOException e) {
-                            Log.d("TEST", "Failed to read man switch");
-                            debugPrint("Failed to read man switch");
+                            Log.e("TEST", "Failed to read man switch");
                         }
                         stopManTimer();
                     }
@@ -919,8 +885,7 @@ public class MainActivity extends AppCompatActivity {
                                 mStates.setLadderState(false);
                             }
                         } catch (IOException e) {
-                            Log.d("TEST", "Failed to read ladder switch");
-                            debugPrint("Failed to read ladder switch");
+                            Log.e("initializeLadderTimerTask", "Failed to read ladder switch");
                         }
                         stopLadderTimer();
                     }
@@ -980,11 +945,6 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         byte[] message = mStates.getBytes();
-                        try {
-                            debugPrint("Sending via Wifi " + new String(message, "UTF-8"));
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
                         DatagramPacket packet = new DatagramPacket(message, message.length);
                         if (mAppService != null ) {
                             if(mAppService.getHost() != null && mAppService.getPort() != 0){
@@ -1043,8 +1003,7 @@ public class MainActivity extends AppCompatActivity {
                             //mStates.mBatteryLevel = (int)  (100.0 * ((1.0 * capacity) / (mFullChargeCapacity)));
                             mStates.setBatteryLevel((int) (100.0 * ((1.0 * capacity) / (mFullChargeCapacity))));
                         }
-                        Log.d("TEST", "battery level: " + mStates.mBatteryLevel);
-                        debugPrint("battery level: " + mStates.mBatteryLevel);
+                        Log.d("initializeBatteryTimerTask", "battery level: " + mStates.mBatteryLevel);
                     }
                 });
             }
@@ -1065,7 +1024,7 @@ public class MainActivity extends AppCompatActivity {
                 udpSocket.send(mPacket);
                 udpSocket.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e("SendThread", "Failed to send packet");
             }
         }
     }
@@ -1088,7 +1047,7 @@ public class MainActivity extends AppCompatActivity {
                     DatagramPacket packetIn = new DatagramPacket(message, message.length);
                     udpInSocket.receive(packetIn);
                     String text = new String(message, 0, packetIn.getLength());
-                    Log.d("TEST", "UDP Received:" + text);
+                    Log.d("ListenThread", "UDP Received:" + text);
 
                     if (text.equals("Log")) {
                         FileInputStream inputStream = openFileInput("events.log");
@@ -1160,8 +1119,7 @@ class ConnectThread extends Thread {
             try {
                 mmSocket.close();
             } catch (IOException closeException) {
-                Log.e("TEST", "Could not close the client socket", closeException);
-                Activity.debugPrint("Could not close the client socket");
+                Log.e("ConnectThread", "Could not close the client socket", closeException);
             }
             return;
         }
@@ -1173,8 +1131,7 @@ class ConnectThread extends Thread {
             InputStream in = mmSocket.getInputStream();
             int count = in.read(inBuffer);
             String message = new String(inBuffer, 0, count);
-            Log.d("TEST", "Read: " + message);
-            Activity.debugPrint("Read: " + message);
+            Log.d("ConnectThread", "Read: " + message);
 
             Gson gson = new Gson();
             ArrayMap<String, String> arrayMap = gson.fromJson(message, ArrayMap.class);
@@ -1201,7 +1158,7 @@ class ConnectThread extends Thread {
         try {
             mmSocket.close();
         } catch (IOException e) {
-            Log.e("TEST", "Could not close the client socket", e);
+            Log.e("ListenThread", "Could not close the client socket", e);
         }
     }
 }
