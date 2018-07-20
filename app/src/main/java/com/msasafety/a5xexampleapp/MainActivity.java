@@ -224,8 +224,9 @@ public class MainActivity extends AppCompatActivity {
             Bluetooth.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
             Horn.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
 
-
             mStates = new StateVariable(Good, Warning, Alarm, Battery, Bluetooth, Horn, mName, this);
+
+            mStates.mInsertionCount = mPrefs.getInt("Insertion", -1);
 
             List<String> deviceList = mManager.getI2cBusList();
             if (deviceList.isEmpty()) {
@@ -239,8 +240,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("onCreate", "Unable to access GPIO", e);
         }
-
-
     }
 
     @Override
@@ -1069,6 +1068,11 @@ public class MainActivity extends AppCompatActivity {
                         }
                         SendThread sendThread = new SendThread(packetOut);
                         sendThread.start();
+                    }
+                    else if(text.equals("Insert")) {
+                        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                        prefsEditor.putInt("Insertion", 0);
+                        prefsEditor.commit();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

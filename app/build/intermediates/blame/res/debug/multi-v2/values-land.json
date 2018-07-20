@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\scostello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\spenc\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\scostello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\6e250c7dab89fed17ee439b119d00545\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\spenc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\a4ec3b9c58d143dfc18df5477164b6a4\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\scostello\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.4.0.aar\\64191ce86351c0e7163a3b77d290b8e9\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\spenc\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.4.0.aar\\221420458a4b8a379bb4dd00d4eb4aac\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

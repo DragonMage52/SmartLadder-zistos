@@ -74,6 +74,8 @@ public class StateVariable {
 
     boolean mInterrupted = false;
 
+    int mInsertionCount = 0;
+
 
     public StateVariable(Gpio good, Gpio warning, Gpio alarm, Gpio battery, Gpio bluetooth, Gpio horn, String mID, MainActivity that) {
         mGood = good;
@@ -196,6 +198,7 @@ public class StateVariable {
         if (mLadderState != state) {
             mLadderState = state;
             if (state) {
+                mInsertionCount++;
                 startEarlyEntry();
                 mThat.debugPrint("Starting Early Entry");
             } else {
@@ -343,6 +346,7 @@ public class StateVariable {
         arrayMap.put("alarmmeterBattery", mAlarmMeterBattery + "");
         arrayMap.put("alarmBattery", mAlarmBattery + "");
         arrayMap.put("port", mPort + "");
+        arrayMap.put("insertion", mInsertionCount + "");
         arrayMap.put("command", "update");
 
         Gson gson = new Gson();
