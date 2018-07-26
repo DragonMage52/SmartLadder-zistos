@@ -71,8 +71,10 @@ import java.lang.reflect.Method;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -155,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
     Handler mManHandler = new Handler();
 
     ListenThread mListenThread;
+
+    Handler mSendHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -553,11 +557,11 @@ public class MainActivity extends AppCompatActivity {
             debugPrint("Wifi Enable Success");
             if (mNetworkPass != "" && mNetworkSSID != "") {
                 //WifiUtils.withContext(getApplicationContext()).scanWifi(this::WifiGetScanResults).start();
-                //Hard connect to home wifi if enable successful.
                 WifiUtils.withContext(getApplicationContext())
                         .connectWith(mNetworkSSID, mNetworkPass)
                         .onConnectionResult(this::WifiConnectCheck)
                         .start();
+
             }
         } else {
             Log.d("TEST", "Wifi Enable Failed");
@@ -570,7 +574,8 @@ public class MainActivity extends AppCompatActivity {
         if (isSuccess) {
             Log.d("TEST", "Wifi Connect Success");
             debugPrint("Wifi Connect Success");
-            mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
+            //mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
+            mSendHandler.post(sendRunnable);
         } else {
             Log.d("TEST", "Wifi Connect Failed");
             debugPrint("Wifi Connect Failed");
@@ -578,6 +583,7 @@ public class MainActivity extends AppCompatActivity {
                     .connectWith(mNetworkSSID, mNetworkPass)
                     .onConnectionResult(this::WifiConnectCheck)
                     .start();
+
         }
     }
 
@@ -853,7 +859,7 @@ public class MainActivity extends AppCompatActivity {
             mResolving = false;
             mAppService = serviceInfo;
 
-            startTimer();
+            //startTimer();
 
             mListenThread = new ListenThread();
             mListenThread.start();
@@ -950,6 +956,30 @@ public class MainActivity extends AppCompatActivity {
             mLadderTimer = null;
         }
     }
+
+    public Runnable sendRunnable = new Runnable() {
+        @Override
+        public void run() {
+            byte[] message = mStates.getBytes();
+            try {
+                debugPrint("Sending via Wifi " + new String(message, "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                InetAddress group = InetAddress.getByName("239.52.8.234");
+                DatagramPacket packet = new DatagramPacket(message, message.length, group, 52867);
+                SendThread sendThread = new SendThread(packet);
+                sendThread.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            mSendHandler.postDelayed(sendRunnable, 2000);
+
+        }
+    };
 
     public void startTimer() {
         //set a new Timer
@@ -1061,9 +1091,10 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
             try {
-                DatagramSocket udpSocket = new DatagramSocket();
-                udpSocket.send(mPacket);
-                udpSocket.close();
+                //DatagramSocket udpSocket = new DatagramSocket();
+                MulticastSocket socket = new MulticastSocket();
+                socket.send(mPacket);
+                socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
