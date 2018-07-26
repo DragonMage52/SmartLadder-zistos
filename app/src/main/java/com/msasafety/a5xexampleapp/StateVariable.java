@@ -74,6 +74,8 @@ public class StateVariable {
 
     boolean mInterrupted = false;
 
+    int mInsertionCount = 0;
+
 
     public StateVariable(Gpio good, Gpio warning, Gpio alarm, Gpio battery, Gpio bluetooth, Gpio horn, String mID, MainActivity that) {
         mGood = good;
@@ -103,13 +105,34 @@ public class StateVariable {
 
 
     public void updateState() {
-        mAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
-        mWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
-        mIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
-        mAlarmOperator = (!mEarlyDoneState && mManState) || mAlarmOperator;
-        mAlarmMeterOff = !mBluetoothState && (mLadderState || mManState) || mAlarmMeterOff;
-        mAlarmMeterBattery = mMeterBatteryDangerState || mAlarmMeterBattery;
-        mAlarmBattery = mBatteryDangerState || mAlarmBattery;
+        boolean tempAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
+        boolean tempWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
+        boolean tempIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
+        boolean tempAlarmOperator = (!mEarlyDoneState && mManState) || mAlarmOperator;
+        boolean tempAlarmMeterOff = !mBluetoothState && (mLadderState || mManState) || mAlarmMeterOff;
+        boolean tempAlarmMeterBattery = mMeterBatteryDangerState || mAlarmMeterBattery;
+        boolean tempAlarmBattery = mBatteryDangerState || mAlarmBattery;
+
+        if(mAlarmOperator != tempAlarmOperator && tempAlarmBattery) {
+            mThat.debugPrint("Alarm Operator");
+        }
+        if(mAlarmMeterOff != tempAlarmMeterOff && tempAlarmMeterOff) {
+            mThat.debugPrint("Alarm Meter Off");
+        }
+        if(mAlarmMeterBattery != tempAlarmMeterBattery && tempAlarmMeterBattery) {
+            mThat.debugPrint("Alarm Meter Battery");
+        }
+        if(mAlarmBattery != tempAlarmBattery && tempAlarmBattery){
+            mThat.debugPrint("Alarm Battery");
+        }
+
+        mAlarmState = tempAlarmState;
+        mWarningState = tempWarningState;
+        mIdleState = tempIdleState;
+        mAlarmOperator = tempAlarmOperator;
+        mAlarmMeterOff = tempAlarmMeterOff;
+        mAlarmMeterBattery = tempAlarmMeterBattery;
+        mAlarmBattery = tempAlarmBattery;
 
         if (!booting) {
             mUpdateStateHandler.post(mUpdateStateRunnable);
@@ -139,6 +162,10 @@ public class StateVariable {
         if (mBatteryState != state) {
             mBatteryState = state;
             updateState();
+
+            if(mBatteryState) {
+                mThat.debugPrint("Local Battery Low");
+            }
         }
     }
 
@@ -146,6 +173,13 @@ public class StateVariable {
         if (mBluetoothState != state) {
             mBluetoothState = state;
             updateState();
+
+            if(mBluetoothState) {
+                mThat.debugPrint("Bluetooth Connected");
+            }
+            else {
+                mThat.debugPrint("Bluetooth Disconnected");
+            }
         }
     }
 
@@ -153,6 +187,10 @@ public class StateVariable {
         if (mManState != state) {
             mManState = state;
             updateState();
+
+            if(mManState) {
+                mThat.debugPrint("Man Detected");
+            }
         }
     }
 
@@ -160,10 +198,13 @@ public class StateVariable {
         if (mLadderState != state) {
             mLadderState = state;
             if (state) {
+                mInsertionCount++;
                 startEarlyEntry();
+                mThat.debugPrint("Starting Early Entry");
             } else {
                 stopEarlyEntry();
                 mEarlyDoneState = false;
+                mThat.debugPrint("Ladder Removed");
             }
             updateState();
         }
@@ -173,6 +214,10 @@ public class StateVariable {
         if (mMeterBatteryState != state) {
             mMeterBatteryState = state;
             updateState();
+
+            if(mMeterBatteryState) {
+                mThat.debugPrint("Meter Battery Low");
+            }
         }
     }
 
@@ -231,7 +276,7 @@ public class StateVariable {
                     mBluetooth.setValue(true);
                     mHorn.setValue(false);
                 } catch (IOException e) {
-                    Log.e("TEST", "Error on PeripheralIO API", e);
+                    Log.e("mUpdateStateRunnable", "Error on PeripheralIO API", e);
                 }
             } else {
                 try {
@@ -264,7 +309,7 @@ public class StateVariable {
                         mBattery.setValue(false);
                     }
                 } catch (IOException e) {
-                    Log.e("TEST", "Error on PeripheralIO API", e);
+                    Log.e("mUpdateStateRunnable", "Error on PeripheralIO API", e);
                 }
             }
         }
@@ -301,6 +346,7 @@ public class StateVariable {
         arrayMap.put("alarmmeterBattery", mAlarmMeterBattery + "");
         arrayMap.put("alarmBattery", mAlarmBattery + "");
         arrayMap.put("port", mPort + "");
+        arrayMap.put("insertion", mInsertionCount + "");
         arrayMap.put("command", "update");
 
         Gson gson = new Gson();
@@ -489,6 +535,7 @@ public class StateVariable {
                         if(mBluetoothState) {
                             mEarlyDoneState = true;
                             stopEarlyEntry();
+                            mThat.debugPrint("Early Entry Done");
                         }
                     }
                 });
