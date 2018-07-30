@@ -77,6 +77,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -160,6 +161,10 @@ public class MainActivity extends AppCompatActivity {
 
     Handler mSendHandler = new Handler();
 
+    WifiManager.MulticastLock mMulticastLock;
+    MulticastListenThread mMulticastListenThread;
+    HashMap<String, DetectedUser> mDetectUsers = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,6 +184,8 @@ public class MainActivity extends AppCompatActivity {
         mNetworkPass = mPrefs.getString("Password", "");
 
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
+
+        DetectedUser.mDetectUsers = mDetectUsers;
 
         //Check if GPIO ports are available
         try {
@@ -230,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
             mStates = new StateVariable(Good, Warning, Alarm, Battery, Bluetooth, Horn, mName, this);
 
-            mStates.mInsertionCount = mPrefs.getInt("Insertion", -1);
+            mStates.mInsertionCount = mPrefs.getInt("Insertion", 0);
 
             List<String> deviceList = mManager.getI2cBusList();
             if (deviceList.isEmpty()) {
@@ -319,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
         String log = date + ": " + message + '\n';
 
         try {
-            FileOutputStream outputStream = openFileOutput(log, Context.MODE_APPEND);
+            FileOutputStream outputStream = openFileOutput("event.log", Context.MODE_APPEND);
             outputStream.write(log.getBytes());
             outputStream.close();
         } catch (IOException e) {
@@ -554,7 +561,14 @@ public class MainActivity extends AppCompatActivity {
             Log.v("WifiConnectCheck", "Wifi Connect Success");
             debugPrint("Connected to " + mNetworkSSID);
             //mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
+            WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
+            mMulticastLock.acquire();
             mSendHandler.post(sendRunnable);
+            mListenThread = new ListenThread();
+            mListenThread.start();
+            mMulticastListenThread = new MulticastListenThread();
+            mMulticastListenThread.start();
         } else {
             Log.v("WifiConnectCheck", "Wifi Connect Failed");
             debugPrint("Wifi Connect Failed");
@@ -926,17 +940,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             byte[] message = mStates.getBytes();
-            try {
-                debugPrint("Sending via Wifi " + new String(message, "UTF-8"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
 
             try {
-                InetAddress group = InetAddress.getByName("239.52.8.234");
-                DatagramPacket packet = new DatagramPacket(message, message.length, group, 52867);
-                SendThread sendThread = new SendThread(packet);
-                sendThread.start();
+                for(Map.Entry<String, DetectedUser> entry : mDetectUsers.entrySet()) {
+                    if(entry.getValue().mPortNumber > 0) {
+                        DatagramPacket packet = new DatagramPacket(message, message.length, InetAddress.getByName(entry.getKey()), entry.getValue().mPortNumber);
+                        new SendThread(packet).start();
+                        Log.d("sendRunnable", "Sent to " + entry.getKey() + "@ " + entry.getValue().mPortNumber);
+                    }
+
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -1050,10 +1063,10 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
             try {
-                //DatagramSocket udpSocket = new DatagramSocket();
-                MulticastSocket socket = new MulticastSocket();
-                socket.send(mPacket);
-                socket.close();
+                DatagramSocket udpSocket = new DatagramSocket();
+                //MulticastSocket socket = new MulticastSocket();
+                udpSocket.send(mPacket);
+                udpSocket.close();
             } catch (IOException e) {
                 Log.e("SendThread", "Failed to send packet");
             }
@@ -1093,21 +1106,67 @@ public class MainActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         String json = gson.toJson(arrayMap);
 
+                        /*InetAddress group = InetAddress.getByName("239.52.8.234");
+                        DatagramPacket packet = new DatagramPacket(json.getBytes(), json.getBytes().length, group, 52867);
+                        SendThread sendThread = new SendThread(packet);
+                        sendThread.start();*/
+
                         DatagramPacket packetOut = new DatagramPacket(json.getBytes(), json.getBytes().length);
-                        if (mAppService != null) {
-                            packetOut.setAddress(mAppService.getHost());
-                            packetOut.setPort(mAppService.getPort());
-                        }
+                        packetOut.setAddress(packetIn.getAddress());
+                        packetOut.setPort(mDetectUsers.get(packetIn.getAddress().toString().replace("/", "")).mPortNumber);
                         SendThread sendThread = new SendThread(packetOut);
                         sendThread.start();
                     }
                     else if(text.equals("Insert")) {
+                        mStates.mInsertionCount = 0;
                         SharedPreferences.Editor prefsEditor = mPrefs.edit();
                         prefsEditor.putInt("Insertion", 0);
                         prefsEditor.commit();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+            }
+        }
+
+        public void cancel() {
+            run = false;
+        }
+    }
+
+    class MulticastListenThread extends Thread {
+        private boolean run = false;
+
+        public void run() {
+            run = true;
+
+            while (run) {
+                try {
+                    InetAddress group = InetAddress.getByName("239.52.8.234");
+                    MulticastSocket socket = new MulticastSocket(52867);
+                    socket.joinGroup(group);
+                    byte[] buffer = new byte[1000];
+                    DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+                    socket.receive(packet);
+                    String text = new String(buffer, 0, packet.getLength());
+                    Log.d("MulticastListenThread", "Received: " + text);
+                    String[] separated = text.split(",");
+                    if(mDetectUsers.containsKey(separated[0])) {
+                        mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
+                        mDetectUsers.get(separated[0]).refresh();
+                    }
+                    else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mDetectUsers.put(separated[0], new DetectedUser(text));
+                            }
+                        });
+
+                    }
+                }
+                catch (IOException e) {
+                    Log.e("MulticastListenThread", "Failed to listen");
                 }
             }
         }
