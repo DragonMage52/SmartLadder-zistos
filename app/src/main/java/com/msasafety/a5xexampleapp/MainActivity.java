@@ -322,8 +322,8 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
         String date = dateFormat.format(Calendar.getInstance().getTime());
 
-
-        String log = date + ": " + message + '\n';
+        //String log = date + ": " + message + '\n';
+        String log = "events.log";
 
         try {
             FileOutputStream outputStream = openFileOutput("event.log", Context.MODE_APPEND);

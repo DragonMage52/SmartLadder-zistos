@@ -1,5 +1,6 @@
 package com.msasafety.a5xexampleapp;
 
+import android.os.Build;
 import android.os.Handler;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
+import com.msasafety.a5xexampleapp.BuildConfig;
 
 //State variable class to handle changing GPIO when variable value changes.
 public class StateVariable {
@@ -347,6 +349,7 @@ public class StateVariable {
         arrayMap.put("alarmBattery", mAlarmBattery + "");
         arrayMap.put("port", mPort + "");
         arrayMap.put("insertion", mInsertionCount + "");
+        arrayMap.put("version", BuildConfig.VERSION_NAME + "");
         arrayMap.put("command", "update");
 
         Gson gson = new Gson();
