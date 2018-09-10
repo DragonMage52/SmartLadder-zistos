@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import com.msasafety.a5xexampleapp.BuildConfig;
@@ -77,6 +78,8 @@ public class StateVariable {
     boolean mInterrupted = false;
 
     int mInsertionCount = 0;
+
+    Date mLastCalibration;
 
 
     public StateVariable(Gpio good, Gpio warning, Gpio alarm, Gpio battery, Gpio bluetooth, Gpio horn, String mID, MainActivity that) {
@@ -318,7 +321,7 @@ public class StateVariable {
     };
 
     public byte[] getBytes() {
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         ArrayMap<String, String> arrayMap = new ArrayMap<>();
         arrayMap.put("id", id);
@@ -350,6 +353,9 @@ public class StateVariable {
         arrayMap.put("port", mPort + "");
         arrayMap.put("insertion", mInsertionCount + "");
         arrayMap.put("version", BuildConfig.VERSION_NAME + "");
+        if(mLastCalibration != null) {
+            arrayMap.put("lastcalibration", dateFormat.format(mLastCalibration));
+        }
         arrayMap.put("command", "update");
 
         Gson gson = new Gson();

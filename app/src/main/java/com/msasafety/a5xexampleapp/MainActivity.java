@@ -60,6 +60,7 @@ import com.rafakob.nsdhelper.NsdService;
 import com.rafakob.nsdhelper.NsdType;
 import com.thanosfisherman.wifiutils.WifiUtils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -324,10 +325,11 @@ public class MainActivity extends AppCompatActivity {
 
         //String log = date + ": " + message + '\n';
         String log = "events.log";
+        message = message + "\n";
 
         try {
             FileOutputStream outputStream = openFileOutput("event.log", Context.MODE_APPEND);
-            outputStream.write(log.getBytes());
+            outputStream.write(message.getBytes());
             outputStream.close();
         } catch (IOException e) {
             Log.e("debugPrint", "Failed to write to Log file");
@@ -660,6 +662,7 @@ public class MainActivity extends AppCompatActivity {
                     switch (i) {
                         case 0:
                             mStates.carbondioxideLevel = sensorStatus.getReading();
+                            mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
                             if (sensorStatus.hasAlarmOrWarning()) {
                                 mStates.setMeterState(true);
                             }
@@ -667,18 +670,27 @@ public class MainActivity extends AppCompatActivity {
 
                         case 1:
                             mStates.oxygenLevel = sensorStatus.getReading();
+                            if(sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
+                                mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
+                            }
                             if (sensorStatus.hasAlarmOrWarning()) {
                                 mStates.setMeterState(true);
                             }
                             break;
                         case 2:
                             mStates.hydrogensulfideLevel = sensorStatus.getReading();
+                            if(sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
+                                mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
+                            }
                             if (sensorStatus.hasAlarmOrWarning()) {
                                 mStates.setMeterState(true);
                             }
                             break;
                         case 3:
                             mStates.combExLevel = sensorStatus.getReading();
+                            if(sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
+                                mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
+                            }
                             if (sensorStatus.hasAlarmOrWarning()) {
                                 mStates.setMeterState(true);
                             }
@@ -1094,14 +1106,14 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("ListenThread", "UDP Received:" + text);
 
                     if (text.equals("Log")) {
-                        FileInputStream inputStream = openFileInput("events.log");
-                        byte[] log = new byte[5000];
-                        inputStream.read(log);
+                        FileInputStream inputStream = openFileInput("event.log");
+                        byte[] log = new byte[10000];
+                        int totalBytesRead = inputStream.read(log);
                         inputStream.close();
 
                         ArrayMap<String, String> arrayMap = new ArrayMap<>();
                         arrayMap.put("command", "log");
-                        String strLog = new String(log, 0, log.length);
+                        String strLog = new String(log, 0, totalBytesRead, "UTF-8");
                         arrayMap.put("log", strLog);
                         Gson gson = new Gson();
                         String json = gson.toJson(arrayMap);
