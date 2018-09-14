@@ -166,6 +166,9 @@ public class MainActivity extends AppCompatActivity {
     MulticastListenThread mMulticastListenThread;
     HashMap<String, DetectedUser> mDetectUsers = new HashMap<>();
 
+    Handler mBluetoothDiscoveryHandler = new Handler();
+    boolean mBluetoothDiscoveryInit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -293,6 +296,7 @@ public class MainActivity extends AppCompatActivity {
             //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             Log.e("onPause", "Bluetooth Disabled");
+            debugPrint("Bluetooth Disabled");
         }
 
         Gson gson = new Gson();
@@ -335,10 +339,11 @@ public class MainActivity extends AppCompatActivity {
             Log.e("debugPrint", "Failed to write to Log file");
         }
 
+        String finalMessage = message;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mTextDebug.append(log);
+                mTextDebug.append(finalMessage);
                 scrollToBottom();
             }
         });
@@ -410,6 +415,8 @@ public class MainActivity extends AppCompatActivity {
         else if(option == 2) {
             debugPrint("Starting Bluetooth Discovery for Phone Pairing");
         }
+        mBluetoothDiscoveryInit = false;
+        mBluetoothDiscoveryHandler.postDelayed(bluetoothDiscoveryRunnable, 10000);
         mBluetoothAdapter.startDiscovery();
     }
 
@@ -418,6 +425,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                mBluetoothDiscoveryInit = true;
                 // Discovery has found a device. Get the BluetoothDevice
                 // object and its info from the Intent.
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
@@ -481,10 +489,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.v("mFinished", "Discovery Finished");
+            mBluetoothDiscoveryInit = true;
             //Restart discovery is no device found, else connect to the device.
             if (mDevice == null) {
                 Log.v("mFinished", "Restarting Bluetooth Discovery");
                 mBluetoothAdapter.startDiscovery();
+            }
+
+        }
+    };
+
+    public Runnable bluetoothDiscoveryRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("TEST", "bluetooth discovery runnable");
+            debugPrint("mBluetoothInit = " + mBluetoothDiscoveryInit);
+            if(!mBluetoothDiscoveryInit) {
+                mBluetoothAdapter.startDiscovery();
+                mBluetoothDiscoveryHandler.postDelayed(bluetoothDiscoveryRunnable, 15000);
             }
 
         }
