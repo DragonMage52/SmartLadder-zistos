@@ -320,6 +320,8 @@ public class StateVariable {
         }
     };
 
+    static int i = 0;
+
     public byte[] getBytes() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 

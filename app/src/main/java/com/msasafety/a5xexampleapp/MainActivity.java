@@ -293,8 +293,8 @@ public class MainActivity extends AppCompatActivity {
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (!mBluetoothAdapter.isEnabled()) {
-            //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             Log.e("onPause", "Bluetooth Disabled");
             debugPrint("Bluetooth Disabled");
         }
@@ -980,7 +980,8 @@ public class MainActivity extends AppCompatActivity {
                     if(entry.getValue().mPortNumber > 0) {
                         DatagramPacket packet = new DatagramPacket(message, message.length, InetAddress.getByName(entry.getKey()), entry.getValue().mPortNumber);
                         new SendThread(packet).start();
-                        Log.d("sendRunnable", "Sent to " + entry.getKey() + "@ " + entry.getValue().mPortNumber);
+                        //Log.d("sendRunnable", "Sent to " + entry.getKey() + "@ " + entry.getValue().mPortNumber);
+                        debugPrint("Sent to " + entry.getKey() + "@ " + entry.getValue().mPortNumber);
                     }
 
                 }
@@ -1183,7 +1184,8 @@ public class MainActivity extends AppCompatActivity {
                     DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                     socket.receive(packet);
                     String text = new String(buffer, 0, packet.getLength());
-                    Log.d("MulticastListenThread", "Received: " + text);
+                    //Log.d("MulticastListenThread", "Received: " + text);
+                    debugPrint("Received: " + text);
                     String[] separated = text.split(",");
                     if(mDetectUsers.containsKey(separated[0])) {
                         mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
@@ -1260,7 +1262,8 @@ class ConnectThread extends Thread {
             InputStream in = mmSocket.getInputStream();
             int count = in.read(inBuffer);
             String message = new String(inBuffer, 0, count);
-            Log.d("ConnectThread", "Read: " + message);
+            //Log.d("ConnectThread", "Read: " + message);
+            Activity.debugPrint("Read: " + message);
 
             Gson gson = new Gson();
             ArrayMap<String, String> arrayMap = gson.fromJson(message, ArrayMap.class);

@@ -22,7 +22,7 @@ public class DetectedUser {
 
     public void refresh() {
         mActiveHandler.removeCallbacks(activeRunnable);
-        mActiveHandler.postDelayed(activeRunnable, 30000);
+        mActiveHandler.postDelayed(activeRunnable, 60000);
     }
 
     public Runnable activeRunnable = new Runnable() {
