@@ -1,7 +1,16 @@
 package com.msasafety.a5xexampleapp;
 
 import android.os.Handler;
+import android.util.Log;
 
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 
 public class DetectedUser {
@@ -10,14 +19,16 @@ public class DetectedUser {
     public int mPortNumber;
     Handler mActiveHandler = new Handler();
     public static HashMap<String, DetectedUser> mDetectUsers;
+    public ConnectThread mConnectThread;
 
-    public DetectedUser(String rawMessage) {
+    public Socket mSocket;
 
-        String[] separated = rawMessage.split(",");
-        mIpAddress = separated[0];
-        mPortNumber = Integer.parseInt(separated[1]);
+    Handler mSendHandler = new Handler();
+    StateVariable mStates;
+    DataOutputStream mDataOut;
 
-        refresh();
+    public DetectedUser(StateVariable states) {
+        mStates = states;
     }
 
     public void refresh() {
@@ -31,4 +42,84 @@ public class DetectedUser {
             mDetectUsers.remove(mIpAddress);
         }
     };
+
+    public void connect(String identifier) {
+
+        String[] separated = identifier.split(",");
+        mIpAddress = separated[0];
+        mPortNumber = Integer.parseInt(separated[1]);
+
+        mConnectThread = new ConnectThread();
+        mConnectThread.start();
+    }
+
+    public class ConnectThread extends Thread {
+        @Override
+        public void run() {
+            InetAddress ip = null;
+
+            try {
+                ip = InetAddress.getByName(mIpAddress);
+            } catch (UnknownHostException e) {
+                Log.e("ServerMangeThread", "Failed to convert IP Address");
+            }
+
+            try {
+                mSocket = new Socket(ip,mPortNumber);
+                mDataOut = new DataOutputStream(mSocket.getOutputStream());
+                Log.d("Test", "Connecting to " + ip);
+            } catch (IOException e) {
+                Log.e("ServerMangeThread", "Failed to open socket");
+            }
+
+            SendThread sendThread = new SendThread();
+            sendThread.start();
+        }
+    }
+
+    public class SendThread extends Thread {
+        @Override
+        public void run() {
+            if (mSocket != null) {
+                if (mSocket.isConnected()) {
+                    try {
+                        mDataOut.write(mStates.getBytes());
+                        Log.d("SendThread", "sent");
+                    } catch (IOException e) {
+                        Log.e("SendThread", "Failed to open output stream");
+                        try {
+                            mSocket.close();
+                        } catch (IOException e1) {
+                            Log.e("SendThread", "Failed to close");
+                        }
+                        mSocket = null;
+                        mDetectUsers.remove(mIpAddress);
+                        mSendHandler.removeCallbacks(sendRunnable);
+                        return;
+                    }
+
+                    mSendHandler.postDelayed(sendRunnable, 2000);
+                }
+                else {
+                    try {
+                        mSocket.close();
+                    } catch (IOException e) {
+                        Log.e("SendThread", "Failed to close");
+                    }
+                    mSocket = null;
+                    mDetectUsers.remove(mIpAddress);
+                }
+            }
+        }
+    }
+
+    public Runnable sendRunnable = new Runnable() {
+        @Override
+        public void run() {
+            SendThread sendThread = new SendThread();
+            sendThread.start();
+        }
+    };
 }
+
+

@@ -475,7 +475,7 @@ public class MainActivity extends AppCompatActivity {
                             mBluetoothAdapter.cancelDiscovery();
                             mDevice = new BtDevice(device.getAddress(), device.getName());
 
-                            ConnectThread connectThread = new ConnectThread(device, mActivity);
+                            BluetoothConnectThread connectThread = new BluetoothConnectThread(device, mActivity);
                             connectThread.start();
                         }
                     }
@@ -588,7 +588,7 @@ public class MainActivity extends AppCompatActivity {
             WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
             mMulticastLock.acquire();
-            mSendHandler.post(sendRunnable);
+            //mSendHandler.post(sendRunnable);
             mListenThread = new ListenThread();
             mListenThread.start();
             mMulticastListenThread = new MulticastListenThread();
@@ -970,7 +970,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public Runnable sendRunnable = new Runnable() {
+    /*public Runnable sendRunnable = new Runnable() {
         @Override
         public void run() {
             byte[] message = mStates.getBytes();
@@ -992,7 +992,7 @@ public class MainActivity extends AppCompatActivity {
             mSendHandler.postDelayed(sendRunnable, 2000);
 
         }
-    };
+    };*/
 
     public void startTimer() {
         //set a new Timer
@@ -1022,7 +1022,7 @@ public class MainActivity extends AppCompatActivity {
                 mTimerHandler.post(new Runnable() {
                     public void run() {
 
-                        byte[] message = mStates.getBytes();
+                        byte[] message = null;
                         DatagramPacket packet = new DatagramPacket(message, message.length);
                         if (mAppService != null ) {
                             if(mAppService.getHost() != null && mAppService.getPort() != 0){
@@ -1188,14 +1188,19 @@ public class MainActivity extends AppCompatActivity {
                     debugPrint("Received: " + text);
                     String[] separated = text.split(",");
                     if(mDetectUsers.containsKey(separated[0])) {
-                        mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
-                        mDetectUsers.get(separated[0]).refresh();
+                        if (mDetectUsers.get(separated[0]).mSocket == null) {
+                            mDetectUsers.get(separated[0]).connect(text);
+                        }
                     }
                     else {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                mDetectUsers.put(separated[0], new DetectedUser(text));
+                                DetectedUser newUser = new DetectedUser(mStates);
+                                newUser.connect(text);
+                                mDetectUsers.put(separated[0], newUser);
+
+
                             }
                         });
 
@@ -1214,12 +1219,12 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-class ConnectThread extends Thread {
+class BluetoothConnectThread extends Thread {
     private final BluetoothSocket mmSocket;
     private final BluetoothDevice mmDevice;
     private MainActivity Activity;
 
-    public ConnectThread(BluetoothDevice device, MainActivity activity) {
+    public BluetoothConnectThread(BluetoothDevice device, MainActivity activity) {
         // Use a temporary object that is later assigned to mmSocket
         // because mmSocket is final.
         BluetoothSocket tmp = null;
