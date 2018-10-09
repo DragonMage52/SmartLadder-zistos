@@ -20,6 +20,7 @@ public class DetectedUser {
     Handler mActiveHandler = new Handler();
     public static HashMap<String, DetectedUser> mDetectUsers;
     public ConnectThread mConnectThread;
+    public SendThread mSendThread;
 
     public Socket mSocket;
 
@@ -72,8 +73,11 @@ public class DetectedUser {
                 Log.e("ServerMangeThread", "Failed to open socket");
             }
 
-            SendThread sendThread = new SendThread();
-            sendThread.start();
+            if(mSendThread != null) {
+                mSendThread.close();
+            }
+            mSendThread = new SendThread();
+            mSendThread.start();
         }
     }
 
@@ -88,7 +92,9 @@ public class DetectedUser {
                     } catch (IOException e) {
                         Log.e("SendThread", "Failed to open output stream");
                         try {
-                            mSocket.close();
+                            if(mSocket != null) {
+                                mSocket.close();
+                            }
                         } catch (IOException e1) {
                             Log.e("SendThread", "Failed to close");
                         }
@@ -109,6 +115,14 @@ public class DetectedUser {
                     mSocket = null;
                     mDetectUsers.remove(mIpAddress);
                 }
+            }
+        }
+
+        public void close() {
+            try {
+                mSocket.close();
+            } catch (IOException e) {
+                Log.d("close SendThread", "Failed to close socket");
             }
         }
     }
