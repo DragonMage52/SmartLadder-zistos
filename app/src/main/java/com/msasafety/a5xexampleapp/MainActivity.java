@@ -190,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
+        DetectedUser.mThat = this;
 
         //Check if GPIO ports are available
         try {
@@ -1185,7 +1186,7 @@ public class MainActivity extends AppCompatActivity {
                     socket.receive(packet);
                     String text = new String(buffer, 0, packet.getLength());
                     //Log.d("MulticastListenThread", "Received: " + text);
-                    debugPrint("Received: " + text);
+                    //debugPrint("Received: " + text);
                     String[] separated = text.split(",");
                     if(mDetectUsers.containsKey(separated[0])) {
                         if (mDetectUsers.get(separated[0]).mSocket == null) {
