@@ -40,6 +40,9 @@ public class DetectedUser {
     StateVariable mStates;
     DataOutputStream mDataOut;
 
+    boolean mTriedReconnect = false;
+    String mIdentifer = "";
+
     public DetectedUser(StateVariable states) {
         mStates = states;
     }
@@ -66,6 +69,12 @@ public class DetectedUser {
         mConnectThread.start();
     }
 
+    public void reConnect() {
+        mTriedReconnect = true;
+        mConnectThread = new ConnectThread();
+        mConnectThread.start();
+    }
+
     public class ConnectThread extends Thread {
         @Override
         public void run() {
@@ -80,6 +89,7 @@ public class DetectedUser {
             try {
                 mSocket = new Socket(ip,mPortNumber);
                 mDataOut = new DataOutputStream(mSocket.getOutputStream());
+                mTriedReconnect = false;
                 Log.d("Test", "Connecting to " + ip);
             } catch (IOException e) {
                 Log.e("ServerMangeThread", "Failed to open socket");
@@ -116,14 +126,23 @@ public class DetectedUser {
                         try {
                             if(mSocket != null) {
                                 mSocket.close();
+                                mListenThread.close();
                             }
                         } catch (IOException e1) {
                             Log.e("SendThread", "Failed to close");
                         }
-                        mSocket = null;
-                        mDetectUsers.remove(mIpAddress);
+
                         mSendHandler.removeCallbacks(sendRunnable);
-                        return;
+
+                        if(!mTriedReconnect) {
+                            reConnect();
+                        }
+                        else {
+                            mSocket = null;
+                            mDetectUsers.remove(mIpAddress);
+
+                            return;
+                        }
                     }
 
                     mSendHandler.postDelayed(sendRunnable, 2000);
@@ -214,6 +233,9 @@ public class DetectedUser {
                                 Log.e("debugPrint", "Failed to write to Log file");
                             }
                         }
+                        else if(text.equals("close")) {
+                            close();
+                        }
                     }
                 } catch (IOException e) {
                     Log.e("ClientManageThread", "Failed to open input stream");
@@ -234,6 +256,10 @@ public class DetectedUser {
             } catch (IOException e) {
                 Log.e("close ClientMangeThread", "Failed to close socket");
             }
+
+            mSocket = null;
+            mDetectUsers.remove(mIpAddress);
+            mSendHandler.removeCallbacks(sendRunnable);
         }
     }
 }
