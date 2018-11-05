@@ -89,7 +89,6 @@ public class DetectedUser {
             try {
                 mSocket = new Socket(ip,mPortNumber);
                 mDataOut = new DataOutputStream(mSocket.getOutputStream());
-                mTriedReconnect = false;
                 Log.d("Test", "Connecting to " + ip);
             } catch (IOException e) {
                 Log.e("ServerMangeThread", "Failed to open socket");
@@ -98,6 +97,7 @@ public class DetectedUser {
             if(mSendThread != null) {
                 mSendThread.close();
             }
+
             mSendThread = new SendThread(mStates.getBytes());
             mSendThread.start();
 
@@ -117,7 +117,7 @@ public class DetectedUser {
         @Override
         public void run() {
             if (mSocket != null) {
-                if (mSocket.isConnected()) {
+                if (!mSocket.isClosed()) {
                     try {
                         mDataOut.write(mMessage);
                         Log.d("SendThread", "sent");
@@ -138,7 +138,7 @@ public class DetectedUser {
                             reConnect();
                         }
                         else {
-                            mSocket = null;
+                            //mSocket = null;
                             mDetectUsers.remove(mIpAddress);
 
                             return;
@@ -153,7 +153,7 @@ public class DetectedUser {
                     } catch (IOException e) {
                         Log.e("SendThread", "Failed to close");
                     }
-                    mSocket = null;
+                    //mSocket = null;
                     mDetectUsers.remove(mIpAddress);
                 }
             }
@@ -189,12 +189,12 @@ public class DetectedUser {
 
             try {
                 dataIn = new DataInputStream(mSocket.getInputStream());
+                run = true;
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e("ListenThread","Failed to open data input stream");
+                close();
             }
 
-
-            run = true;
             while(run) {
                 try {
                     if((test = dataIn.read(buffer)) > 0) {
@@ -242,9 +242,9 @@ public class DetectedUser {
                 }
             }
             try {
-                mSocket.close();
+                close();
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e("ClientMangeThread", "Failed to close socket");
             }
         }
@@ -257,7 +257,6 @@ public class DetectedUser {
                 Log.e("close ClientMangeThread", "Failed to close socket");
             }
 
-            mSocket = null;
             mDetectUsers.remove(mIpAddress);
             mSendHandler.removeCallbacks(sendRunnable);
         }
