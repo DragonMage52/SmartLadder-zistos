@@ -81,6 +81,8 @@ public class StateVariable {
 
     Date mLastCalibration;
 
+    int mCalDueInterval = 0;
+
 
     public StateVariable(Gpio good, Gpio warning, Gpio alarm, Gpio battery, Gpio bluetooth, Gpio horn, String mID, MainActivity that) {
         mGood = good;
@@ -357,6 +359,7 @@ public class StateVariable {
         arrayMap.put("version", BuildConfig.VERSION_NAME + "");
         if(mLastCalibration != null) {
             arrayMap.put("lastcalibration", dateFormat.format(mLastCalibration));
+            arrayMap.put("caldueinterval", mCalDueInterval + "");
         }
         arrayMap.put("command", "update");
 

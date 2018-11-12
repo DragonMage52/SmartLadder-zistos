@@ -67,6 +67,8 @@ public class DetectedUser {
 
         mConnectThread = new ConnectThread();
         mConnectThread.start();
+
+        mThat.debugPrint("Connecting to " + identifier);
     }
 
     public void reConnect() {
@@ -140,6 +142,7 @@ public class DetectedUser {
                         else {
                             //mSocket = null;
                             mDetectUsers.remove(mIpAddress);
+                            mThat.debugPrint("Lost " + mIpAddress);
 
                             return;
                         }

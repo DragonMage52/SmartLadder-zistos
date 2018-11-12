@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\spenc\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v12\\values-v12.xml",
+            "outputFile": "C:\\Users\\Spencer Costello\\Documents\\Versus Codice\\Smart Ladder Project\\SmartLadder-zistos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v12\\values-v12.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\spenc\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\a4ec3b9c58d143dfc18df5477164b6a4\\res\\values-v12\\values-v12.xml",
+                    "source": "C:\\Users\\Spencer Costello\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3ca9d7e542c7eb90ebe5932f72663a52\\res\\values-v12\\values-v12.xml",
                     "from": {
                         "startLines": "2,5,8,9",
                         "startColumns": "4,4,4,4",

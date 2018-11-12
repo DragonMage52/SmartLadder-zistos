@@ -43,6 +43,7 @@ import com.google.gson.Gson;
 import com.jflavio1.wificonnector.WifiConnector;
 import com.msasafety.a5x.library.A5xBroadcasts;
 import com.msasafety.a5x.library.A5xCurrentStatus;
+import com.msasafety.a5x.library.A5xInstrumentConfig;
 import com.msasafety.a5x.library.A5xInstrumentEvent;
 import com.msasafety.a5x.library.A5xInstrumentStatus;
 import com.msasafety.a5x.library.A5xSensorEvent;
@@ -675,6 +676,11 @@ public class MainActivity extends AppCompatActivity {
                 mStates.temp = lastStatus.getTemperature() * 9 / 5 + 32;
                 mStates.setMeterBatteryLevel(lastStatus.getBatteryPercentRemaning());
 
+                A5xInstrumentConfig config = mStatus.getConfig();
+                if(config != null) {
+                    mStates.mCalDueInterval = config.getCalDueInterval();
+                }
+
                 /*if (mStates.temp >= 120) {
                     mStates.setMeterState(true);
                 }*/
@@ -1251,6 +1257,7 @@ class BluetoothConnectThread extends Thread {
             // Connect to the remote device through the socket. This call blocks
             // until it succeeds or throws an exception.
             mmSocket.connect();
+            Activity.debugPrint("Connecting to Phone via Bluetooth");
         } catch (IOException connectException) {
             // Unable to connect; close the socket and return.
             try {
@@ -1269,7 +1276,7 @@ class BluetoothConnectThread extends Thread {
             int count = in.read(inBuffer);
             String message = new String(inBuffer, 0, count);
             //Log.d("ConnectThread", "Read: " + message);
-            Activity.debugPrint("Read: " + message);
+            Activity.debugPrint("Bluetooth Received: " + message);
 
             Gson gson = new Gson();
             ArrayMap<String, String> arrayMap = gson.fromJson(message, ArrayMap.class);
@@ -1295,6 +1302,7 @@ class BluetoothConnectThread extends Thread {
     public void cancel() {
         try {
             mmSocket.close();
+            Activity.debugPrint("Closing Phone Bluetooth Connection");
         } catch (IOException e) {
             Log.e("ListenThread", "Could not close the client socket", e);
         }
