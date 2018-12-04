@@ -18,6 +18,7 @@ import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.nsd.WifiP2pDnsSdServiceInfo;
@@ -566,6 +567,15 @@ public class MainActivity extends AppCompatActivity {
     public void WifiEnableCheck(boolean isSuccess) {
         if (isSuccess) {
             Log.v("WifiEnableCheck", "Wifi Enable Success");
+
+            WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            Log.d("TEST", "Connected to " + wifiInfo.getSSID());
+            if(wifiInfo.getSSID().replace("\"", "").equals(mNetworkSSID)) {
+                WifiConnectCheck(true);
+                return;
+            }
+
             if (mNetworkPass != "" && mNetworkSSID != "") {
                 //WifiUtils.withContext(getApplicationContext()).scanWifi(this::WifiGetScanResults).start();
                 //Hard connect to home wifi if enable successful.
