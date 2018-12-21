@@ -79,6 +79,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -144,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
     Timer mBatteryTimer;
     TimerTask mBatteryTask;
+
+    I2cDevice mRTC;
 
     Handler mBatteryHandler = new Handler();
 
@@ -251,9 +254,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("onCreate", "No I2C bus available on this device.");
 
             } else {
-                Log.v("onCreate", "List of available devices: " + deviceList);
+                Log.d("onCreate", "List of available devices: " + deviceList);
             }
             mSmartBattery = mManager.openI2cDevice("I2C1", 0x0B);
+            mRTC = mManager.openI2cDevice("I2C1", 0x68);
 
         } catch (IOException e) {
             Log.e("onCreate", "Unable to access GPIO", e);
@@ -317,6 +321,8 @@ public class MainActivity extends AppCompatActivity {
 
         startBatteryTimer();
 
+        debugPrint("System Boot");
+
     }
 
     public void debugPrint(String message) {
@@ -327,15 +333,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d("debugPrint", message);
 
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-        String date = dateFormat.format(Calendar.getInstance().getTime());
+        String date = i2c_readRTC();
 
-        //String log = date + ": " + message + '\n';
         String log = "events.log";
-        message = message + "\n";
+        message = date + ": " + message + "\n";
 
         try {
-            FileOutputStream outputStream = openFileOutput("event.log", Context.MODE_APPEND);
+            FileOutputStream outputStream = openFileOutput(log, Context.MODE_APPEND);
             outputStream.write(message.getBytes());
             outputStream.close();
         } catch (IOException e) {
@@ -398,6 +402,111 @@ public class MainActivity extends AppCompatActivity {
         return returned;
     }
 
+    public String i2c_readRTC() {
+
+        String date = "";
+        byte readAddress = (byte) 0b11010001;
+        byte[] buffer = {1, readAddress};
+        byte[] read = new byte[15];
+
+        try {
+            mRTC.write(buffer, buffer.length);
+            mRTC.read(read, read.length);
+
+            //int secondTens = (((read[1] & 0x70) >> 4) * 10);
+            //int secondUnits = (read[1] & 0xF);
+            int seconds = (((read[1] & 0x70) >> 4) * 10) + (read[1] & 0xF);
+
+            //int minutesTens = (((read[2] & 0x70) >> 4) * 10);
+            //int minutesUnits = (read[2] & 0xF);
+            int minutes = (((read[2] & 0x70) >> 4) * 10) + (read[2] & 0xF);
+
+            //int hoursTens = (((read[3] & 0x30) >> 4) *10);
+            //int hoursUnits = (read[3] & 0xF);
+            int hours = (((read[3] & 0x30) >> 4) *10) + (read[3] & 0xF);
+
+            //int daysTens = (((read[4] & 0x30) >> 4)*10);
+            //int daysUnits = (read[4] & 0xF);
+            int days = (((read[4] & 0x30) >> 4)*10) + (read[4] & 0xF);
+
+            //int monthTens = (((read[6] & 0x10) >> 4)*10);
+            //int monthUnits = (read[6] & 0xF);
+            int month = (((read[6] & 0x10) >> 4)*10) + (read[6] & 0xF);
+
+            //int yearTens = (((read[7] & 0xF0) >> 4)*10);
+            //int yearUnits = (read[7] & 0xF);
+            int year = (((read[7] & 0xF0) >> 4)*10) + (read[7] & 0xF);
+
+            date = "20" + year + "-" + month + "-" + days + "T" + hours + ":" + minutes + ":" + seconds;
+
+        } catch (IOException e) {
+            Log.e("i2c_readRTC", "Failed RTC i2c read/write");
+        }
+
+        if(date.equals("")) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            date = dateFormat.format(Calendar.getInstance().getTime());
+        }
+
+        Log.d("TEST", "Date = " + date);
+
+        return date;
+    }
+
+    public void i2c_writeRTC(String strDate) {
+
+        byte byteSeconds;
+        byte byteMinutes;
+        byte byteHours;
+        byte byteDays;
+        byte byteMonth;
+        byte byteYear;
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try {
+            Date date = format.parse(strDate);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+
+            int seconds = cal.get(Calendar.SECOND);
+            byteSeconds = (byte) (0b01111111 & ((byte)((seconds/10) << 4) | (byte)(seconds%10)));
+
+            int minutes = cal.get(Calendar.MINUTE);
+            byteMinutes = (byte) (0b01111111 & ((byte)((minutes/10) << 4) | (byte)(minutes%10)));
+
+            int hours = cal.get(Calendar.HOUR_OF_DAY);
+            byteHours = (byte) (0b00111111 & ((byte)((hours/10) << 4) | (byte)(hours%10)));
+
+            int days = cal.get(Calendar.DAY_OF_MONTH);
+            byteDays = (byte) (0b00111111 & ((byte)((days/10) << 4) | (byte)(days%10)));
+
+            int month = cal.get(Calendar.MONTH) + 1;
+            byteMonth = (byte) (0b00011111 & ((byte)((month/10) << 4) | (byte)(month%10)));
+
+            int year = cal.get(Calendar.YEAR)%2000;
+            byteYear = (byte) (0b11111111 & ((byte)((year/10) << 4) | (byte)(year%10)));
+
+
+        } catch (ParseException e) {
+            Log.d("i2c_writeRTC","Failed date conversion");
+            return;
+        }
+
+        try {
+
+            mRTC.writeRegByte(0x03, byteSeconds);
+            mRTC.writeRegByte(0x04, byteMinutes);
+            mRTC.writeRegByte(0x05, byteHours);
+            mRTC.writeRegByte(0x06, byteDays);
+            //mRTC.writeRegByte(0x07, (byte)0b00000100); Weekday
+            mRTC.writeRegByte(0x08, byteMonth);
+            mRTC.writeRegByte(0x09, byteYear);
+
+        } catch (IOException e) {
+            Log.e("TEST", "Failed i2c write");
+        }
+    }
+
     public void bluetoothDiscovery(int option) {
         discoveryOption = option;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -412,10 +521,9 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter mFilterFinished = new IntentFilter(mBluetoothAdapter.ACTION_DISCOVERY_FINISHED);
         registerReceiver(mFinished, mFilterFinished);
 
-        if(option == 1) {
+        if (option == 1) {
             debugPrint("Starting Bluetooth Discovery for Meter Pairing");
-        }
-        else if(option == 2) {
+        } else if (option == 2) {
             debugPrint("Starting Bluetooth Discovery for Phone Pairing");
         }
         mBluetoothDiscoveryInit = false;
@@ -507,7 +615,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             Log.d("TEST", "bluetooth discovery runnable");
             debugPrint("mBluetoothInit = " + mBluetoothDiscoveryInit);
-            if(!mBluetoothDiscoveryInit) {
+            if (!mBluetoothDiscoveryInit) {
                 mBluetoothAdapter.startDiscovery();
                 mBluetoothDiscoveryHandler.postDelayed(bluetoothDiscoveryRunnable, 15000);
             }
@@ -571,7 +679,7 @@ public class MainActivity extends AppCompatActivity {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             Log.d("TEST", "Connected to " + wifiInfo.getSSID());
-            if(wifiInfo.getSSID().replace("\"", "").equals(mNetworkSSID)) {
+            if (wifiInfo.getSSID().replace("\"", "").equals(mNetworkSSID)) {
                 WifiConnectCheck(true);
                 return;
             }
@@ -597,7 +705,7 @@ public class MainActivity extends AppCompatActivity {
             Log.v("WifiConnectCheck", "Wifi Connect Success");
             debugPrint("Connected to " + mNetworkSSID);
             //mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
-            WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
             mMulticastLock.acquire();
             //mSendHandler.post(sendRunnable);
@@ -687,7 +795,7 @@ public class MainActivity extends AppCompatActivity {
                 mStates.setMeterBatteryLevel(lastStatus.getBatteryPercentRemaning());
 
                 A5xInstrumentConfig config = mStatus.getConfig();
-                if(config != null) {
+                if (config != null) {
                     mStates.mCalDueInterval = config.getCalDueInterval();
                 }
 
@@ -709,7 +817,7 @@ public class MainActivity extends AppCompatActivity {
 
                         case 1:
                             mStates.oxygenLevel = sensorStatus.getReading();
-                            if(sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
+                            if (sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
                                 mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
                             }
                             if (sensorStatus.hasAlarmOrWarning()) {
@@ -718,7 +826,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 2:
                             mStates.hydrogensulfideLevel = sensorStatus.getReading();
-                            if(sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
+                            if (sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
                                 mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
                             }
                             if (sensorStatus.hasAlarmOrWarning()) {
@@ -727,7 +835,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 3:
                             mStates.combExLevel = sensorStatus.getReading();
-                            if(sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
+                            if (sensorStatus.getLastCalDate().getTime().before(mStates.mLastCalibration)) {
                                 mStates.mLastCalibration = sensorStatus.getLastCalDate().getTime();
                             }
                             if (sensorStatus.hasAlarmOrWarning()) {
@@ -1041,14 +1149,13 @@ public class MainActivity extends AppCompatActivity {
 
                         byte[] message = null;
                         DatagramPacket packet = new DatagramPacket(message, message.length);
-                        if (mAppService != null ) {
-                            if(mAppService.getHost() != null && mAppService.getPort() != 0){
+                        if (mAppService != null) {
+                            if (mAppService.getHost() != null && mAppService.getPort() != 0) {
                                 packet.setAddress(mAppService.getHost());
                                 packet.setPort(mAppService.getPort());
                                 SendThread sendThread = new SendThread(packet);
                                 sendThread.start();
-                            }
-                            else {
+                            } else {
                                 stoptimertask();
                             }
                         } else {
@@ -1168,8 +1275,7 @@ public class MainActivity extends AppCompatActivity {
                         packetOut.setPort(mDetectUsers.get(packetIn.getAddress().toString().replace("/", "")).mPortNumber);
                         SendThread sendThread = new SendThread(packetOut);
                         sendThread.start();
-                    }
-                    else if(text.equals("Insert")) {
+                    } else if (text.equals("Insert")) {
                         mStates.mInsertionCount = 0;
                         SharedPreferences.Editor prefsEditor = mPrefs.edit();
                         prefsEditor.putInt("Insertion", 0);
@@ -1204,12 +1310,11 @@ public class MainActivity extends AppCompatActivity {
                     //Log.d("MulticastListenThread", "Received: " + text);
                     //debugPrint("Received: " + text);
                     String[] separated = text.split(",");
-                    if(mDetectUsers.containsKey(separated[0])) {
+                    if (mDetectUsers.containsKey(separated[0])) {
                         if (mDetectUsers.get(separated[0]).mSocket == null) {
                             mDetectUsers.get(separated[0]).connect(text);
                         }
-                    }
-                    else {
+                    } else {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -1222,8 +1327,7 @@ public class MainActivity extends AppCompatActivity {
                         });
 
                     }
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     Log.e("MulticastListenThread", "Failed to listen");
                 }
             }
