@@ -192,6 +192,10 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
+        mName = "Enter Name";
+        mNetworkSSID = "9FD5C0";
+        mNetworkPass = "21444654";
+
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
@@ -338,6 +342,8 @@ public class MainActivity extends AppCompatActivity {
         String log = "events.log";
         message = date + ": " + message + "\n";
 
+        message = message.replaceAll("[{}]", "");
+
         try {
             FileOutputStream outputStream = openFileOutput(log, Context.MODE_APPEND);
             outputStream.write(message.getBytes());
@@ -448,8 +454,6 @@ public class MainActivity extends AppCompatActivity {
             date = dateFormat.format(Calendar.getInstance().getTime());
         }
 
-        Log.d("TEST", "Date = " + date);
-
         return date;
     }
 
@@ -501,6 +505,8 @@ public class MainActivity extends AppCompatActivity {
             //mRTC.writeRegByte(0x07, (byte)0b00000100); Weekday
             mRTC.writeRegByte(0x08, byteMonth);
             mRTC.writeRegByte(0x09, byteYear);
+
+            debugPrint("Setting Date to: " + strDate);
 
         } catch (IOException e) {
             Log.e("TEST", "Failed i2c write");

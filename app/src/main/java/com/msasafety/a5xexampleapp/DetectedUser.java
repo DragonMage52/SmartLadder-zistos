@@ -103,6 +103,15 @@ public class DetectedUser {
             mSendThread = new SendThread(mStates.getBytes());
             mSendThread.start();
 
+            if(!mStates.mDateState) {
+                ArrayMap<String, String> arrayMap = new ArrayMap<>();
+                arrayMap.put("command", "date");
+                Gson gson = new Gson();
+                String json = gson.toJson(arrayMap);
+                mSendThread = new SendThread(json.getBytes());
+                mSendThread.start();
+            }
+
             mListenThread = new ListenThread();
             mListenThread.start();
         }
@@ -205,7 +214,7 @@ public class DetectedUser {
                         Log.d("Received data", text);
 
                         if (text.equals("Log")) {
-                            FileInputStream inputStream = mThat.getApplicationContext().openFileInput("event.log");
+                            FileInputStream inputStream = mThat.getApplicationContext().openFileInput("events.log");
                             byte[] log = new byte[100000];
                             int totalBytesRead = inputStream.read(log);
                             inputStream.close();
@@ -220,7 +229,7 @@ public class DetectedUser {
                             SendThread sendThread = new SendThread(json.getBytes());
                             sendThread.start();
                         }
-                        else if(text.equals("Insert")) {
+                        else if(text.equals("Insertion")) {
                             mStates.mInsertionCount = 0;
                             SharedPreferences.Editor prefsEditor = mThat.mPrefs.edit();
                             prefsEditor.putInt("Insertion", 0);
@@ -235,6 +244,10 @@ public class DetectedUser {
                             } catch (IOException e) {
                                 Log.e("debugPrint", "Failed to write to Log file");
                             }
+                        }
+                        else if(text.contains("Date")) {
+                            mThat.i2c_writeRTC(text.substring(text.indexOf(",")+1));
+                            mStates.mDateState = true;
                         }
                         else if(text.equals("close")) {
                             close();

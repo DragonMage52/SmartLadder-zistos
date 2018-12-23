@@ -61,6 +61,8 @@ public class StateVariable {
     boolean mAlarmMeterBattery = false;
     boolean mAlarmBattery = false;
 
+    boolean mDateState = false;
+
     Gpio mGood;
     Gpio mWarning;
     Gpio mAlarm;
@@ -91,7 +93,7 @@ public class StateVariable {
         mBattery = battery;
         mBluetooth = bluetooth;
         mHorn = horn;
-        id = mID;
+        id = mID.replaceAll("[{}]", "");
         mThat = that;
 
         boot();
