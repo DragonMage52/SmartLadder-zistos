@@ -192,10 +192,6 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
-        mName = "Enter Name";
-        mNetworkSSID = "9FD5C0";
-        mNetworkPass = "21444654";
-
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
@@ -684,7 +680,8 @@ public class MainActivity extends AppCompatActivity {
 
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            Log.d("TEST", "Connected to " + wifiInfo.getSSID());
+            //Log.d("TEST", "Connected to " + wifiInfo.getSSID());
+            debugPrint("Connected to " + wifiInfo.getSSID());
             if (wifiInfo.getSSID().replace("\"", "").equals(mNetworkSSID)) {
                 WifiConnectCheck(true);
                 return;
@@ -699,6 +696,9 @@ public class MainActivity extends AppCompatActivity {
                         .onConnectionResult(this::WifiConnectCheck)
                         .start();
 
+            }
+            else {
+                debugPrint("No network information pulled");
             }
         } else {
             Log.v("WifiEnableCheck", "Wifi Enable Failed");
@@ -715,8 +715,8 @@ public class MainActivity extends AppCompatActivity {
             mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
             mMulticastLock.acquire();
             //mSendHandler.post(sendRunnable);
-            mListenThread = new ListenThread();
-            mListenThread.start();
+            //mListenThread = new ListenThread();
+            //mListenThread.start();
             mMulticastListenThread = new MulticastListenThread();
             mMulticastListenThread.start();
         } else {
