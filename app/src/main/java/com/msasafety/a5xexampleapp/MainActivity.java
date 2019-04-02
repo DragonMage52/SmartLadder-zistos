@@ -36,6 +36,8 @@ import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.github.anrwatchdog.ANRError;
+import com.github.anrwatchdog.ANRWatchDog;
 import com.google.android.things.pio.Gpio;
 import com.google.android.things.pio.GpioCallback;
 import com.google.android.things.pio.I2cDevice;
@@ -197,6 +199,14 @@ public class MainActivity extends AppCompatActivity {
         DetectedUser.mDetectUsers = mDetectUsers;
         DetectedUser.mThat = this;
 
+        new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
+            @Override
+            public void onAppNotResponding(ANRError error) {
+                // Handle the error. For example, log it to HockeyApp:
+                debugPrint("WatchDog: Application Not Responding");
+            }
+        }).start();
+
         //Check if GPIO ports are available
         try {
             mManager = PeripheralManager.getInstance();
@@ -258,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
             }
             mSmartBattery = mManager.openI2cDevice("I2C1", 0x0B);
             mRTC = mManager.openI2cDevice("I2C1", 0x68);
+
 
         } catch (IOException e) {
             Log.e("onCreate", "Unable to access GPIO", e);
