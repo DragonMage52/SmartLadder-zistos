@@ -238,9 +238,10 @@ public class DetectedUser {
                         else if(text.equals("Clear")) {
                             try {
                                 String message = "Cleared Log\n";
-                                FileOutputStream outputStream = mThat.getApplicationContext().openFileOutput("event.log", Context.MODE_PRIVATE);
+                                FileOutputStream outputStream = mThat.getApplicationContext().openFileOutput("events.log", Context.MODE_PRIVATE);
                                 outputStream.write(message.getBytes());
                                 outputStream.close();
+
                             } catch (IOException e) {
                                 Log.e("debugPrint", "Failed to write to Log file");
                             }

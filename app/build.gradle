@@ -86,3 +86,7 @@ dependencies {
 dependencies {
     api 'com.github.jflavio1:WifiConnector:v1.7'
 }
+
+dependencies {
+    api 'com.github.anrwatchdog:anrwatchdog:1.4.0'
+}
