@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: co.lujun:lmbluetoothsdk-1.0.5">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/lmbluetoothsdk-1.0.5.aar/84d5604b2f56c602c638b729982bb1d9/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/lmbluetoothsdk-1.0.5.aar/84d5604b2f56c602c638b729982bb1d9/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/lmbluetoothsdk-1.0.5.aar/83b40ab92b0ab6f3f288dd8781177b2f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/lmbluetoothsdk-1.0.5.aar/83b40ab92b0ab6f3f288dd8781177b2f/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

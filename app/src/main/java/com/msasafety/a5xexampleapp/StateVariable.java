@@ -114,12 +114,12 @@ public class StateVariable {
 
 
     public void updateState() {
-        boolean tempAlarmState = mMeterState || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || mMeterBatteryDangerState;
+        boolean tempAlarmState = (mMeterState && mBluetoothState) || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || (mMeterBatteryDangerState && mBluetoothState);
         boolean tempWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
         boolean tempIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
         boolean tempAlarmOperator = (!mEarlyDoneState && mManState) || mAlarmOperator;
         boolean tempAlarmMeterOff = !mBluetoothState && (mLadderState || mManState) || mAlarmMeterOff;
-        boolean tempAlarmMeterBattery = mMeterBatteryDangerState || mAlarmMeterBattery;
+        boolean tempAlarmMeterBattery = (mMeterBatteryDangerState && mBluetoothState) || mAlarmMeterBattery;
         boolean tempAlarmBattery = mBatteryDangerState || mAlarmBattery;
 
         if(mAlarmOperator != tempAlarmOperator && tempAlarmBattery) {
@@ -156,6 +156,7 @@ public class StateVariable {
         mAlarmMeterBattery = false;
         mAlarmBattery = false;
         updateState();
+        updateBatteryBlink();
     }
 
     public void setMeterState(boolean state) {
@@ -243,6 +244,7 @@ public class StateVariable {
             mMeterBatteryDangerState = false;
         }
         updateBatteryBlink();
+        updateState();
     }
 
     public void setBatteryLevel(int level) {
@@ -263,11 +265,11 @@ public class StateVariable {
 
     public void updateBatteryBlink() {
         if (mBatteryBlinkTimer == null) {
-            if (mBatteryDangerState || mMeterBatteryDangerState) {
+            if (mBatteryDangerState || (mMeterBatteryDangerState && mBluetoothState)) {
                 startBatteryBlink();
             }
         } else {
-            if (!mBatteryDangerState && !mMeterBatteryDangerState) {
+            if (!mBatteryDangerState && (!mMeterBatteryDangerState || !mBluetoothState)) {
                 stopBatteryBlink();
             }
         }

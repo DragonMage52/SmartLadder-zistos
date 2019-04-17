@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
+
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
@@ -863,7 +864,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } else {
-            sendPing();
+            //sendPing();
             mStates.setBluetoothState(false);
         }
     }

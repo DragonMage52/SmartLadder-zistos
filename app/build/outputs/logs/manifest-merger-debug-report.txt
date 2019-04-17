@@ -1,297 +1,297 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:2:1-22:12
-MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\87c33c0fb463ec41464b40bc848d782f\AndroidManifest.xml:2:1-17:12
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:2:1-17:12
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:2:1-24:12
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:2:1-22:12
-MERGED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:17:1-31:12
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:2:1-20:12
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b99421a7b03b51a054676831fe8252b5\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:17:1-31:12
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:2:1-22:12
+MERGED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:17:1-31:12
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:2:1-20:12
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:17:1-28:12
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:2:1-22:12
+MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:2:1-17:12
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:2:1-17:12
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\f7781c1357af51ef7a5c20607255c63d\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:17:1-31:12
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
 	package
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:3:5-42
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:3:5-42
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:1-38:12
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:5:5-68
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:11:5-68
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:11:5-68
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:11:5-68
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:11:5-68
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:11:5-68
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:11:5-68
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:5:5-68
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:11:5-68
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:11:5-68
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:11:5-68
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:11:5-68
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:11:5-68
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:11:5-68
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:5:22-65
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:5:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:6:5-74
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:12:5-74
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:12:5-74
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:12:5-74
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:12:5-74
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:6:5-74
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:12:5-74
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:12:5-74
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:12:5-74
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:12:5-74
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:6:22-71
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:6:22-71
 uses-permission#com.google.android.things.permission.MANAGE_BLUETOOTH
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:7:5-93
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:7:5-93
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:7:22-90
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:7:22-90
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:8:5-81
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:15:5-81
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:15:5-81
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:8:5-81
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:15:5-81
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:15:5-81
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:8:22-78
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:8:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:9:5-79
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:14:5-79
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:14:5-79
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:9:5-79
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:14:5-79
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:14:5-79
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:9:22-76
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:9:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:10:5-76
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:13:5-76
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:13:5-76
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:12:5-76
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:12:5-76
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:10:5-76
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:13:5-76
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:13:5-76
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:12:5-76
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:12:5-76
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:10:22-73
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:10:22-73
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:11:5-76
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:14:5-76
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:14:5-76
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:13:5-76
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:13:5-76
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:11:5-76
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:14:5-76
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:14:5-76
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:13:5-76
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:13:5-76
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:11:22-73
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:11:22-73
 uses-permission#android.permission.CHANGE_NETWORK_STATE
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:12:5-79
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:12:5-79
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:12:5-79
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:12:5-79
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:12:5-79
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:12:5-79
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:12:22-76
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:12:22-76
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:13:5-67
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:13:5-67
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:13:22-64
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:13:22-64
 uses-permission#android.permission.CHANGE_WIFI_MULTICAST_STATE
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:14:5-85
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:14:5-85
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:14:22-83
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:14:22-83
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:15:5-79
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:11:5-79
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:11:5-79
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:11:5-79
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:11:5-79
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:15:5-79
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:11:5-79
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:11:5-79
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:11:5-79
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:15:22-76
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:15:22-76
 uses-permission#com.google.android.things.permission.USE_PERIPHERAL_IO
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:16:5-94
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:16:5-94
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:16:22-91
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:16:22-91
 application
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:19:5-36:19
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:16:5-20:19
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:16:5-20:19
-MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\87c33c0fb463ec41464b40bc848d782f\AndroidManifest.xml:11:5-15:19
-MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\87c33c0fb463ec41464b40bc848d782f\AndroidManifest.xml:11:5-15:19
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:14:5-15:19
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:14:5-15:19
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:17:5-22:19
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:17:5-22:19
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:13:5-20:19
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:13:5-20:19
-MERGED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:25:5-29:19
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:15:5-18:19
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:15:5-18:19
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b99421a7b03b51a054676831fe8252b5\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b99421a7b03b51a054676831fe8252b5\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:25:5-29:19
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:19:5-36:19
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:13:5-20:19
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:13:5-20:19
+MERGED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:25:5-29:19
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:15:5-18:19
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:15:5-18:19
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:22:5-26:19
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:16:5-20:19
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:16:5-20:19
+MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:11:5-15:19
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:14:5-15:19
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:14:5-15:19
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:17:5-22:19
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:17:5-22:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\f7781c1357af51ef7a5c20607255c63d\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\f7781c1357af51ef7a5c20607255c63d\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:25:5-29:19
 	android:supportsRtl
-		ADDED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:19:9-35
+		ADDED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:19:9-35
 	android:label
-		ADDED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:18:9-41
+		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:15:9-41
 	android:icon
-		ADDED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:19:9-43
+		ADDED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:19:9-43
 	android:allowBackup
-		ADDED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:17:9-35
+		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:20:9-40
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:20:9-40
 uses-library#com.google.android.things
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:22:9-66
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:22:9-66
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:22:23-63
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:22:23-63
 service#com.msasafety.a5x.library.A5xService
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:24:9-72
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:24:9-72
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:24:18-69
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:24:18-69
 activity#com.msasafety.a5xexampleapp.MainActivity
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:26:9-35:20
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:26:9-35:20
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:26:19-47
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:26:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.HOME+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:29:13-34:29
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:29:13-34:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:30:17-68
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:30:17-68
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:30:25-66
 category#android.intent.category.HOME
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:31:17-72
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:31:17-72
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:31:27-70
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:31:27-70
 category#android.intent.category.DEFAULT
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:32:17-75
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:32:17-75
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:32:27-73
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:32:27-73
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:33:17-76
+ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:33:17-76
 	android:name
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:33:27-74
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml:33:27-74
 uses-sdk
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:7:5-9:41
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\492398e6a73551a2523e6dbc366e8edf\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\87c33c0fb463ec41464b40bc848d782f\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\87c33c0fb463ec41464b40bc848d782f\AndroidManifest.xml:7:5-9:41
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:7:5-9:41
-MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\84d5604b2f56c602c638b729982bb1d9\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\dec45ca5e87186a1f8dffd7170590fff\AndroidManifest.xml:7:5-9:41
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:7:5-9:41
-MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:21:5-23:62
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:7:5-9:41
-MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b99421a7b03b51a054676831fe8252b5\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b99421a7b03b51a054676831fe8252b5\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:21:5-23:58
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:7:5-9:41
+MERGED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:21:5-23:62
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:7:5-9:41
+MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:20:5-43
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:7:5-9:41
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:7:5-9:41
+MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\f7781c1357af51ef7a5c20607255c63d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\f7781c1357af51ef7a5c20607255c63d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:21:5-23:58
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\scostello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Spencer Costello\Documents\Versus Codice\Smart Ladder Project\SmartLadder-zistos\app\src\main\AndroidManifest.xml
 activity#com.msasafety.a5x.library.activities.PairingActivity
-ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:16:9-19:20
+ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:16:9-19:20
 	android:label
-		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:18:13-59
+		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:18:13-59
 	android:name
-		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\b12ea21a25d7fbaa49bde5972629b068\AndroidManifest.xml:17:13-80
+		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:17:13-80
 meta-data#android.support.VERSION
-ADDED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\6e250c7dab89fed17ee439b119d00545\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\cfcbffb8340e51ae217e2dd1b0a278d8\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\1a972bcb301d2ef6d61780870288546f\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-v4:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\4a715b486b0f0d6e482f1a6351b6fa2b\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\017f6ca8206eff8c1cec52f348b54a51\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\3c0488abce29b0964ada8686dfe4398f\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\48d15072b049473201adce09114093ea\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\412d80229f280a25905d4654e385a9dc\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\4badd55df6ae810bbee5bca8890d6cad\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\62f66fe621996633587f76c07a779e16\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\30ea3b13ef25e87b7a94bdfa013f8648\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\087a53fbbf9a4f1be155c3ef21ee3f75\AndroidManifest.xml:26:9-28:38
+ADDED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\92e2ad6048f59f1fe9d63d344018929f\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\aff396138bf751fb34427cddcce7802f\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\69cc5da6fa8b8ff3bc12b94317b0321a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\d8f4e4075d812a989cfbe46e514d70b2\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\fd1a2f4229f0bd401bc2bc928b3f8e79\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\7206ae38445ad87a1c9b69d8690b6e07\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\c5f5ef51cf62f96a12aa21a55b7e2644\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec4c61f542db2a0d4a9b68aa70bf6bbf\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\a2b73278a6c04b6e785b39bdbc2b6b8b\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:26:9-28:38
 	android:value
-		ADDED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:28:13-35
+		ADDED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:28:13-35
 	android:name
-		ADDED from [com.android.support:design:25.4.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\64191ce86351c0e7163a3b77d290b8e9\AndroidManifest.xml:27:13-51
+		ADDED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\41005b85af704693f8ebff5efa206620\AndroidManifest.xml:27:13-51
 uses-permission#android.permission.NFC
-ADDED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:13:5-62
+ADDED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:13:5-62
 	android:name
-		ADDED from [com.msasafety.interop:networking:1.1.0] C:\Users\scostello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a6c2487e3bac1935e23ef739110143b9\AndroidManifest.xml:13:22-59
+		ADDED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:13:22-59
