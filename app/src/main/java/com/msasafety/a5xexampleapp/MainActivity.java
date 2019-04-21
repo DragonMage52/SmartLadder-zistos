@@ -24,6 +24,8 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.nsd.WifiP2pDnsSdServiceInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Parcel;
 import android.os.ParcelUuid;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -52,6 +54,11 @@ import com.msasafety.a5x.library.A5xInstrumentStatus;
 import com.msasafety.a5x.library.A5xSensorEvent;
 import com.msasafety.a5x.library.A5xSensorStatus;
 import com.msasafety.a5x.library.A5xService;
+import com.msasafety.a5x.library.IConnectable;
+import com.msasafety.a5x.library.IMonitor;
+import com.msasafety.a5x.library.IMonitorFactory;
+import com.msasafety.a5x.library.IReconnectFactory;
+import com.msasafety.a5x.library.IReconnectHandler;
 import com.msasafety.a5x.library.activities.PairingActivity;
 import com.msasafety.a5x.library.activities.PairingFragment;
 import com.msasafety.interop.networking.devicehandling.BtDevice;
@@ -766,8 +773,18 @@ public class MainActivity extends AppCompatActivity {
 
     //Start Meter service.
     public void startService(IDevice device) {
-        Intent i = A5xService.createServiceIntent(MainActivity.this, device);
-        startService(i);
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+
+                ReconnectFactory reconnectFactory = new ReconnectFactory();
+
+                Intent i = A5xService.createServiceIntent(getApplicationContext(), device, null, reconnectFactory);
+                startService(i);
+            }
+        };
+        thread.start();
     }
 
     //Register Intent receiver for Meter.
@@ -1438,6 +1455,64 @@ class BluetoothConnectThread extends Thread {
         } catch (IOException e) {
             Log.e("ListenThread", "Could not close the client socket", e);
         }
+    }
+}
+
+class ReconnectFactory implements IReconnectFactory {
+
+    Handler mConnectHandler = new Handler(Looper.getMainLooper());
+
+    public static final Parcelable.Creator<ReconnectFactory> CREATOR
+            = new Parcelable.Creator<ReconnectFactory>() {
+        public ReconnectFactory createFromParcel(Parcel in) {
+            return new ReconnectFactory();
+        }
+
+        public ReconnectFactory[] newArray(int size) {
+            return new ReconnectFactory[size];
+        }
+    };
+
+    @Override
+    public IReconnectHandler createHandler(Context context) {
+        IReconnectHandler reconnectHandler = new IReconnectHandler() {
+            @Override
+            public void onAttemptingConnection(IConnectable iConnectable) {
+
+            }
+
+            @Override
+            public void onConnectionFailed(IConnectable iConnectable, int i) {
+                mConnectHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        iConnectable.connect();
+                        Log.d("TEST", "Trying Reconnect");
+                    }
+                }, 15000 );
+            }
+
+            @Override
+            public void onConnectionSucceeded(IConnectable iConnectable) {
+
+            }
+
+            @Override
+            public void cancelReconnects(IConnectable iConnectable) {
+
+            }
+        };
+        return reconnectHandler;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }
 
