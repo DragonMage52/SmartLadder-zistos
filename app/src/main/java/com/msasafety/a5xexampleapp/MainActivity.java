@@ -1489,7 +1489,7 @@ class ReconnectFactory implements IReconnectFactory {
                         iConnectable.connect();
                         Log.d("TEST", "Trying Reconnect");
                     }
-                }, 15000 );
+                }, 30000 );
             }
 
             @Override
