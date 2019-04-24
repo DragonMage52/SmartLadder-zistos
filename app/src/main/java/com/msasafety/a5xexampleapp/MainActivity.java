@@ -1345,22 +1345,15 @@ public class MainActivity extends AppCompatActivity {
                     //Log.d("MulticastListenThread", "Received: " + text);
                     //debugPrint("Received: " + text);
                     String[] separated = text.split(",");
-                    if (mDetectUsers.containsKey(separated[0])) {
-                        if (mDetectUsers.get(separated[0]).mSocket == null) {
-                            mDetectUsers.get(separated[0]).connect(text);
-                        }
-                    } else {
+                    if (!mDetectUsers.containsKey(separated[0])) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 DetectedUser newUser = new DetectedUser(mStates);
                                 newUser.connect(text);
                                 mDetectUsers.put(separated[0], newUser);
-
-
                             }
                         });
-
                     }
                 } catch (IOException e) {
                     Log.e("MulticastListenThread", "Failed to listen");

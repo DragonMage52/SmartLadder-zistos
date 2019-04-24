@@ -3,6 +3,7 @@ package com.msasafety.a5xexampleapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.ArrayMap;
 import android.util.Log;
 
@@ -16,13 +17,80 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
+import netP5.NetAddress;
+import oscP5.OscP5;
+
 public class DetectedUser {
+
+    public String mIpAddress;
+    public int mPortNumber;
+    static MainActivity mThat;
+    StateVariable mStates;
+
+    Handler sendHandler;
+
+    public static HashMap<String, DetectedUser> mDetectUsers;
+
+    public DetectedUser(StateVariable states) {
+        mStates = states;
+    }
+
+    public void connect(String identifier) {
+        String[] separated = identifier.split(",");
+        mIpAddress = separated[0];
+        mPortNumber = Integer.parseInt(separated[1]);
+
+        SendThread sendThread = new SendThread();
+        sendThread.start();
+    }
+
+    public class SendThread extends Thread {
+
+        OscP5 oscP5;
+        NetAddress remoteLocation;
+
+        public SendThread() {
+
+            int listenPort = 14125;
+
+            try {
+                DatagramSocket s = new DatagramSocket();
+                listenPort = s.getLocalPort();
+                s.close();
+            } catch (SocketException e) {
+                Log.d("TEST", "Failed to open test UDP port");
+            }
+            oscP5 = new OscP5(this, listenPort);
+
+            remoteLocation = new NetAddress(mIpAddress, mPortNumber);
+        }
+
+        @Override
+        public void run() {
+            Looper.prepare();
+            sendHandler = new Handler();
+            sendHandler.post(sendRunnable);
+            Looper.loop();
+        }
+
+        Runnable sendRunnable = new Runnable() {
+            @Override
+            public void run() {
+                oscP5.send(mStates.getBytes(), remoteLocation);
+                sendHandler.postDelayed(sendRunnable, 2000);
+            }
+        };
+    }
+}
+
+/*public class DetectedUser {
 
     public String mIpAddress;
     public int mPortNumber;
@@ -278,6 +346,6 @@ public class DetectedUser {
             mSendHandler.removeCallbacks(sendRunnable);
         }
     }
-}
+}*/
 
 

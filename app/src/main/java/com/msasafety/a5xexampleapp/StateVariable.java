@@ -16,6 +16,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import com.msasafety.a5xexampleapp.BuildConfig;
 
+import oscP5.OscMessage;
+
 //State variable class to handle changing GPIO when variable value changes.
 public class StateVariable {
 
@@ -328,10 +330,40 @@ public class StateVariable {
 
     static int i = 0;
 
-    public byte[] getBytes() {
+    public OscMessage getBytes() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-        ArrayMap<String, String> arrayMap = new ArrayMap<>();
+        OscMessage message = new OscMessage("update");
+        message.add(id);
+        message.add(temp);
+        message.add(meterBatteryLevel);
+        message.add(mBatteryLevel);
+        message.add(oxygenLevel);
+        message.add(carbondioxideLevel);
+        message.add(hydrogensulfideLevel);
+        message.add(combExLevel);
+        message.add(mAlarmState);
+        message.add(mWarningState);
+        message.add(mManState);
+        message.add(mLadderState);
+        message.add(mBatteryState);
+        message.add(mBluetoothState);
+        message.add(mMeterState);
+        message.add(mEarlyState);
+        message.add(mMeterBatteryState);
+        message.add(mEarlyDoneState);
+        message.add(mIdleState);
+        message.add(mMeterBatteryDangerState);
+        message.add(mBatteryDangerState);
+        message.add(mAlarmOperator);
+        message.add(mAlarmMeterOff);
+        message.add(mPort);
+        message.add(mInsertionCount);
+        message.add(BuildConfig.VERSION_NAME);
+
+        return message;
+
+        /*ArrayMap<String, String> arrayMap = new ArrayMap<>();
         arrayMap.put("id", id);
         arrayMap.put("temp", temp + "");
         arrayMap.put("meterBatteryLevel", meterBatteryLevel + "");
@@ -371,7 +403,7 @@ public class StateVariable {
         String json = gson.toJson(arrayMap);
 
         //String message = id + "," + mWarningState + "," + mAlarmState + "," + mLadderState + "," + mManState + "," + temp + "," +  meterBatteryLevel + "," + mBatteryLevel + "," + oxygenLevel + "," + hydrogensulfideLevel + "," + carbondioxideLevel + "," + combExLevel + "," + dateFormat.format(Calendar.getInstance().getTime());
-        return json.getBytes();
+        return json.getBytes();*/
     }
 
     public void boot() {
