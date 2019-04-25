@@ -335,13 +335,13 @@ public class StateVariable {
 
         OscMessage message = new OscMessage("update");
         message.add(id);
-        message.add(temp);
-        message.add(meterBatteryLevel);
-        message.add(mBatteryLevel);
-        message.add(oxygenLevel);
-        message.add(carbondioxideLevel);
-        message.add(hydrogensulfideLevel);
-        message.add(combExLevel);
+        message.add(temp + "");
+        message.add(meterBatteryLevel + "");
+        message.add(mBatteryLevel + "");
+        message.add(oxygenLevel + "");
+        message.add(carbondioxideLevel + "");
+        message.add(hydrogensulfideLevel + "");
+        message.add(combExLevel + "");
         message.add(mAlarmState);
         message.add(mWarningState);
         message.add(mManState);

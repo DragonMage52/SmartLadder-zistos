@@ -40,6 +40,7 @@ public class DetectedUser {
 
     public DetectedUser(StateVariable states) {
         mStates = states;
+        Log.d("TEST", "Detected User created");
     }
 
     public void connect(String identifier) {

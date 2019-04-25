@@ -201,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
-
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
@@ -1342,7 +1341,7 @@ public class MainActivity extends AppCompatActivity {
                     DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                     socket.receive(packet);
                     String text = new String(buffer, 0, packet.getLength());
-                    //Log.d("MulticastListenThread", "Received: " + text);
+                    Log.d("MulticastListenThread", "Received: " + text);
                     //debugPrint("Received: " + text);
                     String[] separated = text.split(",");
                     if (!mDetectUsers.containsKey(separated[0])) {
