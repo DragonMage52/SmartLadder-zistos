@@ -1354,6 +1354,9 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     }
+                    else {
+                        mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
+                    }
                 } catch (IOException e) {
                     Log.e("MulticastListenThread", "Failed to listen");
                 }

@@ -360,6 +360,14 @@ public class StateVariable {
         message.add(mPort);
         message.add(mInsertionCount);
         message.add(BuildConfig.VERSION_NAME);
+        if(mLastCalibration != null) {
+            message.add(mCalDueInterval + "");
+            message.add(dateFormat.format(mLastCalibration));
+        }
+        else {
+            message.add("");
+            message.add("");
+        }
 
         return message;
 

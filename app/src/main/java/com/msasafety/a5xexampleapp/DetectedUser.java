@@ -69,8 +69,6 @@ public class DetectedUser {
                 Log.d("TEST", "Failed to open test UDP port");
             }
             oscP5 = new OscP5(this, listenPort);
-
-            remoteLocation = new NetAddress(mIpAddress, mPortNumber);
         }
 
         @Override
@@ -84,6 +82,7 @@ public class DetectedUser {
         Runnable sendRunnable = new Runnable() {
             @Override
             public void run() {
+                remoteLocation = new NetAddress(mIpAddress, mPortNumber);
                 oscP5.send(mStates.getBytes(), remoteLocation);
                 sendHandler.postDelayed(sendRunnable, 2000);
             }
