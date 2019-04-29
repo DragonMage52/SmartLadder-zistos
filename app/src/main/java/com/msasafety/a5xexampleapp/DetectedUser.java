@@ -13,6 +13,7 @@ import java.io.DataInputStream;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -25,6 +26,7 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 
 import netP5.NetAddress;
+import oscP5.OscMessage;
 import oscP5.OscP5;
 
 public class DetectedUser {
@@ -56,10 +58,9 @@ public class DetectedUser {
 
         OscP5 oscP5;
         NetAddress remoteLocation;
+        int listenPort = 14125;
 
         public SendThread() {
-
-            int listenPort = 14125;
 
             try {
                 DatagramSocket s = new DatagramSocket();
@@ -69,6 +70,31 @@ public class DetectedUser {
                 Log.d("TEST", "Failed to open test UDP port");
             }
             oscP5 = new OscP5(this, listenPort);
+        }
+
+        void oscEvent(OscMessage message) {
+            if(message.checkAddrPattern("log")) {
+                remoteLocation = new NetAddress(mIpAddress, mPortNumber);
+
+                try {
+                    FileInputStream inputStream = mThat.getApplicationContext().openFileInput("events.log");
+                    //TODO: increase datagram size
+                    byte[] log = new byte[1500];
+                    int totalBytesRead = inputStream.read(log);
+                    inputStream.close();
+                    String strLog = new String(log, 0, totalBytesRead, "UTF-8");
+
+                    OscMessage sendMessage = new OscMessage("log");
+                    sendMessage.add(mStates.id);
+                    sendMessage.add(strLog);
+                    oscP5.send(sendMessage, remoteLocation);
+                } catch (FileNotFoundException e1) {
+                    Log.d("TEST", "Filed not found");
+                    return;
+                } catch (IOException e2) {
+                    Log.d("TEST", "Failed to read file");
+                }
+            }
         }
 
         @Override
@@ -83,7 +109,9 @@ public class DetectedUser {
             @Override
             public void run() {
                 remoteLocation = new NetAddress(mIpAddress, mPortNumber);
-                oscP5.send(mStates.getBytes(), remoteLocation);
+                OscMessage message = mStates.getBytes();
+                message.add(listenPort);
+                oscP5.send(message, remoteLocation);
                 sendHandler.postDelayed(sendRunnable, 2000);
             }
         };

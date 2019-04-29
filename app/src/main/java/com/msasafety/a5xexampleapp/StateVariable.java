@@ -1,7 +1,9 @@
 package com.msasafety.a5xexampleapp;
 
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Handler;
+import android.text.format.Formatter;
 import android.util.ArrayMap;
 import android.util.Log;
 
@@ -17,6 +19,8 @@ import java.util.TimerTask;
 import com.msasafety.a5xexampleapp.BuildConfig;
 
 import oscP5.OscMessage;
+
+import static android.content.Context.WIFI_SERVICE;
 
 //State variable class to handle changing GPIO when variable value changes.
 public class StateVariable {
@@ -334,6 +338,10 @@ public class StateVariable {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         OscMessage message = new OscMessage("update");
+
+        WifiManager wm = (WifiManager) mThat.getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+
         message.add(id);
         message.add(temp + "");
         message.add(meterBatteryLevel + "");
@@ -357,7 +365,6 @@ public class StateVariable {
         message.add(mBatteryDangerState);
         message.add(mAlarmOperator);
         message.add(mAlarmMeterOff);
-        message.add(mPort);
         message.add(mInsertionCount);
         message.add(BuildConfig.VERSION_NAME);
         if(mLastCalibration != null) {
@@ -368,6 +375,7 @@ public class StateVariable {
             message.add("");
             message.add("");
         }
+        message.add(/*ip*/"192.168.1.7");
 
         return message;
 
