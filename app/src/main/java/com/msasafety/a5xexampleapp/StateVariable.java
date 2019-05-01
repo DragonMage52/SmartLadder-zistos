@@ -375,7 +375,7 @@ public class StateVariable {
             message.add("");
             message.add("");
         }
-        message.add(/*ip*/"192.168.1.7");
+        message.add(ip);
 
         return message;
 

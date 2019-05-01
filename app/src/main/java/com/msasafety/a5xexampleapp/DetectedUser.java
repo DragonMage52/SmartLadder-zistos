@@ -95,6 +95,26 @@ public class DetectedUser {
                     Log.d("TEST", "Failed to read file");
                 }
             }
+            else if(message.checkAddrPattern("insertion")) {
+                mStates.mInsertionCount = 0;
+                SharedPreferences.Editor prefsEditor = mThat.mPrefs.edit();
+                prefsEditor.putInt("Insertion", 0);
+                prefsEditor.commit();
+            }
+            else if(message.checkAddrPattern("clear")) {
+                try {
+                    String clearMessage = "Cleared Log\n";
+                    FileOutputStream outputStream = mThat.getApplicationContext().openFileOutput("events.log", Context.MODE_PRIVATE);
+                    outputStream.write(clearMessage.getBytes());
+                    outputStream.close();
+                } catch (IOException e) {
+                    Log.d("TEST", "Failed to clear log");
+                }
+            }
+            else if(message.checkAddrPattern("date")) {
+                mThat.i2c_writeRTC(message.get(0).stringValue());
+                mStates.mDateState = true;
+            }
         }
 
         @Override
