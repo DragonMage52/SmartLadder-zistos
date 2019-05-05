@@ -36,6 +36,8 @@ public class DetectedUser {
     static MainActivity mThat;
     StateVariable mStates;
 
+    SendThread sendThread;
+
     Handler sendHandler;
 
     public static HashMap<String, DetectedUser> mDetectUsers;
@@ -50,7 +52,7 @@ public class DetectedUser {
         mIpAddress = separated[0];
         mPortNumber = Integer.parseInt(separated[1]);
 
-        SendThread sendThread = new SendThread();
+        sendThread = new SendThread();
         sendThread.start();
     }
 
@@ -77,17 +79,29 @@ public class DetectedUser {
                 remoteLocation = new NetAddress(mIpAddress, mPortNumber);
 
                 try {
+                    int bytesRead = 0, i = 0;
                     FileInputStream inputStream = mThat.getApplicationContext().openFileInput("events.log");
-                    //TODO: increase datagram size
-                    byte[] log = new byte[1500];
-                    int totalBytesRead = inputStream.read(log);
-                    inputStream.close();
-                    String strLog = new String(log, 0, totalBytesRead, "UTF-8");
+                    do {
+                        byte[] log = new byte[1500];
+                        bytesRead = inputStream.read(log, 0, log.length);
+                        String strLog = new String(log, 0, bytesRead, "UTF-8");
 
-                    OscMessage sendMessage = new OscMessage("log");
-                    sendMessage.add(mStates.id);
-                    sendMessage.add(strLog);
-                    oscP5.send(sendMessage, remoteLocation);
+                        OscMessage sendMessage = new OscMessage("log");
+                        sendMessage.add(mStates.id);
+                        if(bytesRead != 1500) {
+                            sendMessage.add(-1);
+                        }
+                        else {
+                            sendMessage.add(i);
+                        }
+                        sendMessage.add(strLog);
+                        oscP5.send(sendMessage, remoteLocation);
+                        i++;
+                        Log.d("TEST", "i = " + i);
+                    } while(bytesRead == 1500);
+
+                    inputStream.close();
+
                 } catch (FileNotFoundException e1) {
                     Log.d("TEST", "Filed not found");
                     return;
@@ -100,6 +114,7 @@ public class DetectedUser {
                 SharedPreferences.Editor prefsEditor = mThat.mPrefs.edit();
                 prefsEditor.putInt("Insertion", 0);
                 prefsEditor.commit();
+                mThat.debugPrint("Reseting insertion count");
             }
             else if(message.checkAddrPattern("clear")) {
                 try {
@@ -114,6 +129,7 @@ public class DetectedUser {
             else if(message.checkAddrPattern("date")) {
                 mThat.i2c_writeRTC(message.get(0).stringValue());
                 mStates.mDateState = true;
+                //TODO: remove true setting
             }
         }
 

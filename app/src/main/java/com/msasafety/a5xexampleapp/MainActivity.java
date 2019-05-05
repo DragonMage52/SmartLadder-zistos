@@ -102,6 +102,8 @@ import java.util.TimerTask;
 import java.util.UUID;
 
 import co.lujun.lmbluetoothsdk.BluetoothController;
+import netP5.NetAddress;
+import oscP5.OscMessage;
 
 import static com.msasafety.interop.networking.bluetooth.BluetoothUtilities.REQUEST_ENABLE_BT;
 
@@ -172,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
     Handler mManHandler = new Handler();
 
-    ListenThread mListenThread;
+    //ListenThread mListenThread;
 
     Handler mSendHandler = new Handler();
 
@@ -521,6 +523,7 @@ public class MainActivity extends AppCompatActivity {
             mRTC.writeRegByte(0x09, byteYear);
 
             debugPrint("Setting Date to: " + strDate);
+            mStates.mDateState = true;
 
         } catch (IOException e) {
             Log.e("TEST", "Failed i2c write");
@@ -960,7 +963,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public NsdManager.DiscoveryListener mDiscoveryListener = new NsdManager.DiscoveryListener() {
+    /*public NsdManager.DiscoveryListener mDiscoveryListener = new NsdManager.DiscoveryListener() {
 
         // Called as soon as service discovery begins.
         @Override
@@ -1039,7 +1042,7 @@ public class MainActivity extends AppCompatActivity {
             mListenThread.start();
 
         }
-    };
+    };*/
 
     public void initializeManTimerTask() {
         mManTask = new TimerTask() {
@@ -1153,7 +1156,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };*/
 
-    public void startTimer() {
+    /*public void startTimer() {
         //set a new Timer
         mTimer = new Timer();
 
@@ -1170,10 +1173,10 @@ public class MainActivity extends AppCompatActivity {
             mTimer.cancel();
             mTimer = null;
         }
-    }
+    }*/
 
 
-    public void initializeTimerTask() {
+    /*public void initializeTimerTask() {
 
         mTimerTask = new TimerTask() {
             public void run() {
@@ -1199,7 +1202,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         };
-    }
+    }*/
 
     public void startBatteryTimer() {
         //set a new Timer
@@ -1246,7 +1249,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    class SendThread extends Thread {
+    /*class SendThread extends Thread {
 
         private DatagramPacket mPacket;
 
@@ -1299,10 +1302,10 @@ public class MainActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         String json = gson.toJson(arrayMap);
 
-                        /*InetAddress group = InetAddress.getByName("239.52.8.234");
+                        InetAddress group = InetAddress.getByName("239.52.8.234");
                         DatagramPacket packet = new DatagramPacket(json.getBytes(), json.getBytes().length, group, 52867);
                         SendThread sendThread = new SendThread(packet);
-                        sendThread.start();*/
+                        sendThread.start();
 
                         DatagramPacket packetOut = new DatagramPacket(json.getBytes(), json.getBytes().length);
                         packetOut.setAddress(packetIn.getAddress());
@@ -1324,7 +1327,7 @@ public class MainActivity extends AppCompatActivity {
         public void cancel() {
             run = false;
         }
-    }
+    }*/
 
     class MulticastListenThread extends Thread {
         private boolean run = false;
@@ -1351,11 +1354,25 @@ public class MainActivity extends AppCompatActivity {
                                 DetectedUser newUser = new DetectedUser(mStates);
                                 newUser.connect(text);
                                 mDetectUsers.put(separated[0], newUser);
+
+                                if(!mStates.mDateState) {
+                                    NetAddress remoteLocation = new NetAddress(newUser.mIpAddress, newUser.mPortNumber);
+                                    OscMessage sendMessage = new OscMessage("date");
+                                    sendMessage.add(mStates.id);
+                                    newUser.sendThread.oscP5.send(sendMessage, remoteLocation);
+                                }
                             }
                         });
                     }
                     else {
                         mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
+
+                        if(!mStates.mDateState) {
+                            NetAddress remoteLocation = new NetAddress(mDetectUsers.get(separated[0]).mIpAddress, mDetectUsers.get(separated[0]).mPortNumber);
+                            OscMessage sendMessage = new OscMessage("date");
+                            sendMessage.add(mStates.id);
+                            mDetectUsers.get(separated[0]).sendThread.oscP5.send(sendMessage, remoteLocation);
+                        }
                     }
                 } catch (IOException e) {
                     Log.e("MulticastListenThread", "Failed to listen");
@@ -1482,7 +1499,6 @@ class ReconnectFactory implements IReconnectFactory {
                     @Override
                     public void run() {
                         iConnectable.connect();
-                        Log.d("TEST", "Trying Reconnect");
                     }
                 }, 30000 );
             }
