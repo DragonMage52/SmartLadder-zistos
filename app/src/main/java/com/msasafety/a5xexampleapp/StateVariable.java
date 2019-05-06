@@ -69,6 +69,8 @@ public class StateVariable {
 
     boolean mDateState = false;
 
+    boolean mWifiState =false;
+
     Gpio mGood;
     Gpio mWarning;
     Gpio mAlarm;

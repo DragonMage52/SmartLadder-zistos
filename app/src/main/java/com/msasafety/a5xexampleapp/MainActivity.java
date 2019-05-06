@@ -1,6 +1,7 @@
 package com.msasafety.a5xexampleapp;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -35,6 +36,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -203,16 +205,30 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
+        //TODO: remove hard coded wifi info
+        mNetworkPass = "21444654";
+        mNetworkSSID = "9FD5C0";
+
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
         DetectedUser.mThat = this;
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("android.net.wifi.STATE_CHANGE");
+        registerReceiver(wifiReceiver, intentFilter);
 
         new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
             @Override
             public void onAppNotResponding(ANRError error) {
                 // Handle the error. For example, log it to HockeyApp:
                 debugPrint("WatchDog: Application Not Responding");
+                Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+                int mPendingIntentId = 123456;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                System.exit(0);
             }
         }).start();
 
@@ -731,6 +747,7 @@ public class MainActivity extends AppCompatActivity {
         if (isSuccess) {
             Log.v("WifiConnectCheck", "Wifi Connect Success");
             debugPrint("Connected to " + mNetworkSSID);
+            mStates.mWifiState = true;
             //mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
             WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
@@ -751,8 +768,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private final BroadcastReceiver wifiReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if (action.equals("android.net.wifi.STATE_CHANGE")) {
+                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                WifiInfo info = wifiManager.getConnectionInfo();
+                String ssid = info.getSSID().replace("\"", "");
+                if(!ssid.equals(mNetworkSSID) && mStates.mWifiState) {
+                    Log.d("TEST", "\nTrying reconnect to Wifi\n");
+                    mStates.mWifiState = false;
+                    if(mMulticastListenThread != null) {
+                        mMulticastListenThread.cancel();
+                    }
+                    WifiUtils.withContext(getApplicationContext())
+                            .connectWith(mNetworkSSID, mNetworkPass)
+                            .onConnectionResult(MainActivity.this::WifiConnectCheck)
+                            .start();
+
+                }
+            }
+        }
+    };
+
     //Callback method for Wifi Scan
-    private void WifiGetScanResults(@NonNull final List<ScanResult> results) {
+    /*private void WifiGetScanResults(@NonNull final List<ScanResult> results) {
         if (results.isEmpty()) {
             Log.d("TEST", "SCAN RESULTS IT'S EMPTY");
             return;
@@ -771,7 +812,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d("TEST", "GOT SCAN RESULTS " + results);
-    }
+    }*/
 
     //Start Meter service.
     public void startService(IDevice device) {
@@ -1332,8 +1373,12 @@ public class MainActivity extends AppCompatActivity {
     class MulticastListenThread extends Thread {
         private boolean run = false;
 
+        //TODO: timeout detected users
+
         public void run() {
             run = true;
+
+            Log.d("TEST", "Multicast starting");
 
             while (run) {
                 try {

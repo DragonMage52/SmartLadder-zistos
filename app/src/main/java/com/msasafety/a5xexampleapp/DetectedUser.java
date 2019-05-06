@@ -28,6 +28,7 @@ import java.util.HashMap;
 import netP5.NetAddress;
 import oscP5.OscMessage;
 import oscP5.OscP5;
+import oscP5.OscProperties;
 
 public class DetectedUser {
 
@@ -71,7 +72,10 @@ public class DetectedUser {
             } catch (SocketException e) {
                 Log.d("TEST", "Failed to open test UDP port");
             }
-            oscP5 = new OscP5(this, listenPort);
+            OscProperties properties = new OscProperties();
+            properties.setDatagramSize(65535);
+            properties.setListeningPort(listenPort);
+            oscP5 = new OscP5(this, properties);
         }
 
         void oscEvent(OscMessage message) {
@@ -82,13 +86,13 @@ public class DetectedUser {
                     int bytesRead = 0, i = 0;
                     FileInputStream inputStream = mThat.getApplicationContext().openFileInput("events.log");
                     do {
-                        byte[] log = new byte[1500];
+                        byte[] log = new byte[50000];
                         bytesRead = inputStream.read(log, 0, log.length);
                         String strLog = new String(log, 0, bytesRead, "UTF-8");
 
                         OscMessage sendMessage = new OscMessage("log");
                         sendMessage.add(mStates.id);
-                        if(bytesRead != 1500) {
+                        if(bytesRead != 50000) {
                             sendMessage.add(-1);
                         }
                         else {
@@ -98,7 +102,7 @@ public class DetectedUser {
                         oscP5.send(sendMessage, remoteLocation);
                         i++;
                         Log.d("TEST", "i = " + i);
-                    } while(bytesRead == 1500);
+                    } while(bytesRead == 50000);
 
                     inputStream.close();
 

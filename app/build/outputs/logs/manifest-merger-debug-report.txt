@@ -9,8 +9,8 @@ MERGED from [com.android.support:design:25.4.0] C:\Users\Spencer Costello\.gradl
 MERGED from [com.msasafety.interop:networking:1.1.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\networking-1.1.0.aar\a63788613b6875837f4fcfce7e2a2701\AndroidManifest.xml:2:1-20:12
 MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:17:1-28:12
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:2:1-22:12
 MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:2:1-17:12
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:2:1-22:12
 MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:2:1-17:12
 MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:2:1-24:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\f7781c1357af51ef7a5c20607255c63d\AndroidManifest.xml:2:1-11:12
@@ -129,10 +129,10 @@ MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\
 MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:22:5-26:19
 MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:22:5-26:19
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:16:5-20:19
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:16:5-20:19
 MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:11:5-15:19
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:16:5-20:19
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:16:5-20:19
 MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:14:5-15:19
 MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:14:5-15:19
 MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:17:5-22:19
@@ -160,7 +160,7 @@ MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Spence
 MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\0b747d32a6283a02c92199a7ff72740b\AndroidManifest.xml:25:5-29:19
 	android:supportsRtl
-		ADDED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:19:9-35
+		ADDED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:14:9-35
 	android:label
 		ADDED from [com.msasafety.a5x:library-limitedLiveRelease:1.2.1] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\library-limitedLiveRelease-1.2.1.aar\78b1266dba0d9541248d43e22e70698a\AndroidManifest.xml:15:9-41
 	android:icon
@@ -213,10 +213,10 @@ MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\
 MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\3ca9d7e542c7eb90ebe5932f72663a52\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\4b741402b7bd879752fea8ff25169bd7\AndroidManifest.xml:20:5-43
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:7:5-9:41
-MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.rafakob:NsdHelper:0.1.4] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\NsdHelper-0.1.4.aar\dd2d9ef4a8bd270207be996a66ae6f43\AndroidManifest.xml:7:5-9:41
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.thanosfisherman.wifiutils:wifiutils:1.3.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\wifiutils-1.3.5.aar\fb43e65ad7a12440a971c5c6363edeb2\AndroidManifest.xml:7:5-9:41
 MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:7:5-9:41
 MERGED from [co.lujun:lmbluetoothsdk:1.0.5] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\lmbluetoothsdk-1.0.5.aar\83b40ab92b0ab6f3f288dd8781177b2f\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.jflavio1:WifiConnector:v1.7] C:\Users\Spencer Costello\.gradle\caches\transforms-1\files-1.1\WifiConnector-v1.7.aar\0e91762ea48596916d2fe442cde304de\AndroidManifest.xml:7:5-9:41
