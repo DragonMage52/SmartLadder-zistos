@@ -205,10 +205,6 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
-        //TODO: remove hard coded wifi info
-        mNetworkPass = "21444654";
-        mNetworkSSID = "9FD5C0";
-
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;

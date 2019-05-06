@@ -132,7 +132,7 @@ public class DetectedUser {
             }
             else if(message.checkAddrPattern("date")) {
                 mThat.i2c_writeRTC(message.get(0).stringValue());
-                mStates.mDateState = true;
+                //mStates.mDateState = true;
                 //TODO: remove true setting
             }
         }
