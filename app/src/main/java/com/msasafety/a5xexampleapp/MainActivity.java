@@ -1,6 +1,7 @@
 package com.msasafety.a5xexampleapp;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -35,6 +36,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -102,6 +104,8 @@ import java.util.TimerTask;
 import java.util.UUID;
 
 import co.lujun.lmbluetoothsdk.BluetoothController;
+import netP5.NetAddress;
+import oscP5.OscMessage;
 
 import static com.msasafety.interop.networking.bluetooth.BluetoothUtilities.REQUEST_ENABLE_BT;
 
@@ -172,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
     Handler mManHandler = new Handler();
 
-    ListenThread mListenThread;
+    //ListenThread mListenThread;
 
     Handler mSendHandler = new Handler();
 
@@ -201,17 +205,26 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
-
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
         DetectedUser.mThat = this;
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("android.net.wifi.STATE_CHANGE");
+        registerReceiver(wifiReceiver, intentFilter);
 
         new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
             @Override
             public void onAppNotResponding(ANRError error) {
                 // Handle the error. For example, log it to HockeyApp:
                 debugPrint("WatchDog: Application Not Responding");
+                Intent mStartActivity = new Intent(getApplicationContext(), MainActivity.class);
+                int mPendingIntentId = 123456;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                System.exit(0);
             }
         }).start();
 
@@ -522,6 +535,7 @@ public class MainActivity extends AppCompatActivity {
             mRTC.writeRegByte(0x09, byteYear);
 
             debugPrint("Setting Date to: " + strDate);
+            mStates.mDateState = true;
 
         } catch (IOException e) {
             Log.e("TEST", "Failed i2c write");
@@ -729,6 +743,7 @@ public class MainActivity extends AppCompatActivity {
         if (isSuccess) {
             Log.v("WifiConnectCheck", "Wifi Connect Success");
             debugPrint("Connected to " + mNetworkSSID);
+            mStates.mWifiState = true;
             //mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
             WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
@@ -749,8 +764,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private final BroadcastReceiver wifiReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if (action.equals("android.net.wifi.STATE_CHANGE")) {
+                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                WifiInfo info = wifiManager.getConnectionInfo();
+                String ssid = info.getSSID().replace("\"", "");
+                if(!ssid.equals(mNetworkSSID) && mStates.mWifiState) {
+                    Log.d("TEST", "\nTrying reconnect to Wifi\n");
+                    mStates.mWifiState = false;
+                    if(mMulticastListenThread != null) {
+                        mMulticastListenThread.cancel();
+                    }
+                    WifiUtils.withContext(getApplicationContext())
+                            .connectWith(mNetworkSSID, mNetworkPass)
+                            .onConnectionResult(MainActivity.this::WifiConnectCheck)
+                            .start();
+
+                }
+            }
+        }
+    };
+
     //Callback method for Wifi Scan
-    private void WifiGetScanResults(@NonNull final List<ScanResult> results) {
+    /*private void WifiGetScanResults(@NonNull final List<ScanResult> results) {
         if (results.isEmpty()) {
             Log.d("TEST", "SCAN RESULTS IT'S EMPTY");
             return;
@@ -769,7 +808,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d("TEST", "GOT SCAN RESULTS " + results);
-    }
+    }*/
 
     //Start Meter service.
     public void startService(IDevice device) {
@@ -961,7 +1000,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public NsdManager.DiscoveryListener mDiscoveryListener = new NsdManager.DiscoveryListener() {
+    /*public NsdManager.DiscoveryListener mDiscoveryListener = new NsdManager.DiscoveryListener() {
 
         // Called as soon as service discovery begins.
         @Override
@@ -1040,7 +1079,7 @@ public class MainActivity extends AppCompatActivity {
             mListenThread.start();
 
         }
-    };
+    };*/
 
     public void initializeManTimerTask() {
         mManTask = new TimerTask() {
@@ -1154,7 +1193,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };*/
 
-    public void startTimer() {
+    /*public void startTimer() {
         //set a new Timer
         mTimer = new Timer();
 
@@ -1171,10 +1210,10 @@ public class MainActivity extends AppCompatActivity {
             mTimer.cancel();
             mTimer = null;
         }
-    }
+    }*/
 
 
-    public void initializeTimerTask() {
+    /*public void initializeTimerTask() {
 
         mTimerTask = new TimerTask() {
             public void run() {
@@ -1200,7 +1239,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         };
-    }
+    }*/
 
     public void startBatteryTimer() {
         //set a new Timer
@@ -1247,7 +1286,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    class SendThread extends Thread {
+    /*class SendThread extends Thread {
 
         private DatagramPacket mPacket;
 
@@ -1300,10 +1339,10 @@ public class MainActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         String json = gson.toJson(arrayMap);
 
-                        /*InetAddress group = InetAddress.getByName("239.52.8.234");
+                        InetAddress group = InetAddress.getByName("239.52.8.234");
                         DatagramPacket packet = new DatagramPacket(json.getBytes(), json.getBytes().length, group, 52867);
                         SendThread sendThread = new SendThread(packet);
-                        sendThread.start();*/
+                        sendThread.start();
 
                         DatagramPacket packetOut = new DatagramPacket(json.getBytes(), json.getBytes().length);
                         packetOut.setAddress(packetIn.getAddress());
@@ -1325,13 +1364,17 @@ public class MainActivity extends AppCompatActivity {
         public void cancel() {
             run = false;
         }
-    }
+    }*/
 
     class MulticastListenThread extends Thread {
         private boolean run = false;
 
+        //TODO: timeout detected users
+
         public void run() {
             run = true;
+
+            Log.d("TEST", "Multicast starting");
 
             while (run) {
                 try {
@@ -1342,14 +1385,10 @@ public class MainActivity extends AppCompatActivity {
                     DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                     socket.receive(packet);
                     String text = new String(buffer, 0, packet.getLength());
-                    //Log.d("MulticastListenThread", "Received: " + text);
+                    Log.d("MulticastListenThread", "Received: " + text);
                     //debugPrint("Received: " + text);
                     String[] separated = text.split(",");
-                    if (mDetectUsers.containsKey(separated[0])) {
-                        if (mDetectUsers.get(separated[0]).mSocket == null) {
-                            mDetectUsers.get(separated[0]).connect(text);
-                        }
-                    } else {
+                    if (!mDetectUsers.containsKey(separated[0])) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -1357,10 +1396,24 @@ public class MainActivity extends AppCompatActivity {
                                 newUser.connect(text);
                                 mDetectUsers.put(separated[0], newUser);
 
-
+                                if(!mStates.mDateState) {
+                                    NetAddress remoteLocation = new NetAddress(newUser.mIpAddress, newUser.mPortNumber);
+                                    OscMessage sendMessage = new OscMessage("date");
+                                    sendMessage.add(mStates.id);
+                                    newUser.sendThread.oscP5.send(sendMessage, remoteLocation);
+                                }
                             }
                         });
+                    }
+                    else {
+                        mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
 
+                        if(!mStates.mDateState) {
+                            NetAddress remoteLocation = new NetAddress(mDetectUsers.get(separated[0]).mIpAddress, mDetectUsers.get(separated[0]).mPortNumber);
+                            OscMessage sendMessage = new OscMessage("date");
+                            sendMessage.add(mStates.id);
+                            mDetectUsers.get(separated[0]).sendThread.oscP5.send(sendMessage, remoteLocation);
+                        }
                     }
                 } catch (IOException e) {
                     Log.e("MulticastListenThread", "Failed to listen");
@@ -1487,7 +1540,6 @@ class ReconnectFactory implements IReconnectFactory {
                     @Override
                     public void run() {
                         iConnectable.connect();
-                        Log.d("TEST", "Trying Reconnect");
                     }
                 }, 30000 );
             }

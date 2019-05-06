@@ -3,6 +3,7 @@ package com.msasafety.a5xexampleapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.ArrayMap;
 import android.util.Log;
 
@@ -12,17 +13,152 @@ import java.io.DataInputStream;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
+import netP5.NetAddress;
+import oscP5.OscMessage;
+import oscP5.OscP5;
+import oscP5.OscProperties;
+
 public class DetectedUser {
+
+    public String mIpAddress;
+    public int mPortNumber;
+    static MainActivity mThat;
+    StateVariable mStates;
+
+    SendThread sendThread;
+
+    Handler sendHandler;
+
+    public static HashMap<String, DetectedUser> mDetectUsers;
+
+    public DetectedUser(StateVariable states) {
+        mStates = states;
+        Log.d("TEST", "Detected User created");
+    }
+
+    public void connect(String identifier) {
+        String[] separated = identifier.split(",");
+        mIpAddress = separated[0];
+        mPortNumber = Integer.parseInt(separated[1]);
+
+        sendThread = new SendThread();
+        sendThread.start();
+    }
+
+    public class SendThread extends Thread {
+
+        OscP5 oscP5;
+        NetAddress remoteLocation;
+        int listenPort = 14125;
+
+        public SendThread() {
+
+            try {
+                DatagramSocket s = new DatagramSocket();
+                listenPort = s.getLocalPort();
+                s.close();
+            } catch (SocketException e) {
+                Log.d("TEST", "Failed to open test UDP port");
+            }
+            OscProperties properties = new OscProperties();
+            properties.setDatagramSize(65535);
+            properties.setListeningPort(listenPort);
+            oscP5 = new OscP5(this, properties);
+        }
+
+        void oscEvent(OscMessage message) {
+            if(message.checkAddrPattern("log")) {
+                remoteLocation = new NetAddress(mIpAddress, mPortNumber);
+
+                try {
+                    int bytesRead = 0, i = 0;
+                    FileInputStream inputStream = mThat.getApplicationContext().openFileInput("events.log");
+                    do {
+                        byte[] log = new byte[50000];
+                        bytesRead = inputStream.read(log, 0, log.length);
+                        String strLog = new String(log, 0, bytesRead, "UTF-8");
+
+                        OscMessage sendMessage = new OscMessage("log");
+                        sendMessage.add(mStates.id);
+                        if(bytesRead != 50000) {
+                            sendMessage.add(-1);
+                        }
+                        else {
+                            sendMessage.add(i);
+                        }
+                        sendMessage.add(strLog);
+                        oscP5.send(sendMessage, remoteLocation);
+                        i++;
+                        Log.d("TEST", "i = " + i);
+                    } while(bytesRead == 50000);
+
+                    inputStream.close();
+
+                } catch (FileNotFoundException e1) {
+                    Log.d("TEST", "Filed not found");
+                    return;
+                } catch (IOException e2) {
+                    Log.d("TEST", "Failed to read file");
+                }
+            }
+            else if(message.checkAddrPattern("insertion")) {
+                mStates.mInsertionCount = 0;
+                SharedPreferences.Editor prefsEditor = mThat.mPrefs.edit();
+                prefsEditor.putInt("Insertion", 0);
+                prefsEditor.commit();
+                mThat.debugPrint("Reseting insertion count");
+            }
+            else if(message.checkAddrPattern("clear")) {
+                try {
+                    String clearMessage = "Cleared Log\n";
+                    FileOutputStream outputStream = mThat.getApplicationContext().openFileOutput("events.log", Context.MODE_PRIVATE);
+                    outputStream.write(clearMessage.getBytes());
+                    outputStream.close();
+                } catch (IOException e) {
+                    Log.d("TEST", "Failed to clear log");
+                }
+            }
+            else if(message.checkAddrPattern("date")) {
+                mThat.i2c_writeRTC(message.get(0).stringValue());
+                //mStates.mDateState = true;
+                //TODO: remove true setting
+            }
+        }
+
+        @Override
+        public void run() {
+            Looper.prepare();
+            sendHandler = new Handler();
+            sendHandler.post(sendRunnable);
+            Looper.loop();
+        }
+
+        Runnable sendRunnable = new Runnable() {
+            @Override
+            public void run() {
+                remoteLocation = new NetAddress(mIpAddress, mPortNumber);
+                OscMessage message = mStates.getBytes();
+                message.add(listenPort);
+                oscP5.send(message, remoteLocation);
+                sendHandler.postDelayed(sendRunnable, 2000);
+            }
+        };
+    }
+}
+
+/*public class DetectedUser {
 
     public String mIpAddress;
     public int mPortNumber;
@@ -278,6 +414,6 @@ public class DetectedUser {
             mSendHandler.removeCallbacks(sendRunnable);
         }
     }
-}
+}*/
 
 
