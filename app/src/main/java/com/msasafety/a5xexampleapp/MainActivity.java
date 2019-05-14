@@ -1395,13 +1395,6 @@ public class MainActivity extends AppCompatActivity {
                                 DetectedUser newUser = new DetectedUser(mStates);
                                 newUser.connect(text);
                                 mDetectUsers.put(separated[0], newUser);
-
-                                if(!mStates.mDateState) {
-                                    NetAddress remoteLocation = new NetAddress(newUser.mIpAddress, newUser.mPortNumber);
-                                    OscMessage sendMessage = new OscMessage("date");
-                                    sendMessage.add(mStates.id);
-                                    newUser.sendThread.oscP5.send(sendMessage, remoteLocation);
-                                }
                             }
                         });
                     }
