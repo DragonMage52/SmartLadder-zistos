@@ -93,6 +93,8 @@ public class StateVariable {
 
     int mCalDueInterval = 0;
 
+    String mAndroidVersion = Build.VERSION.RELEASE;
+
 
     public StateVariable(Gpio good, Gpio warning, Gpio alarm, Gpio battery, Gpio bluetooth, Gpio horn, String mID, MainActivity that) {
         mGood = good;
@@ -378,6 +380,7 @@ public class StateVariable {
             message.add("");
         }
         message.add(ip);
+        message.add(mAndroidVersion);
 
         return message;
 
