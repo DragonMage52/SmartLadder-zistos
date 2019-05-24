@@ -187,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
     Handler mBluetoothDiscoveryHandler = new Handler();
     boolean mBluetoothDiscoveryInit = false;
 
+    boolean firstWifiFailedFlag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -473,6 +475,11 @@ public class MainActivity extends AppCompatActivity {
 
             date = "20" + year + "-" + month + "-" + days + "T" + hours + ":" + minutes + ":" + seconds;
 
+            if(read[0] != -128 ) {
+                byte byteControl = (byte) 0b10000000;
+                mRTC.writeRegByte(0x02, byteControl);
+            }
+
         } catch (IOException e) {
             Log.e("i2c_readRTC", "Failed RTC i2c read/write");
         }
@@ -714,7 +721,6 @@ public class MainActivity extends AppCompatActivity {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             //Log.d("TEST", "Connected to " + wifiInfo.getSSID());
-            debugPrint("Connected to " + wifiInfo.getSSID());
             if (wifiInfo.getSSID().replace("\"", "").equals(mNetworkSSID)) {
                 WifiConnectCheck(true);
                 return;
@@ -744,6 +750,7 @@ public class MainActivity extends AppCompatActivity {
             Log.v("WifiConnectCheck", "Wifi Connect Success");
             debugPrint("Connected to " + mNetworkSSID);
             mStates.mWifiState = true;
+            firstWifiFailedFlag = true;
             //mNsdManager.discoverServices("_zvs._udp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
             WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
@@ -754,8 +761,11 @@ public class MainActivity extends AppCompatActivity {
             mMulticastListenThread = new MulticastListenThread();
             mMulticastListenThread.start();
         } else {
-            Log.v("WifiConnectCheck", "Wifi Connect Failed");
-            debugPrint("Wifi Connect Failed");
+            if(firstWifiFailedFlag) {
+                debugPrint("Wifi Connect Failed");
+                firstWifiFailedFlag = false;
+                Log.v("WifiConnectCheck", "Wifi Connect Failed");
+            }
             WifiUtils.withContext(getApplicationContext())
                     .connectWith(mNetworkSSID, mNetworkPass)
                     .onConnectionResult(this::WifiConnectCheck)
