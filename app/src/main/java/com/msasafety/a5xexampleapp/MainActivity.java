@@ -1286,7 +1286,6 @@ public class MainActivity extends AppCompatActivity {
                         if (mFullChargeCapacity == 0) {
                             mFullChargeCapacity = capacity;
                         } else if (capacity != 0) {
-                            //mStates.mBatteryLevel = (int)  (100.0 * ((1.0 * capacity) / (mFullChargeCapacity)));
                             mStates.setBatteryLevel((int) (100.0 * ((1.0 * capacity) / (mFullChargeCapacity))));
                         }
                         Log.d("initializeBatteryTimerTask", "battery level: " + mStates.mBatteryLevel);

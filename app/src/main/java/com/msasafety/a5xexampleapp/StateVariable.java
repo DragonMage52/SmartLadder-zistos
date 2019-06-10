@@ -124,11 +124,11 @@ public class StateVariable {
 
 
     public void updateState() {
-        boolean tempAlarmState = (mMeterState && mBluetoothState) || (!mBluetoothState && (mManState || mLadderState)) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || (mMeterBatteryDangerState && mBluetoothState);
+        boolean tempAlarmState = (mMeterState && mBluetoothState) || (!mBluetoothState && mManState) || (mEarlyState && mManState) || mAlarmState || (!mEarlyDoneState && mManState) || mBatteryDangerState || (mMeterBatteryDangerState && mBluetoothState);
         boolean tempWarningState = (mLadderState && mEarlyState) || !mBluetoothState;
         boolean tempIdleState = mBluetoothState && !mLadderState && !mManState && !mAlarmState;
         boolean tempAlarmOperator = (!mEarlyDoneState && mManState) || mAlarmOperator;
-        boolean tempAlarmMeterOff = !mBluetoothState && (mLadderState || mManState) || mAlarmMeterOff;
+        boolean tempAlarmMeterOff = !mBluetoothState && mManState || mAlarmMeterOff;
         boolean tempAlarmMeterBattery = (mMeterBatteryDangerState && mBluetoothState) || mAlarmMeterBattery;
         boolean tempAlarmBattery = mBatteryDangerState || mAlarmBattery;
 
