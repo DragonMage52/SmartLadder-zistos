@@ -422,16 +422,16 @@ public class MainActivity extends AppCompatActivity {
             returned = (short) ((read[1] << 8) | (read[0] & 0xFF));
 
         } catch (IOException e) {
-            Log.e("i2c_read", "Failed battery i2c read/write");
+            //Log.e("i2c_read", "Failed battery i2c read/write");
             try {
                 mSmartBattery.close();
             } catch (IOException e1) {
-                Log.e("i2c_read", "Failed battery i2c close after read/write fail");
+                //Log.e("i2c_read", "Failed battery i2c close after read/write fail");
             }
             try {
                 mSmartBattery = mManager.openI2cDevice("I2C1", 0x0B);
             } catch (IOException e1) {
-                Log.e("i2c_read", "Failed battery i2c reopen");
+                //Log.e("i2c_read", "Failed battery i2c reopen");
 
             }
         }
@@ -1288,7 +1288,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (capacity != 0) {
                             mStates.setBatteryLevel((int) (100.0 * ((1.0 * capacity) / (mFullChargeCapacity))));
                         }
-                        Log.d("initializeBatteryTimerTask", "battery level: " + mStates.mBatteryLevel);
+                        //Log.d("initializeBatteryTimerTask", "battery level: " + mStates.mBatteryLevel);
                     }
                 });
             }
@@ -1409,6 +1409,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else {
                         mDetectUsers.get(separated[0]).mPortNumber = Integer.parseInt(separated[1]);
+                        mDetectUsers.get(separated[0]).refresh();
 
                         if(!mStates.mDateState) {
                             NetAddress remoteLocation = new NetAddress(mDetectUsers.get(separated[0]).mIpAddress, mDetectUsers.get(separated[0]).mPortNumber);

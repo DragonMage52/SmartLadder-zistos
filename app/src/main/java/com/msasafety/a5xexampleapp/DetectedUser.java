@@ -40,6 +40,7 @@ public class DetectedUser {
     SendThread sendThread;
 
     Handler sendHandler;
+    Handler mActiveHandler = new Handler();
 
     public static HashMap<String, DetectedUser> mDetectUsers;
 
@@ -55,7 +56,22 @@ public class DetectedUser {
 
         sendThread = new SendThread();
         sendThread.start();
+
+        refresh();
     }
+
+    public void refresh() {
+        mActiveHandler.removeCallbacks(activeRunnable);
+        mActiveHandler.postDelayed(activeRunnable, 60000);
+    }
+
+    public Runnable activeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mDetectUsers.remove(mIpAddress);
+            Log.d("TEST", "Removing inactive");
+        }
+    };
 
     public class SendThread extends Thread {
 
