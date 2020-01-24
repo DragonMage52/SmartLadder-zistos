@@ -21,7 +21,7 @@
 
         <uses-library android:name="com.google.android.things" />
 
-        <service android:name="com.msasafety.a5x.library.A5xService" />
+        <!--<service android:name="com.msasafety.a5x.library.A5xService" />-->
 
         <activity android:name=".MainActivity">
 

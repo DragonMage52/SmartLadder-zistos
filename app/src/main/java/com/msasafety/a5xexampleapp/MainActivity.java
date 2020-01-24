@@ -46,9 +46,11 @@ import com.google.android.things.pio.Gpio;
 import com.google.android.things.pio.GpioCallback;
 import com.google.android.things.pio.I2cDevice;
 import com.google.android.things.pio.PeripheralManager;
+//import com.google.android.things.pio.PeripheralManagerService;
 import com.google.gson.Gson;
 import com.jflavio1.wificonnector.WifiConnector;
-import com.msasafety.a5x.library.A5xBroadcasts;
+import com.thanosfisherman.wifiutils.WifiUtils;
+/*import com.msasafety.a5x.library.A5xBroadcasts;
 import com.msasafety.a5x.library.A5xCurrentStatus;
 import com.msasafety.a5x.library.A5xInstrumentConfig;
 import com.msasafety.a5x.library.A5xInstrumentEvent;
@@ -63,10 +65,12 @@ import com.msasafety.a5x.library.IReconnectFactory;
 import com.msasafety.a5x.library.IReconnectHandler;
 import com.msasafety.a5x.library.activities.PairingActivity;
 import com.msasafety.a5x.library.activities.PairingFragment;
+
 import com.msasafety.interop.networking.devicehandling.BtDevice;
 import com.msasafety.interop.networking.devicehandling.IDevice;
 import com.msasafety.interop.networking.devicehandling.IDeviceAdapter;
-import com.msasafety.interop.networking.devicehandling.IDeviceDiscovery;
+import com.msasafety.interop.networking.devicehandling.IDeviceDiscovery;*/
+
 import com.rafakob.nsdhelper.NsdHelper;
 import com.rafakob.nsdhelper.NsdListener;
 import com.rafakob.nsdhelper.NsdService;
@@ -107,16 +111,18 @@ import co.lujun.lmbluetoothsdk.BluetoothController;
 import netP5.NetAddress;
 import oscP5.OscMessage;
 
-import static com.msasafety.interop.networking.bluetooth.BluetoothUtilities.REQUEST_ENABLE_BT;
+//import static com.msasafety.interop.networking.bluetooth.BluetoothUtilities.REQUEST_ENABLE_BT;
 
 public class MainActivity extends AppCompatActivity {
 
     BluetoothAdapter mBluetoothAdapter;
-    BtDevice mDevice;
+    //BtDevice mDevice;
+    boolean mDevice = false;
 
     StateVariable mStates;
 
     PeripheralManager mManager;
+    //PeripheralManagerService mManager;
 
     Gpio mReset;
     Gpio mMan;
@@ -207,6 +213,11 @@ public class MainActivity extends AppCompatActivity {
         mNetworkSSID = mPrefs.getString("SSID", "");
         mNetworkPass = mPrefs.getString("Password", "");
 
+        //mName = "Enter Name";
+        //mNetworkSSID = "9FD5C0";
+        //mNetworkPass = "21444654";
+
+
         Log.v("onCreate", "Pulled Name: " + mName + ", SSID: " + mNetworkSSID + ", Password:: " + mNetworkPass);
 
         DetectedUser.mDetectUsers = mDetectUsers;
@@ -233,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
         //Check if GPIO ports are available
         try {
             mManager = PeripheralManager.getInstance();
+            //mManager = new PeripheralManagerService();
             List<String> portList = mManager.getGpioList();
             if (portList.isEmpty()) {
                 Log.e("onCreate", "No GPIO port available on this device");
@@ -296,16 +308,18 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("onCreate", "Unable to access GPIO", e);
         }
-    }
+
+        //bluetoothDiscovery(1)
+;    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        unregisterBroadcastReceiver();
+        //unregisterBroadcastReceiver();
 
-        Intent intent = A5xService.createDisconnectIntent(mDevice);
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+        //Intent intent = A5xService.createDisconnectIntent(mDevice);
+        //LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
 
         try {
             mReset.close();
@@ -333,22 +347,22 @@ public class MainActivity extends AppCompatActivity {
         WifiUtils.enableLog(true);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (!mBluetoothAdapter.isEnabled()) {
+        /*if (!mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             Log.e("onPause", "Bluetooth Disabled");
             debugPrint("Bluetooth Disabled");
-        }
+        }*/
 
         Gson gson = new Gson();
         String json = mPrefs.getString("Bluetooth Device", "");
-        mDevice = gson.fromJson(json, BtDevice.class);
+        /*mDevice = gson.fromJson(json, BtDevice.class);
 
         if (mDevice != null) {
             debugPrint("Connecting to Bluetooth Device Name: " + mDevice.getName());
             startService(mDevice);
             registerBroadcastReceiver();
-        }
+        }*/
 
         byte command = 0x10;
         mFullChargeCapacity = i2c_read(command);
@@ -594,15 +608,15 @@ public class MainActivity extends AppCompatActivity {
                             debugPrint("Found " + deviceName);
                             mBluetoothAdapter.cancelDiscovery();
                             //Connect to device.
-                            mDevice = new BtDevice(device.getAddress(), device.getName());
+                            //mDevice = new BtDevice(device.getAddress(), device.getName());
 
                             SharedPreferences.Editor prefsEditor = mPrefs.edit();
                             Gson gson = new Gson();
-                            String json = gson.toJson(mDevice);
+                            /*String json = gson.toJson(mDevice);
                             prefsEditor.putString("Bluetooth Device", json);
-                            prefsEditor.commit();
+                            prefsEditor.commit();*/
 
-                            Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+                            /*Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
                             if (pairedDevices.size() > 0) {
                                 for (BluetoothDevice pairedDevice : pairedDevices) {
                                     try {
@@ -615,7 +629,7 @@ public class MainActivity extends AppCompatActivity {
                                         Log.e("mReceiver", "Failed to forget bonded Bluetooth devices");
                                     }
                                 }
-                            }
+                            }*/
 
                             //startService(mDevice);
                             //registerBroadcastReceiver();
@@ -626,7 +640,8 @@ public class MainActivity extends AppCompatActivity {
                         if (deviceName.indexOf("ZistosSafeAirLadderApp") != -1) {
                             debugPrint("Found ZistosSafeAirLadderApp");
                             mBluetoothAdapter.cancelDiscovery();
-                            mDevice = new BtDevice(device.getAddress(), device.getName());
+                            //mDevice = new BtDevice(device.getAddress(), device.getName());
+                            mDevice = true;
 
                             BluetoothConnectThread connectThread = new BluetoothConnectThread(device, mActivity);
                             connectThread.start();
@@ -644,7 +659,7 @@ public class MainActivity extends AppCompatActivity {
             Log.v("mFinished", "Discovery Finished");
             mBluetoothDiscoveryInit = true;
             //Restart discovery is no device found, else connect to the device.
-            if (mDevice == null) {
+            if (mDevice) {
                 Log.v("mFinished", "Restarting Bluetooth Discovery");
                 mBluetoothAdapter.startDiscovery();
             }
@@ -666,7 +681,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     //Get status from Meter.
-    private final BroadcastReceiver mA4XReceiver = new BroadcastReceiver() {
+    /* final BroadcastReceiver mA4XReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             IDevice device;
@@ -696,7 +711,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-    };
+    };*/
 
     public void saveWifiSettings(String name, String ssid, String password) {
 
@@ -821,7 +836,7 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     //Start Meter service.
-    public void startService(IDevice device) {
+    /*public void startService(IDevice device) {
 
         Thread thread = new Thread() {
             @Override
@@ -834,10 +849,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         thread.start();
-    }
+    }*/
 
     //Register Intent receiver for Meter.
-    public void registerBroadcastReceiver() {
+    /*public void registerBroadcastReceiver() {
         IntentFilter filter = new IntentFilter(A5xBroadcasts.A5X_CURRENT_STATUS);
         filter.addAction(A5xService.A5X_SERVICE_DEVICE_REMOVED);
         filter.addAction(A5xBroadcasts.A5X_INST_EVENT);
@@ -848,23 +863,23 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mA4XReceiver, filter);
 
         getDeviceStatuses(mDevice);
-    }
+    }*/
 
-    public void unregisterBroadcastReceiver() {
+    /*public void unregisterBroadcastReceiver() {
         LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mA4XReceiver);
         LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mReceiver);
         LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mFinished);
-    }
+    }*/
 
     //Get meter status.
-    public void getDeviceStatuses(IDevice device) {
+    /*public void getDeviceStatuses(IDevice device) {
         Intent intent = new Intent(A5xBroadcasts.A5X_REQUEST_CURRENT_STATUS);
         intent.putExtra(A5xBroadcasts.EXTRA_A5X_DEVICE, device);
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
-    }
+    }*/
 
     //Update GPIO based on meter update.
-    public void updateStatus(A5xCurrentStatus mStatus) {
+    /*public void updateStatus(A5xCurrentStatus mStatus) {
         if (mStatus == null) {
             return;
         }
@@ -883,9 +898,6 @@ public class MainActivity extends AppCompatActivity {
                     mStates.mCalDueInterval = config.getCalDueInterval();
                 }
 
-                /*if (mStates.temp >= 120) {
-                    mStates.setMeterState(true);
-                }*/
 
                 for (int i = 0; i < mStatus.getLastStatus().getNumberInstalledSensors(); i++) {
                     A5xSensorStatus sensorStatus = mStatus.getLastStatus().getSensor(i);
@@ -933,13 +945,13 @@ public class MainActivity extends AppCompatActivity {
             //sendPing();
             mStates.setBluetoothState(false);
         }
-    }
+    }*/
 
-    private void sendPing() {
+    /*private void sendPing() {
         Intent intent = new Intent(A5xBroadcasts.A5X_REQUEST_PING);
         intent.putExtra(A5xBroadcasts.EXTRA_A5X_DEVICE, mDevice);
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
-    }
+    }*/
 
     //GPIO callback method for reset swtich.
     private GpioCallback mResetGpioCallback = new GpioCallback() {
@@ -1514,7 +1526,7 @@ class BluetoothConnectThread extends Thread {
     }
 }
 
-class ReconnectFactory implements IReconnectFactory {
+/*class ReconnectFactory implements IReconnectFactory {
 
     Handler mConnectHandler = new Handler(Looper.getMainLooper());
 
@@ -1569,6 +1581,6 @@ class ReconnectFactory implements IReconnectFactory {
     public void writeToParcel(Parcel parcel, int i) {
 
     }
-}
+}*/
 
 
