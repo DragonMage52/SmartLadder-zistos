@@ -30,7 +30,7 @@ dependencies {
     api 'com.android.support:appcompat-v7:26.1.0'
     api 'com.android.support:cardview-v7:26.1.0'
 
-    api 'com.msasafety.a5x:library-limitedLiveRelease:1.2.1'
+    //api 'com.msasafety.a5x:library-limitedLiveRelease:1.2.1'
 
 }
 
@@ -95,4 +95,10 @@ dependencies {
 
 dependencies {
     api 'com.github.sojamo:oscp5:v2.0.4'
+}
+
+dependencies {
+    api project(":library-limitedLiveRelease-1.2.1")
+    api project(":networking-1.1.0")
+    api project(":protobuf-java-3.11.3")
 }

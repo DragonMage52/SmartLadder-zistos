@@ -24,5 +24,8 @@ allprojects {
         }
         jcenter()
         google()
+        flatDir {
+            dirs 'libs'
+        }
     }
 }

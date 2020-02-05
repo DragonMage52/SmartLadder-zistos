@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:library-limitedLiveRelease-1.2.1:unspecified@jar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-limitedLiveRelease-1.2.1.aar/afa8ee57aca17aa5a5a130ca0bc44818/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-limitedLiveRelease-1.2.1.aar/afa8ee57aca17aa5a5a130ca0bc44818/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

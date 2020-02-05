@@ -9,6 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/library-limitedLiveRelease-1.2.1" />
+            <option value="$PROJECT_DIR$/networking-1.1.0" />
+            <option value="$PROJECT_DIR$/protobuf-java-3.11.3" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

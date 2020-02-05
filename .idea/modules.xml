@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SmartLadder-zistos.iml" filepath="$PROJECT_DIR$/SmartLadder-zistos.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-limitedLiveRelease-1.2.1/library-limitedLiveRelease-1.2.1.iml" filepath="$PROJECT_DIR$/library-limitedLiveRelease-1.2.1/library-limitedLiveRelease-1.2.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/networking-1.1.0/networking-1.1.0.iml" filepath="$PROJECT_DIR$/networking-1.1.0/networking-1.1.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/protobuf-java-3.11.3/protobuf-java-3.11.3.iml" filepath="$PROJECT_DIR$/protobuf-java-3.11.3/protobuf-java-3.11.3.iml" />
     </modules>
   </component>
 </project>

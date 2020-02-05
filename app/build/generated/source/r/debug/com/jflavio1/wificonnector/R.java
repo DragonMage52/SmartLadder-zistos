@@ -8,9 +8,9 @@ package com.jflavio1.wificonnector;
 
 public final class R {
     public static final class color {
-        public static final int colorAccent = 0x7f05002d;
-        public static final int colorPrimary = 0x7f05002e;
-        public static final int colorPrimaryDark = 0x7f05002f;
+        public static final int colorAccent = 0x7f05002c;
+        public static final int colorPrimary = 0x7f05002d;
+        public static final int colorPrimaryDark = 0x7f05002e;
     }
     public static final class mipmap {
         public static final int ic_launcher = 0x7f0c0000;
