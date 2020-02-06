@@ -21,6 +21,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="protobuf-java-3.11.3.protobuf-java-3.11.3" level="project" />
   </component>
 </module>

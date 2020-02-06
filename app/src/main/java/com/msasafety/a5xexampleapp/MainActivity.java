@@ -14,6 +14,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.net.NetworkInfo;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
@@ -329,7 +330,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void booted() {
         //Enable Wifi-Calls WifiEnableCheck with result.
-        WifiUtils.withContext(getApplicationContext()).enableWifi(this::WifiEnableCheck);
+        //WifiUtils.withContext(getApplicationContext()).enableWifi(this::WifiEnableCheck);
+        WifiUtils.withContext(getApplicationContext()).disableWifi();
         WifiUtils.enableLog(true);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -356,6 +358,15 @@ public class MainActivity extends AppCompatActivity {
         startBatteryTimer();
 
         debugPrint("System Boot");
+
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        mMulticastLock = wifiManager.createMulticastLock("Zistos Safe Air");
+        mMulticastLock.acquire();
+        //mSendHandler.post(sendRunnable);
+        //mListenThread = new ListenThread();
+        //mListenThread.start();
+        mMulticastListenThread = new MulticastListenThread();
+        mMulticastListenThread.start();
 
     }
 

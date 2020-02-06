@@ -26,6 +26,7 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 
 import netP5.NetAddress;
+import oscP5.OscBundle;
 import oscP5.OscMessage;
 import oscP5.OscP5;
 import oscP5.OscProperties;
@@ -167,7 +168,9 @@ public class DetectedUser {
                 remoteLocation = new NetAddress(mIpAddress, mPortNumber);
                 OscMessage message = mStates.getBytes();
                 message.add(listenPort);
-                oscP5.send(message, remoteLocation);
+                OscBundle bundle = new OscBundle();
+                bundle.add(message);
+                oscP5.send(bundle, remoteLocation);
                 sendHandler.postDelayed(sendRunnable, 2000);
             }
         };
